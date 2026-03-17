@@ -1,0 +1,25 @@
+{
+  "name": "John Doe",
+  "title": "Full Stack Developer",
+  "bio": "Passionate developer with expertise in modern web technologies. I love creating beautiful, functional applications that solve real-world problems.",
+  "avatar": "/avatar.jpg",
+  "email": "john.doe@example.com",
+  "location": "San Francisco, CA",
+  "social": [
+    {
+      "platform": "GitHub",
+      "url": "https://github.com/johndoe",
+      "icon": "Github"
+    },
+    {
+      "platform": "LinkedIn",
+      "url": "https://linkedin.com/in/johndoe",
+      "icon": "Linkedin"
+    },
+    {
+      "platform": "Twitter",
+      "url": "https://twitter.com/johndoe",
+      "icon": "Twitter"
+    }
+  ]
+}

@@ -1,0 +1,86 @@
+[
+  {
+    "id": "1",
+    "name": "React",
+    "category": "frontend",
+    "level": "expert",
+    "icon": "React"
+  },
+  {
+    "id": "2",
+    "name": "Next.js",
+    "category": "frontend",
+    "level": "expert",
+    "icon": "Nextjs"
+  },
+  {
+    "id": "3",
+    "name": "TypeScript",
+    "category": "frontend",
+    "level": "advanced",
+    "icon": "TypeScript"
+  },
+  {
+    "id": "4",
+    "name": "Tailwind CSS",
+    "category": "frontend",
+    "level": "expert",
+    "icon": "Tailwind"
+  },
+  {
+    "id": "5",
+    "name": "Node.js",
+    "category": "backend",
+    "level": "advanced",
+    "icon": "Nodejs"
+  },
+  {
+    "id": "6",
+    "name": "Express.js",
+    "category": "backend",
+    "level": "advanced",
+    "icon": "Express"
+  },
+  {
+    "id": "7",
+    "name": "PostgreSQL",
+    "category": "backend",
+    "level": "intermediate",
+    "icon": "Database"
+  },
+  {
+    "id": "8",
+    "name": "MongoDB",
+    "category": "backend",
+    "level": "intermediate",
+    "icon": "Database"
+  },
+  {
+    "id": "9",
+    "name": "Git",
+    "category": "tools",
+    "level": "expert",
+    "icon": "Git"
+  },
+  {
+    "id": "10",
+    "name": "Docker",
+    "category": "tools",
+    "level": "intermediate",
+    "icon": "Docker"
+  },
+  {
+    "id": "11",
+    "name": "AWS",
+    "category": "tools",
+    "level": "intermediate",
+    "icon": "Cloud"
+  },
+  {
+    "id": "12",
+    "name": "Figma",
+    "category": "design",
+    "level": "intermediate",
+    "icon": "Figma"
+  }
+]

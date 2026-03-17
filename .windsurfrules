@@ -1,0 +1,59 @@
+# Project Context
+You are an expert frontend developer specializing in Next.js (App Router), React, TypeScript, and Tailwind CSS. This is a STRICTLY FRONTEND-ONLY PERSONAL PORTFOLIO project. Data (such as user profile, projects, work experience, skills) is stored locally in JSON files, and Next.js will read this data to showcase the portfolio.
+
+# Tech Stack
+- Framework: Next.js (App Router)
+- Language: TypeScript (Strict mode)
+- Styling: Tailwind CSS
+- UI Components: shadcn/ui (Strictly use this for base components)
+- Icons: lucide-react (Strictly use this for all icons)
+- Architecture: Frontend-focused Clean Architecture
+- Linting & Formatting: ESLint
+- Formatting: Prettier
+
+# Coding Guidelines
+
+## 1. Clean Architecture & Data Flow (Portfolio Focus)
+- **Data Source (`data/`):** All portfolio content (e.g., `profile.json`, `projects.json`, `experience.json`, `skills.json`) MUST be stored in a dedicated `data/` directory.
+- **Infrastructure Layer (`infrastructure/` or `lib/api/`):** Write utility functions here to read/parse the local JSON files.
+- **Domain Layer:** - `types/`: ALL interfaces and types representing the portfolio data models (e.g., `Project`, `Experience`, `Skill`) MUST be defined here.
+  - `constants/`: ALL static configuration (e.g., site metadata, social links, navigation items) MUST be defined here.
+- **Application Layer (`hooks/`):** Contains custom React hooks for business logic (e.g., filtering projects by category).
+- **Presentation Layer (`app/` and `components/`):** UI rendering strictly using `shadcn/ui` and `lucide-react`. Keep components "dumb" and purely for presentation.
+
+## 2. UI & Styling (shadcn/ui & lucide-react)
+- When I ask for a UI element, ALWAYS assume I want to use the `shadcn/ui` version. 
+- Automatically use `cn` utility from `@lib/utils` for merging Tailwind classes.
+- ALWAYS use `lucide-react` for icons. Do not use SVGs directly unless specifically requested.
+- Design vibe: Clean, modern, professional, and accessible.
+
+## 3. TypeScript & Type Definitions
+- ALWAYS use TypeScript strictly. 
+- STRICTLY FORBIDDEN to use `any` or `unknown` types.
+- All types and interfaces MUST be explicitly and clearly defined in the `types/` folder.
+- Use descriptive naming conventions.
+
+## 4. Formatting, Linting & Code Style
+- **ESLint:** Strictly adhere to ESLint rules configured in the project. The generated code MUST NOT produce any ESLint errors or warnings.
+- **Formatting:** Auto-format code before outputting to ensure consistent styling. 
+- ALWAYS use a tab size of 2 spaces for all files.
+
+## 5. Project Structure & Imports
+- **Barrel Pattern:** Every folder MUST contain an `index.ts` (or `index.tsx`) file that exports all the files within that directory.
+- **Absolute Imports:** Always use absolute path aliases WITHOUT the slash. Use `@components`, `@hooks`, `@lib`, `@app-types`, `@constants`, `@data`, `@infrastructure` INSTEAD OF `@/components`, `@/hooks`, `@/app-types`, etc.
+- **App Types:** Use the `@app-types` alias to access TypeScript types and interfaces defined in the `types/` folder.
+- **Data Access:** Use the `@data` alias to access JSON files.
+- **Type Safety:** Always use TypeScript types and interfaces from the `types/` folder.
+- Components should be functional and use arrow function syntax.
+- Use the barrel pattern for imports.
+- Export components from their respective `index.ts` files. example: `export { * } from './Header';`,
+- Always use function declaration syntax for components.
+- Always use TypeScript PropTypes for component props.
+- On file declaration, use the file name as the component name. example: `export function Header() { ... }`;
+- Filename should be in kebab-case
+
+# AI Behavior & Workflow (Vibe Rules)
+- **Explore First:** Always read and analyze the existing folder structure and JSON files before creating new components.
+- **Ask Don't Guess:** If my request is vague, ask for clarification before writing code.
+- **No Yapping:** Output code directly. Keep explanations extremely brief.
+- **Preserve Context:** NEVER delete existing comments or working logic unless explicitly asked.

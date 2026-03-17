@@ -14,23 +14,44 @@
     "moduleResolution": "bundler",
     "noEmit": true,
     "paths": {
+      "@app-types": [
+        "./types/index.ts"
+      ],
       "@app-types/*": [
         "./types/*"
+      ],
+      "@components": [
+        "./components/index.ts"
       ],
       "@components/*": [
         "./components/*"
       ],
+      "@constants": [
+        "./constants/index.ts"
+      ],
       "@constants/*": [
         "./constants/*"
+      ],
+      "@data": [
+        "./data/index.ts"
       ],
       "@data/*": [
         "./data/*"
       ],
+      "@hooks": [
+        "./hooks/index.ts"
+      ],
       "@hooks/*": [
         "./hooks/*"
       ],
+      "@infrastructure": [
+        "./infrastructure/index.ts"
+      ],
       "@infrastructure/*": [
         "./infrastructure/*"
+      ],
+      "@lib": [
+        "./lib/index.ts"
       ],
       "@lib/*": [
         "./lib/*"
