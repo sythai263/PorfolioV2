@@ -5,125 +5,259 @@
 @custom-variant dark (&:is(.dark *));
 
 @theme inline {
+  /* --- Override Colors từ bảng màu Design System --- */
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-sans);
-  --font-mono: var(--font-geist-mono);
-  --color-sidebar-ring: var(--sidebar-ring);
-  --color-sidebar-border: var(--sidebar-border);
-  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
-  --color-sidebar-accent: var(--sidebar-accent);
-  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
-  --color-sidebar-primary: var(--sidebar-primary);
-  --color-sidebar-foreground: var(--sidebar-foreground);
-  --color-sidebar: var(--sidebar);
-  --color-chart-5: var(--chart-5);
-  --color-chart-4: var(--chart-4);
-  --color-chart-3: var(--chart-3);
-  --color-chart-2: var(--chart-2);
-  --color-chart-1: var(--chart-1);
-  --color-ring: var(--ring);
-  --color-input: var(--input);
-  --color-border: var(--border);
-  --color-destructive: var(--destructive);
-  --color-accent-foreground: var(--accent-foreground);
-  --color-accent: var(--accent);
-  --color-muted-foreground: var(--muted-foreground);
-  --color-muted: var(--muted);
-  --color-secondary-foreground: var(--secondary-foreground);
-  --color-secondary: var(--secondary);
-  --color-primary-foreground: var(--primary-foreground);
+
   --color-primary: var(--primary);
-  --color-popover-foreground: var(--popover-foreground);
-  --color-popover: var(--popover);
-  --color-card-foreground: var(--card-foreground);
-  --color-card: var(--card);
-  --radius-sm: calc(var(--radius) * 0.6);
-  --radius-md: calc(var(--radius) * 0.8);
-  --radius-lg: var(--radius);
-  --radius-xl: calc(var(--radius) * 1.4);
-  --radius-2xl: calc(var(--radius) * 1.8);
-  --radius-3xl: calc(var(--radius) * 2.2);
-  --radius-4xl: calc(var(--radius) * 2.6);
+  --color-primary-foreground: #FFFFFF;
+
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: #FFFFFF;
+
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--neutral-04);
+
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--foreground);
+
+  --color-destructive: #E81818;
+  --color-destructive-foreground: #FFFFFF;
+
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--primary);
+
+  /* --- Định nghĩa bảng màu Neutral để dùng trực tiếp --- */
+  --color-neutral-01: #181C32;
+  --color-neutral-02: #3F4254;
+  --color-neutral-03: #5E6278;
+  --color-neutral-04: #A1A5B7;
+  --color-neutral-05: #B5B5C3;
+  --color-neutral-06: #E4E6EF;
+  --color-neutral-07: #EFF2F5;
+  --color-neutral-08: #EFF2F5;
+  --color-neutral-09: #F1F5F8;
+  --color-neutral-10: #FAFAFA;
+  --color-neutral-11: #FAFAFA;
+
+  /* --- Radius & Fonts --- */
+  --font-sans: "Inter", sans-serif;
+  --radius-pill: 9999px;
+  --radius-input: 8px;
 }
 
 :root {
-  --background: oklch(1 0 0);
-  --foreground: oklch(0.145 0 0);
-  --card: oklch(1 0 0);
-  --card-foreground: oklch(0.145 0 0);
-  --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.145 0 0);
-  --primary: oklch(0.205 0 0);
-  --primary-foreground: oklch(0.985 0 0);
-  --secondary: oklch(0.97 0 0);
-  --secondary-foreground: oklch(0.205 0 0);
-  --muted: oklch(0.97 0 0);
-  --muted-foreground: oklch(0.556 0 0);
-  --accent: oklch(0.97 0 0);
-  --accent-foreground: oklch(0.205 0 0);
-  --destructive: oklch(0.577 0.245 27.325);
-  --border: oklch(0.922 0 0);
-  --input: oklch(0.922 0 0);
-  --ring: oklch(0.708 0 0);
-  --chart-1: oklch(0.809 0.105 251.813);
-  --chart-2: oklch(0.623 0.214 259.815);
-  --chart-3: oklch(0.546 0.245 262.881);
-  --chart-4: oklch(0.488 0.243 264.376);
-  --chart-5: oklch(0.424 0.199 265.638);
-  --radius: 0.625rem;
-  --sidebar: oklch(0.985 0 0);
-  --sidebar-foreground: oklch(0.145 0 0);
-  --sidebar-primary: oklch(0.205 0 0);
-  --sidebar-primary-foreground: oklch(0.985 0 0);
-  --sidebar-accent: oklch(0.97 0 0);
-  --sidebar-accent-foreground: oklch(0.205 0 0);
-  --sidebar-border: oklch(0.922 0 0);
-  --sidebar-ring: oklch(0.708 0 0);
+  /* Light Mode */
+  --background: #FAFAFA;
+  /* Neutral 10 */
+  --foreground: #181C32;
+  /* Neutral 01 */
+
+  --primary: #FFAB00;
+  --secondary: #1A85FF;
+
+  --card: #FFFFFF;
+  --card-foreground: #181C32;
+
+  --popover: #FFFFFF;
+  --popover-foreground: #181C32;
+
+  --muted: #F1F5F8;
+  /* Neutral 09 */
+  --accent: #EFF2F5;
+  /* Neutral 07 */
+
+  --border: #E4E6EF;
+  /* Neutral 06 */
+  --input: #F1F5F8;
+  /* Neutral 09 */
+
+  --radius: 0.5rem;
 }
 
 .dark {
-  --background: oklch(0.145 0 0);
-  --foreground: oklch(0.985 0 0);
-  --card: oklch(0.205 0 0);
-  --card-foreground: oklch(0.985 0 0);
-  --popover: oklch(0.205 0 0);
-  --popover-foreground: oklch(0.985 0 0);
-  --primary: oklch(0.922 0 0);
-  --primary-foreground: oklch(0.205 0 0);
-  --secondary: oklch(0.269 0 0);
-  --secondary-foreground: oklch(0.985 0 0);
-  --muted: oklch(0.269 0 0);
-  --muted-foreground: oklch(0.708 0 0);
-  --accent: oklch(0.269 0 0);
-  --accent-foreground: oklch(0.985 0 0);
-  --destructive: oklch(0.704 0.191 22.216);
-  --border: oklch(1 0 0 / 10%);
-  --input: oklch(1 0 0 / 15%);
-  --ring: oklch(0.556 0 0);
-  --chart-1: oklch(0.809 0.105 251.813);
-  --chart-2: oklch(0.623 0.214 259.815);
-  --chart-3: oklch(0.546 0.245 262.881);
-  --chart-4: oklch(0.488 0.243 264.376);
-  --chart-5: oklch(0.424 0.199 265.638);
-  --sidebar: oklch(0.205 0 0);
-  --sidebar-foreground: oklch(0.985 0 0);
-  --sidebar-primary: oklch(0.488 0.243 264.376);
-  --sidebar-primary-foreground: oklch(0.985 0 0);
-  --sidebar-accent: oklch(0.269 0 0);
-  --sidebar-accent-foreground: oklch(0.985 0 0);
-  --sidebar-border: oklch(1 0 0 / 10%);
-  --sidebar-ring: oklch(0.556 0 0);
+  /* Dark Mode */
+  --background: #181C32;
+  /* Neutral 01 */
+  --foreground: #FAFAFA;
+  /* Neutral 11 */
+
+  --primary: #FFAB00;
+  --secondary: #1A85FF;
+
+  --card: #1B1F35;
+  --card-foreground: #FAFAFA;
+
+  --popover: #1B1F35;
+  --popover-foreground: #FAFAFA;
+
+  --muted: #3F4254;
+  /* Neutral 02 */
+  --accent: #5E6278;
+  /* Neutral 03 */
+
+  --border: rgba(255, 255, 255, 0.1);
+  --input: #3F4254;
+  /* Neutral 02 */
 }
 
 @layer base {
   * {
     @apply border-border outline-ring/50;
   }
+
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground font-sans;
   }
-  html {
-    @apply font-sans;
+}
+
+@layer components {
+
+  /* --- Typography (Mobile First) --- */
+  .text-t1 {
+    @apply text-[28px] font-bold;
+  }
+
+  .text-t2 {
+    @apply text-[24px] font-bold;
+  }
+
+  .text-h1 {
+    @apply text-[20px] font-semibold;
+  }
+
+  .text-h2 {
+    @apply text-[18px] font-medium;
+  }
+
+  .text-h3 {
+    @apply text-[18px] font-semibold;
+  }
+
+  .text-b18-semi {
+    @apply text-[16px] font-medium;
+  }
+
+  .text-b18-reg {
+    @apply text-[16px] font-normal;
+  }
+
+  .text-b16-semi {
+    @apply text-[14px] font-semibold;
+  }
+
+  .text-b16-reg {
+    @apply text-[14px] font-normal;
+  }
+
+  .text-b14-med {
+    @apply text-[12px] font-semibold;
+  }
+
+  .text-b14-reg {
+    @apply text-[12px] font-normal;
+  }
+
+  /* --- Custom Input --- */
+  .input-custom {
+    @apply flex w-full items-center bg-input px-4 rounded-input transition-all outline-none;
+    @apply text-foreground placeholder:text-neutral-04;
+  }
+
+  /* Sử dụng các class gốc của Tailwind thay vì class tự tạo để tránh lỗi */
+  .input-lg {
+    @apply h-[56px] text-[16px] font-normal;
+  }
+
+  .input-md {
+    @apply h-[48px] text-[14px] font-normal;
+  }
+
+  .input-sm {
+    @apply h-[40px] text-[12px] font-normal;
+  }
+
+  /* --- Custom Button --- */
+  .btn-custom {
+    @apply inline-flex items-center justify-center rounded-pill font-medium transition-transform active:scale-95;
+  }
+
+  .btn-xl {
+    @apply h-[56px] px-8 text-[18px];
+  }
+
+  .btn-l {
+    @apply h-[48px] px-6 text-[16px];
+  }
+
+  .btn-m {
+    @apply h-[40px] px-5 text-[14px];
+  }
+
+  .btn-s {
+    @apply h-[32px] px-4 text-[12px];
+  }
+
+  /* --- Responsive Breakpoint cho Desktop --- */
+  @media (min-width: 768px) {
+
+    /* Typography Overrides */
+    .text-t1 {
+      @apply text-[48px];
+    }
+
+    .text-t2 {
+      @apply text-[32px];
+    }
+
+    .text-h1 {
+      @apply text-[28px];
+    }
+
+    .text-h2 {
+      @apply text-[24px];
+    }
+
+    .text-h3 {
+      @apply text-[20px];
+    }
+
+    .text-b18-semi {
+      @apply text-[18px] font-semibold;
+    }
+
+    .text-b18-reg {
+      @apply text-[18px];
+    }
+
+    .text-b16-semi {
+      @apply text-[16px];
+    }
+
+    .text-b16-reg {
+      @apply text-[16px];
+    }
+
+    .text-b14-med {
+      @apply text-[14px] font-medium;
+    }
+
+    .text-b14-reg {
+      @apply text-[14px];
+    }
+
+    /* Nâng font-size của input khi ở chế độ Desktop để khớp với Typography */
+    .input-lg {
+      @apply text-[18px];
+    }
+
+    .input-md {
+      @apply text-[16px];
+    }
+
+    .input-sm {
+      @apply text-[14px];
+    }
   }
 }
