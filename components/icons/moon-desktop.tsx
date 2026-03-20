@@ -67,9 +67,9 @@ export const MoonDesktop = ({ className }: { className?: string }) => (
         width="28"
         height="28"
         filterUnits="userSpaceOnUse"
-        color-interpolation-filters="sRGB"
+        colorInterpolationFilters="sRGB"
       >
-        <feFlood flood-opacity="0" result="BackgroundImageFix" />
+        <feFlood floodOpacity="0" result="BackgroundImageFix" />
         <feColorMatrix
           in="SourceAlpha"
           type="matrix"
@@ -102,8 +102,8 @@ export const MoonDesktop = ({ className }: { className?: string }) => (
         y2="23"
         gradientUnits="userSpaceOnUse"
       >
-        <stop stop-color="#D6E9FF" />
-        <stop offset="1" stop-color="#CDE4FF" />
+        <stop stopColor="#D6E9FF" />
+        <stop offset="1" stopColor="#CDE4FF" />
       </linearGradient>
       <linearGradient
         id="paint1_linear_39_631"
@@ -113,9 +113,9 @@ export const MoonDesktop = ({ className }: { className?: string }) => (
         y2="21.2857"
         gradientUnits="userSpaceOnUse"
       >
-        <stop stop-color="#CEE5FF" />
-        <stop offset="0.9999" stop-color="#EDF6FF" />
-        <stop offset="1" stop-color="#F1F9FF" />
+        <stop stopColor="#CEE5FF" />
+        <stop offset="0.9999" stopColor="#EDF6FF" />
+        <stop offset="1" stopColor="#F1F9FF" />
       </linearGradient>
       <linearGradient
         id="paint2_linear_39_631"
@@ -125,8 +125,8 @@ export const MoonDesktop = ({ className }: { className?: string }) => (
         y2="23"
         gradientUnits="userSpaceOnUse"
       >
-        <stop stop-color="#DDEDFF" />
-        <stop offset="1" stop-color="#3483F9" />
+        <stop stopColor="#DDEDFF" />
+        <stop offset="1" stopColor="#3483F9" />
       </linearGradient>
       <linearGradient
         id="paint3_linear_39_631"
@@ -136,8 +136,8 @@ export const MoonDesktop = ({ className }: { className?: string }) => (
         y2="21.2857"
         gradientUnits="userSpaceOnUse"
       >
-        <stop stop-color="#C8D7FF" />
-        <stop offset="1" stop-color="#DCF0FF" stop-opacity="0" />
+        <stop stopColor="#C8D7FF" />
+        <stop offset="1" stopColor="#DCF0FF" stopOpacity="0" />
       </linearGradient>
       <linearGradient
         id="paint4_linear_39_631"
@@ -147,8 +147,8 @@ export const MoonDesktop = ({ className }: { className?: string }) => (
         y2="24.1429"
         gradientUnits="userSpaceOnUse"
       >
-        <stop stop-color="#C8D7FF" />
-        <stop offset="1" stop-color="#DCF0FF" stop-opacity="0" />
+        <stop stopColor="#C8D7FF" />
+        <stop offset="1" stopColor="#DCF0FF" stopOpacity="0" />
       </linearGradient>
       <linearGradient
         id="paint5_linear_39_631"
@@ -158,8 +158,8 @@ export const MoonDesktop = ({ className }: { className?: string }) => (
         y2="12.4286"
         gradientUnits="userSpaceOnUse"
       >
-        <stop stop-color="#C8D7FF" />
-        <stop offset="1" stop-color="#DCF0FF" stop-opacity="0" />
+        <stop stopColor="#C8D7FF" />
+        <stop offset="1" stopColor="#DCF0FF" stopOpacity="0" />
       </linearGradient>
       <linearGradient
         id="paint6_linear_39_631"
@@ -169,8 +169,8 @@ export const MoonDesktop = ({ className }: { className?: string }) => (
         y2="16.1429"
         gradientUnits="userSpaceOnUse"
       >
-        <stop stop-color="#C8D7FF" />
-        <stop offset="1" stop-color="#DCF0FF" stop-opacity="0" />
+        <stop stopColor="#C8D7FF" />
+        <stop offset="1" stopColor="#DCF0FF" stopOpacity="0" />
       </linearGradient>
       <linearGradient
         id="paint7_linear_39_631"
@@ -180,8 +180,8 @@ export const MoonDesktop = ({ className }: { className?: string }) => (
         y2="16.1429"
         gradientUnits="userSpaceOnUse"
       >
-        <stop stop-color="#C8D7FF" />
-        <stop offset="1" stop-color="#DCF0FF" stop-opacity="0" />
+        <stop stopColor="#C8D7FF" />
+        <stop offset="1" stopColor="#DCF0FF" stopOpacity="0" />
       </linearGradient>
     </defs>
   </svg>

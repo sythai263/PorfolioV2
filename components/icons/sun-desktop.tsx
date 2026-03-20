@@ -52,9 +52,9 @@ export const SunDesktop = ({ className }: { className?: string }) => (
         width="26"
         height="26"
         filterUnits="userSpaceOnUse"
-        color-interpolation-filters="sRGB"
+        colorInterpolationFilters="sRGB"
       >
-        <feFlood flood-opacity="0" result="BackgroundImageFix" />
+        <feFlood floodOpacity="0" result="BackgroundImageFix" />
         <feColorMatrix
           in="SourceAlpha"
           type="matrix"
@@ -87,8 +87,8 @@ export const SunDesktop = ({ className }: { className?: string }) => (
         y2="22"
         gradientUnits="userSpaceOnUse"
       >
-        <stop stop-color="#FFC123" />
-        <stop offset="1" stop-color="#F8832E" />
+        <stop stopColor="#FFC123" />
+        <stop offset="1" stopColor="#F8832E" />
       </linearGradient>
       <linearGradient
         id="paint1_linear_39_622"
@@ -98,8 +98,8 @@ export const SunDesktop = ({ className }: { className?: string }) => (
         y2="20.2857"
         gradientUnits="userSpaceOnUse"
       >
-        <stop stop-color="#FFBF24" />
-        <stop offset="1" stop-color="#F4924B" />
+        <stop stopColor="#FFBF24" />
+        <stop offset="1" stopColor="#F4924B" />
       </linearGradient>
       <linearGradient
         id="paint2_linear_39_622"
@@ -109,8 +109,8 @@ export const SunDesktop = ({ className }: { className?: string }) => (
         y2="20.2857"
         gradientUnits="userSpaceOnUse"
       >
-        <stop stop-color="#FFBF24" />
-        <stop offset="1" stop-color="#F4924B" />
+        <stop stopColor="#FFBF24" />
+        <stop offset="1" stopColor="#F4924B" />
       </linearGradient>
       <linearGradient
         id="paint3_linear_39_622"
@@ -120,8 +120,8 @@ export const SunDesktop = ({ className }: { className?: string }) => (
         y2="22"
         gradientUnits="userSpaceOnUse"
       >
-        <stop stop-color="#FFC123" />
-        <stop offset="1" stop-color="#F8832E" />
+        <stop stopColor="#FFC123" />
+        <stop offset="1" stopColor="#F8832E" />
       </linearGradient>
       <linearGradient
         id="paint4_linear_39_622"
@@ -131,8 +131,8 @@ export const SunDesktop = ({ className }: { className?: string }) => (
         y2="30.2931"
         gradientUnits="userSpaceOnUse"
       >
-        <stop stop-color="#FF9D55" stop-opacity="0.6" />
-        <stop offset="1" stop-color="#FD8A37" stop-opacity="0" />
+        <stop stopColor="#FF9D55" stopOpacity="0.6" />
+        <stop offset="1" stopColor="#FD8A37" stopOpacity="0" />
       </linearGradient>
       <linearGradient
         id="paint5_linear_39_622"
@@ -142,8 +142,8 @@ export const SunDesktop = ({ className }: { className?: string }) => (
         y2="27.278"
         gradientUnits="userSpaceOnUse"
       >
-        <stop stop-color="#FFBD3E" stop-opacity="0.49" />
-        <stop offset="1" stop-color="white" stop-opacity="0" />
+        <stop stopColor="#FFBD3E" stopOpacity="0.49" />
+        <stop offset="1" stopColor="white" stopOpacity="0" />
       </linearGradient>
     </defs>
   </svg>

@@ -1,5 +1,6 @@
 import { Providers } from "@components";
 import { SITE_METADATA } from "@constants";
+import { cn } from "@lib";
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
@@ -37,7 +38,12 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={cn(
+          geistSans.variable,
+          geistMono.variable,
+          "antialiased",
+          "transition-colors duration-500 ease-in-out",
+        )}
       >
         <Providers>{children}</Providers>
       </body>

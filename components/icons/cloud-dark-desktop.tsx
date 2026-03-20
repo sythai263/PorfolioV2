@@ -38,9 +38,9 @@ export const CloudDarkDesktop = ({ className }: { className?: string }) => (
         width="54"
         height="30"
         filterUnits="userSpaceOnUse"
-        color-interpolation-filters="sRGB"
+        colorInterpolationFilters="sRGB"
       >
-        <feFlood flood-opacity="0" result="BackgroundImageFix" />
+        <feFlood floodOpacity="0" result="BackgroundImageFix" />
         <feBlend
           mode="normal"
           in="SourceGraphic"
@@ -80,8 +80,8 @@ export const CloudDarkDesktop = ({ className }: { className?: string }) => (
         y2="24.0005"
         gradientUnits="userSpaceOnUse"
       >
-        <stop stop-color="#2B4485" />
-        <stop offset="1" stop-color="#AFCAFF" />
+        <stop stopColor="#2B4485" />
+        <stop offset="1" stopColor="#AFCAFF" />
       </linearGradient>
       <linearGradient
         id="paint1_linear_39_659"
@@ -91,8 +91,8 @@ export const CloudDarkDesktop = ({ className }: { className?: string }) => (
         y2="10.8999"
         gradientUnits="userSpaceOnUse"
       >
-        <stop stop-color="#ADDDFF" />
-        <stop offset="1" stop-color="#EDF6FF" stop-opacity="0" />
+        <stop stopColor="#ADDDFF" />
+        <stop offset="1" stopColor="#EDF6FF" stopOpacity="0" />
       </linearGradient>
       <linearGradient
         id="paint2_linear_39_659"
@@ -102,8 +102,8 @@ export const CloudDarkDesktop = ({ className }: { className?: string }) => (
         y2="4.27795"
         gradientUnits="userSpaceOnUse"
       >
-        <stop stop-color="#ADDDFF" />
-        <stop offset="1" stop-color="#EDF6FF" stop-opacity="0" />
+        <stop stopColor="#ADDDFF" />
+        <stop offset="1" stopColor="#EDF6FF" stopOpacity="0" />
       </linearGradient>
       <linearGradient
         id="paint3_linear_39_659"
@@ -113,8 +113,8 @@ export const CloudDarkDesktop = ({ className }: { className?: string }) => (
         y2="11.2003"
         gradientUnits="userSpaceOnUse"
       >
-        <stop stop-color="#ADDDFF" />
-        <stop offset="1" stop-color="#EDF6FF" stop-opacity="0" />
+        <stop stopColor="#ADDDFF" />
+        <stop offset="1" stopColor="#EDF6FF" stopOpacity="0" />
       </linearGradient>
       <linearGradient
         id="paint4_linear_39_659"
@@ -124,8 +124,8 @@ export const CloudDarkDesktop = ({ className }: { className?: string }) => (
         y2="7.02957"
         gradientUnits="userSpaceOnUse"
       >
-        <stop stop-color="#ADDDFF" />
-        <stop offset="1" stop-color="#EDF6FF" stop-opacity="0" />
+        <stop stopColor="#ADDDFF" />
+        <stop offset="1" stopColor="#EDF6FF" stopOpacity="0" />
       </linearGradient>
       <linearGradient
         id="paint5_linear_39_659"
@@ -135,8 +135,8 @@ export const CloudDarkDesktop = ({ className }: { className?: string }) => (
         y2="3.98273"
         gradientUnits="userSpaceOnUse"
       >
-        <stop stop-color="#ADDDFF" />
-        <stop offset="1" stop-color="#EDF6FF" stop-opacity="0" />
+        <stop stopColor="#ADDDFF" />
+        <stop offset="1" stopColor="#EDF6FF" stopOpacity="0" />
       </linearGradient>
     </defs>
   </svg>

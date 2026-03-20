@@ -36,9 +36,9 @@ export const CloudLightDesktop = ({ className }: { className?: string }) => (
         width="54"
         height="30"
         filterUnits="userSpaceOnUse"
-        color-interpolation-filters="sRGB"
+        colorInterpolationFilters="sRGB"
       >
-        <feFlood flood-opacity="0" result="BackgroundImageFix" />
+        <feFlood floodOpacity="0" result="BackgroundImageFix" />
         <feBlend
           mode="normal"
           in="SourceGraphic"
@@ -78,8 +78,8 @@ export const CloudLightDesktop = ({ className }: { className?: string }) => (
         y2="24"
         gradientUnits="userSpaceOnUse"
       >
-        <stop stop-color="#66FFED" />
-        <stop offset="1" stop-color="#FFD580" />
+        <stop stopColor="#66FFED" />
+        <stop offset="1" stopColor="#FFD580" />
       </linearGradient>
       <linearGradient
         id="paint1_linear_39_644"
@@ -89,8 +89,8 @@ export const CloudLightDesktop = ({ className }: { className?: string }) => (
         y2="10.4004"
         gradientUnits="userSpaceOnUse"
       >
-        <stop stop-color="#FFF48F" />
-        <stop offset="1" stop-color="#FFFEEA" stop-opacity="0" />
+        <stop stopColor="#FFF48F" />
+        <stop offset="1" stopColor="#FFFEEA" stopOpacity="0" />
       </linearGradient>
       <linearGradient
         id="paint2_linear_39_644"
@@ -100,8 +100,8 @@ export const CloudLightDesktop = ({ className }: { className?: string }) => (
         y2="6.16504"
         gradientUnits="userSpaceOnUse"
       >
-        <stop stop-color="#FFF48F" />
-        <stop offset="1" stop-color="#FFFEEA" stop-opacity="0" />
+        <stop stopColor="#FFF48F" />
+        <stop offset="1" stopColor="#FFFEEA" stopOpacity="0" />
       </linearGradient>
       <linearGradient
         id="paint3_linear_39_644"
@@ -111,8 +111,8 @@ export const CloudLightDesktop = ({ className }: { className?: string }) => (
         y2="12.6113"
         gradientUnits="userSpaceOnUse"
       >
-        <stop stop-color="#FFF48F" />
-        <stop offset="1" stop-color="#FFFEEA" stop-opacity="0" />
+        <stop stopColor="#FFF48F" />
+        <stop offset="1" stopColor="#FFFEEA" stopOpacity="0" />
       </linearGradient>
     </defs>
   </svg>

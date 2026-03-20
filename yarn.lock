@@ -384,6 +384,11 @@
   resolved "https://registry.yarnpkg.com/@floating-ui/utils/-/utils-0.2.11.tgz#a269e055e40e2f45873bae9d1a2fdccbd314ea3f"
   integrity sha512-RiB/yIh78pcIxl6lLMG0CgBXAZ2Y0eVHqMPYugu+9U0AeT6YBeiJpf7lbdJNIugFP5SIjwNRgo4DhR1Qxi26Gg==
 
+"@gsap/react@^2.1.2":
+  version "2.1.2"
+  resolved "https://registry.yarnpkg.com/@gsap/react/-/react-2.1.2.tgz#bfc055a41b402e8d1dc56839e9d077407027b0a0"
+  integrity sha512-JqliybO1837UcgH2hVOM4VO+38APk3ECNrsuSM4MuXp+rbf+/2IG2K1YJiqfTcXQHH7XlA0m3ykniFYstfq0Iw==
+
 "@hono/node-server@^1.19.9":
   version "1.19.11"
   resolved "https://registry.yarnpkg.com/@hono/node-server/-/node-server-1.19.11.tgz#dc419f0826dd2504e9fc86ad289d5636a0444e2f"
@@ -3286,6 +3291,11 @@ graphql@^16.12.0:
   version "16.13.1"
   resolved "https://registry.yarnpkg.com/graphql/-/graphql-16.13.1.tgz#38ae5c76fbc4a009e0004dca6c76c370a1da7b54"
   integrity sha512-gGgrVCoDKlIZ8fIqXBBb0pPKqDgki0Z/FSKNiQzSGj2uEYHr1tq5wmBegGwJx6QB5S5cM0khSBpi/JFHMCvsmQ==
+
+gsap@^3.14.2:
+  version "3.14.2"
+  resolved "https://registry.yarnpkg.com/gsap/-/gsap-3.14.2.tgz#6a9ea31e5046948e0be61eae006ae576ca5937d6"
+  integrity sha512-P8/mMxVLU7o4+55+1TCnQrPmgjPKnwkzkXOK1asnR9Jg2lna4tEY5qBJjMmAaOBDDZWtlRjBXjLa0w53G/uBLA==
 
 has-bigints@^1.0.2:
   version "1.1.0"
