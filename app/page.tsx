@@ -13,7 +13,6 @@ import {
 } from '@components';
 
 export default function HomePage() {
-  const [isDarkMode, setIsDarkMode] = useState(false);
   const [email, setEmail] = useState('');
   const [formData, setFormData] = useState({
     name: '',
@@ -21,11 +20,6 @@ export default function HomePage() {
     phone: '',
     message: ''
   });
-
-  const toggleDarkMode = () => {
-    setIsDarkMode(!isDarkMode);
-    document.documentElement.classList.toggle('dark');
-  };
 
   const handleNewsletterSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -41,7 +35,7 @@ export default function HomePage() {
 
   return (
     <div className="min-h-screen bg-background text-foreground">
-      <Navbar isDarkMode={isDarkMode} toggleDarkMode={toggleDarkMode} />
+      <Navbar />
 
       <main>
         <HeroSection />

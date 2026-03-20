@@ -15,43 +15,49 @@
     "noEmit": true,
     "paths": {
       "@app-types": [
-        "./types/index.ts"
+        "./types/index"
       ],
       "@app-types/*": [
         "./types/*"
       ],
       "@components": [
-        "./components/index.ts"
+        "./components/index"
       ],
       "@components/*": [
         "./components/*"
       ],
+      "@icons": [
+        "./components/icons/index"
+      ],
+      "@icons/*": [
+        "./components/icons/*"
+      ],
       "@constants": [
-        "./constants/index.ts"
+        "./constants/index"
       ],
       "@constants/*": [
         "./constants/*"
       ],
       "@data": [
-        "./data/index.ts"
+        "./data/index"
       ],
       "@data/*": [
         "./data/*"
       ],
       "@hooks": [
-        "./hooks/index.ts"
+        "./hooks/index"
       ],
       "@hooks/*": [
         "./hooks/*"
       ],
       "@infrastructure": [
-        "./infrastructure/index.ts"
+        "./infrastructure/index"
       ],
       "@infrastructure/*": [
         "./infrastructure/*"
       ],
       "@lib": [
-        "./lib/index.ts"
+        "./lib/index"
       ],
       "@lib/*": [
         "./lib/*"
