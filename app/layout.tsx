@@ -38,12 +38,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={cn(
-          geistSans.variable,
-          geistMono.variable,
-          "antialiased",
-          "transition-colors duration-500 ease-in-out",
-        )}
+        className={cn(geistSans.variable, geistMono.variable, "antialiased")}
       >
         <Providers>{children}</Providers>
       </body>

@@ -1,40 +1,40 @@
-'use client';
+"use client";
 
-import { useState } from 'react';
 import {
-  Navbar,
-  HeroSection,
-  TechStackSection,
-  ExperiencesSection,
-  ProjectsSection,
   ContactSection,
   CtaBannerSection,
-  FooterSection
-} from '@components';
+  ExperiencesSection,
+  FooterSection,
+  HeroSection,
+  Navbar,
+  ProjectsSection,
+  TechStackSection,
+} from "@components";
+import { useState } from "react";
 
 export default function HomePage() {
-  const [email, setEmail] = useState('');
+  const [email, setEmail] = useState("");
   const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    phone: '',
-    message: ''
+    name: "",
+    email: "",
+    phone: "",
+    message: "",
   });
 
   const handleNewsletterSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    console.log('Newsletter:', email);
-    setEmail('');
+    console.log("Newsletter:", email);
+    setEmail("");
   };
 
   const handleContactSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    console.log('Contact Form:', formData);
-    setFormData({ name: '', email: '', phone: '', message: '' });
+    console.log("Contact Form:", formData);
+    setFormData({ name: "", email: "", phone: "", message: "" });
   };
 
   return (
-    <div className="min-h-screen bg-background text-foreground">
+    <div className="min-h-screen bg-background text-foreground transition-colors duration-500">
       <Navbar />
 
       <main>
