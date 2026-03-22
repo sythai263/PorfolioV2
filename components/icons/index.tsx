@@ -5,5 +5,6 @@ export * from "./cloud-light-mobile";
 export * from "./logo";
 export * from "./moon-desktop";
 export * from "./moon-mobile";
+export * from "./paper-airplane";
 export * from "./sun-desktop";
 export * from "./sun-mobile";

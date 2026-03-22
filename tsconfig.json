@@ -32,6 +32,12 @@
       "@icons/*": [
         "./components/icons/*"
       ],
+      "@blob-paths": [
+        "./components/blob-paths/index"
+      ],
+      "@blob-paths/*": [
+        "./components/blob-paths/*"
+      ],
       "@constants": [
         "./constants/index"
       ],
