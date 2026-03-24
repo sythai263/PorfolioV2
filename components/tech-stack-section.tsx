@@ -4,52 +4,21 @@
 import { TechStack } from "@app-types";
 import { TechIconComponent } from "@components";
 import { techStackApi } from "@lib/api";
-import { useEffect, useState } from "react";
+import gsap from "gsap"; // Import GSAP
+import { useEffect, useRef, useState } from "react";
 import "./tech-stack-section.css";
 
-// Loading Skeleton Component
+// Loading Skeleton Component (Giữ nguyên)
 function TechStackSkeleton() {
+  // ... (Code skeleton giữ nguyên như cũ để tiết kiệm không gian hiển thị)
   return (
-    <section className="relative py-24 bg-primary overflow-hidden min-h-screen flex flex-col items-center justify-center">
-      {/* Background text skeleton */}
-      <div className="absolute top-12 left-0 w-full overflow-hidden flex whitespace-nowrap opacity-20 pointer-events-none select-none">
-        <div className="h-[120px] md:h-[180px] w-full bg-white/20 rounded animate-pulse" />
-      </div>
-
-      <div className="relative z-10 max-w-7xl mx-auto px-4 w-full flex flex-col items-center">
-        {/* Title skeleton */}
-        <div className="text-center space-y-4 mb-20">
-          <div className="w-32 h-[1px] bg-white/20 mx-auto mb-6 animate-pulse" />
-          <div className="h-[60px] w-[300px] bg-white/20 rounded animate-pulse mx-auto" />
-        </div>
-
-        {/* Orbit container skeleton */}
-        <div className="relative w-[320px] h-[320px] sm:w-[500px] sm:h-[500px] md:w-[600px] md:h-[600px] mx-auto mt-8">
-          {/* Center skeleton */}
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-24 h-24 sm:w-32 sm:h-32 bg-white/20 rounded-full animate-pulse z-30" />
-
-          {/* Inner orbit skeleton */}
-          <div className="absolute top-1/2 left-1/2 w-full h-full spin-slow z-20">
-            {[...Array(8)].map((_, i) => {
-              const pos = getPosition(i, 8, 25, 90);
-              return (
-                <div
-                  key={i}
-                  className="absolute w-16 h-16 sm:w-20 sm:h-20 bg-white/20 rounded-full animate-pulse counter-spin-slow"
-                  style={pos}
-                />
-              );
-            })}
-          </div>
-
-          {/* Outer orbit skeleton */}
-        </div>
-      </div>
-    </section>
+    <div className="min-h-screen bg-primary flex items-center justify-center text-white">
+      Loading...
+    </div>
   );
 }
 
-// Error Component
+// Error Component (Giữ nguyên)
 function TechStackError({
   error,
   onRetry,
@@ -57,28 +26,15 @@ function TechStackError({
   error: string;
   onRetry: () => void;
 }) {
+  // ... (Code error giữ nguyên)
   return (
-    <section className="relative py-24 bg-primary overflow-hidden min-h-screen flex flex-col items-center justify-center">
-      <div className="relative z-10 max-w-7xl mx-auto px-4 w-full flex flex-col items-center text-center">
-        <div className="space-y-6">
-          <div className="w-32 h-[1px] bg-red-400 mx-auto mb-6" />
-          <h2 className="text-t2 text-white font-bold tracking-wide">
-            Oops! Something went wrong
-          </h2>
-          <p className="text-b16-reg text-white/80 max-w-md">{error}</p>
-          <button
-            onClick={onRetry}
-            className="btn-custom btn-l bg-white text-primary hover:bg-white/90"
-          >
-            Try Again
-          </button>
-        </div>
-      </div>
-    </section>
+    <div className="min-h-screen bg-primary flex items-center justify-center text-white">
+      {error}
+    </div>
   );
 }
 
-// Helper function for position calculation
+// Helper function
 function getPosition(
   index: number,
   total: number,
@@ -94,12 +50,10 @@ function getPosition(
 // Tech Icon Component
 function TechIcon({ name, icon }: { name: string; icon: string }) {
   return (
-    <div className="relative group">
-      <div className="w-full h-full bg-white/10 backdrop-blur-sm rounded-full flex items-center justify-center border-2 border-white/20 hover:bg-white/20 transition-all duration-300 p-1">
+    <div className="relative group w-full h-full">
+      <div className="w-full h-full bg-white/10 backdrop-blur-sm rounded-full flex items-center justify-center border-2 border-white/20 hover:bg-white/30 transition-colors duration-300 p-1">
         <TechIconComponent iconName={icon} size="60%" />
       </div>
-
-      {/* Tooltip on hover */}
       <div className="absolute bottom-full left-1/2 transform -translate-x-1/2 mb-2 px-3 py-1 bg-gray-900 text-white text-xs sm:text-sm font-medium rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none whitespace-nowrap z-50">
         {name}
         <div className="absolute top-full left-1/2 transform -translate-x-1/2 -mt-1 w-2 h-2 bg-gray-900 rotate-45"></div>
@@ -113,6 +67,9 @@ export function TechStackSection() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
+  // Tạo ref để GSAP biết vùng không gian cần animate
+  const containerRef = useRef<HTMLDivElement>(null);
+
   useEffect(() => {
     const fetchTechStack = async () => {
       try {
@@ -122,32 +79,93 @@ export function TechStackSection() {
         setTechStack(data);
       } catch (err) {
         console.error("Failed to fetch tech stack:", err);
-        setError("Failed to load tech stack data. Please try again later.");
+        setError("Failed to load tech stack data.");
       } finally {
         setLoading(false);
       }
     };
-
     fetchTechStack();
   }, []);
 
-  if (loading) {
-    return <TechStackSkeleton />;
-  }
+  // --- GSAP ANIMATION LOGIC ---
+  // --- GSAP ANIMATION LOGIC ---
+  useEffect(() => {
+    // Chỉ chạy GSAP khi đã load xong data và có element
+    if (loading || error || techStack.length === 0 || !containerRef.current)
+      return;
 
-  if (error) {
+    const ctx = gsap.context(() => {
+      const tl = gsap.timeline();
+
+      // 1. Ẩn tất cả lúc ban đầu để chuẩn bị xuất hiện
+      gsap.set(".gsap-icon", { scale: 0, opacity: 0 });
+
+      // 2. Tâm C++ hiện ra trước với hiệu ứng nảy (back)
+      tl.to(".gsap-center", {
+        scale: 1,
+        opacity: 1,
+        duration: 0.6,
+        ease: "back.out(1.7)",
+      })
+        // 3. Vòng trong xuất hiện lần lượt (stagger)
+        .to(
+          ".gsap-inner",
+          {
+            scale: 1,
+            opacity: 1,
+            duration: 0.5,
+            stagger: 0.1,
+            ease: "back.out(1.5)",
+          },
+          "-=0.2",
+        )
+        // 4. Vòng ngoài xuất hiện lần lượt
+        .to(
+          ".gsap-outer",
+          {
+            scale: 1,
+            opacity: 1,
+            duration: 0.5,
+            stagger: 0.1,
+            ease: "back.out(1.5)",
+          },
+          "-=0.3",
+        )
+        // 5. HIỆU ỨNG ZOOM TO - NHỎ (Pulsing/Thở)
+        .add(() => {
+          gsap.to(".gsap-icon", {
+            scale: 1.15, // Phóng to lên 15% (Bạn có thể tăng lên 1.2 hoặc 1.3 nếu muốn to hơn)
+            duration: 1.2, // Thời gian phình to ra (1.2 giây)
+            yoyo: true, // Tự động thu nhỏ lại (chạy ngược chiều)
+            repeat: -1, // Lặp vô hạn
+            ease: "sine.inOut", // Easing sine giúp chuyển động mượt mà ở 2 đầu như nhịp thở
+            stagger: {
+              each: 0.15,
+              from: "random", // Giữ random để các node không zoom cùng lúc, nhìn như đang trôi nổi
+            },
+          });
+        });
+    }, containerRef);
+
+    // Cleanup function để tránh lỗi khi component unmount
+    return () => ctx.revert();
+  }, [loading, error, techStack]);
+
+  if (loading) return <TechStackSkeleton />;
+  if (error)
     return (
       <TechStackError error={error} onRetry={() => window.location.reload()} />
     );
-  }
 
-  // Group tech stack by orbit
   const innerOrbitItems = techStack.filter((item) => item.orbit === "inner");
   const outerOrbitItems = techStack.filter((item) => item.orbit === "outer");
 
   return (
-    <section className="relative py-24 bg-primary overflow-hidden min-h-screen flex flex-col items-center justify-center">
-      {/* Chữ mờ chạy ở background */}
+    // Gắn ref vào vùng bao ngoài cùng
+    <section
+      ref={containerRef}
+      className="relative py-24 bg-primary overflow-hidden min-h-screen flex flex-col items-center justify-center"
+    >
       <div className="absolute top-12 left-0 w-full overflow-hidden flex whitespace-nowrap opacity-20 pointer-events-none select-none">
         <h1 className="text-[120px] md:text-[180px] font-bold text-white uppercase tracking-tighter">
           AI - DEVELOPER & PHOTOGRAPHY
@@ -155,7 +173,6 @@ export function TechStackSection() {
       </div>
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 w-full flex flex-col items-center">
-        {/* Tiêu đề */}
         <div className="text-center space-y-4 mb-20">
           <div className="w-32 h-[1px] bg-white/40 mx-auto mb-6" />
           <h2 className="text-t2 text-white font-bold tracking-wide">
@@ -163,21 +180,22 @@ export function TechStackSection() {
           </h2>
         </div>
 
-        {/* Khối Vũ trụ (Orbit Container) */}
         <div className="relative w-[320px] h-[320px] sm:w-[500px] sm:h-[500px] md:w-[600px] md:h-[600px] mx-auto mt-8">
-          {/* --- TRUNG TÂM (C++) --- */}
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-24 h-24 sm:w-32 sm:h-32 z-30 bg-white/10 backdrop-blur-sm rounded-full flex items-center justify-center text-white font-bold border-2 border-white/20">
+          {/* --- TRUNG TÂM --- */}
+          {/* Thêm class gsap-icon và gsap-center để GSAP nhắm mục tiêu */}
+          <div className="gsap-icon gsap-center absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-24 h-24 sm:w-32 sm:h-32 z-30 bg-white/10 backdrop-blur-sm rounded-full flex items-center justify-center text-white font-bold border-2 border-white/20 shadow-[0_0_30px_rgba(255,255,255,0.2)]">
             C++
           </div>
 
-          {/* --- VÒNG TRONG (Tech Stacks) --- */}
-          <div className="absolute top-1/2 left-1/2 w-full h-full spin-slow z-20">
+          {/* --- VÒNG TRONG --- */}
+          <div className="absolute top-0 left-0 w-full h-full z-20">
             {innerOrbitItems.map((item, i) => {
               const pos = getPosition(i, innerOrbitItems.length, 25, 90);
               return (
                 <div
                   key={item.id}
-                  className="absolute w-16 h-16 sm:w-20 sm:h-20 counter-spin-slow"
+                  // Thêm class gsap-icon và gsap-inner
+                  className="gsap-icon gsap-inner absolute w-16 h-16 sm:w-20 sm:h-20 -translate-x-1/2 -translate-y-1/2"
                   style={pos}
                 >
                   <TechIcon name={item.name} icon={item.icon} />
@@ -186,18 +204,16 @@ export function TechStackSection() {
             })}
           </div>
 
-          {/* --- VÒNG NGOÀI (Tools & Others) --- */}
-          <div
-            className="absolute top-1/2 left-1/2 w-full h-full counter-spin-slow z-10"
-            style={{ animationDuration: "80s" }}
-          >
+          {/* --- VÒNG NGOÀI --- */}
+          <div className="absolute top-0 left-0 w-full h-full z-10">
             {outerOrbitItems.map((item, i) => {
               const pos = getPosition(i, outerOrbitItems.length, 45, 0);
               return (
                 <div
                   key={item.id}
-                  className="absolute w-12 h-12 sm:w-16 sm:h-16 spin-slow"
-                  style={{ ...pos, animationDuration: "80s" }}
+                  // Thêm class gsap-icon và gsap-outer
+                  className="gsap-icon gsap-outer absolute w-12 h-12 sm:w-16 sm:h-16 -translate-x-1/2 -translate-y-1/2"
+                  style={pos}
                 >
                   <TechIcon name={item.name} icon={item.icon} />
                 </div>

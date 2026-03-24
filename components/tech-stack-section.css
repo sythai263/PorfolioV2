@@ -1,26 +1,17 @@
-/* Tech Stack Section Animations */
-@keyframes orbit-spin {
-  from {
-    transform: translate(-50%, -50%) rotate(0deg);
+@keyframes popIn {
+  0% {
+    opacity: 0;
+    transform: scale(0.3);
   }
-  to {
-    transform: translate(-50%, -50%) rotate(360deg);
+  50% {
+    transform: scale(1.1);
   }
-}
-
-@keyframes counter-spin {
-  from {
-    transform: translate(-50%, -50%) rotate(360deg);
-  }
-  to {
-    transform: translate(-50%, -50%) rotate(0deg);
+  100% {
+    opacity: 1;
+    transform: scale(1);
   }
 }
-
-.spin-slow {
-  animation: orbit-spin 60s linear infinite;
-}
-
-.counter-spin-slow {
-  animation: counter-spin 60s linear infinite;
+.animate-pop-in {
+  opacity: 0; /* Ẩn đi trước khi animation chạy */
+  animation: popIn 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
 }
