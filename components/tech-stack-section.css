@@ -1,0 +1,26 @@
+/* Tech Stack Section Animations */
+@keyframes orbit-spin {
+  from {
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+  to {
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
+}
+
+@keyframes counter-spin {
+  from {
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
+  to {
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+}
+
+.spin-slow {
+  animation: orbit-spin 60s linear infinite;
+}
+
+.counter-spin-slow {
+  animation: counter-spin 60s linear infinite;
+}

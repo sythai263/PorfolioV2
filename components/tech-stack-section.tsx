@@ -5,12 +5,7 @@ import { TechStack } from "@app-types";
 import { techStackApi } from "@lib/api";
 import { cn } from "@lib/utils";
 import { useEffect, useState } from "react";
-
-// --- LOGIC TÍNH TOÁN QUỸ ĐẠO --- //
-interface OrbitItem {
-  id: string | number;
-  component: React.ReactNode;
-}
+import "./tech-stack-section.css";
 
 const dots = [
   { color: "bg-red-500", angle: 45, radius: 48, size: "w-4 h-4" },
@@ -153,18 +148,6 @@ export function TechStackSection() {
 
   return (
     <section className="relative py-24 bg-primary overflow-hidden min-h-screen flex flex-col items-center justify-center">
-      {/* Inline style cho animation xoay vòng chậm rãi */}
-      <style
-        dangerouslySetInnerHTML={{
-          __html: `
-        @keyframes orbit-spin { from { transform: translate(-50%, -50%) rotate(0deg); } to { transform: translate(-50%, -50%) rotate(360deg); } }
-        @keyframes counter-spin { from { transform: translate(-50%, -50%) rotate(360deg); } to { transform: translate(-50%, -50%) rotate(0deg); } }
-        .spin-slow { animation: orbit-spin 60s linear infinite; }
-        .counter-spin-slow { animation: counter-spin 60s linear infinite; }
-      `,
-        }}
-      />
-
       {/* Chữ mờ chạy ở background */}
       <div className="absolute top-12 left-0 w-full overflow-hidden flex whitespace-nowrap opacity-20 pointer-events-none select-none">
         <h1 className="text-[120px] md:text-[180px] font-bold text-white uppercase tracking-tighter">
