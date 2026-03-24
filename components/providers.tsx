@@ -1,9 +1,10 @@
 "use client";
 
+import ReactLenis from "lenis/react";
 import { ThemeProvider } from "next-themes";
-import { useEffect, useState } from "react";
+import { ReactNode, useEffect, useState } from "react";
 
-export function Providers({ children }: { children: React.ReactNode }) {
+export function Providers({ children }: { children: ReactNode }) {
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
@@ -16,7 +17,16 @@ export function Providers({ children }: { children: React.ReactNode }) {
 
   return (
     <ThemeProvider attribute="class" defaultTheme="system" enableSystem={false}>
-      {children}
+      <ReactLenis
+        root
+        options={{
+          lerp: 0.08,
+          duration: 1.2,
+          smoothWheel: true,
+        }}
+      >
+        {children}
+      </ReactLenis>
     </ThemeProvider>
   );
 }
