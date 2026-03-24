@@ -98,14 +98,8 @@ export function TechStackSection() {
       const tl = gsap.timeline({
         scrollTrigger: {
           trigger: containerRef.current,
-          start: "top 75%", // Bắt đầu khi cuộn MẶT TRÊN xuống mốc 75%
-          end: "bottom 25%", // Kết thúc khi cuộn MẶT DƯỚI qua mốc 25%
-
-          // toggleActions có 4 tham số tương ứng với 4 hành động:
-          // 1. onEnter (Cuộn xuống thấy): play (Chạy)
-          // 2. onLeave (Cuộn xuống qua luôn): reset (Reset về 0)
-          // 3. onEnterBack (Cuộn ngược lên thấy): play (Chạy lại)
-          // 4. onLeaveBack (Cuộn ngược lên qua luôn): reset (Reset về 0)
+          start: "top 75%",
+          end: "bottom 25%",
           toggleActions: "play reset play reset",
         },
       });
