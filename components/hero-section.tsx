@@ -2,7 +2,7 @@
 
 import { Profile } from "@app-types";
 import { Badge } from "@components/ui/badge";
-import { getProfile } from "@infrastructure";
+import { profileApi } from "@lib/api";
 import { Download } from "lucide-react";
 import { useEffect, useState } from "react";
 import { FaGithub, FaLinkedin, FaTwitter } from "react-icons/fa6";
@@ -25,13 +25,110 @@ function getSocialIcon(iconName: string) {
 
 export function HeroSection() {
   const [profile, setProfile] = useState<Profile | null>(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
+
   useEffect(() => {
-    getProfile().then((data) => {
-      setProfile(data);
-    });
+    const fetchProfile = async () => {
+      try {
+        setLoading(true);
+        setError(null);
+        const data = await profileApi.getProfile();
+        setProfile(data);
+      } catch (err) {
+        console.error("Failed to fetch profile:", err);
+        setError("Failed to load profile data");
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchProfile();
   }, []);
-  if (!profile) {
-    return null;
+
+  if (loading) {
+    return (
+      <section
+        id="home"
+        className="min-h-screen flex items-center pt-24 md:pt-32 pb-16 bg-background overflow-hidden relative"
+      >
+        <div className="max-w-[1440px] w-full mx-auto px-6 md:px-12">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 md:gap-8 items-center">
+            <div className="space-y-6 md:space-y-8 z-10">
+              <div className="flex flex-col items-start">
+                <Badge
+                  variant="outline"
+                  className="mb-4 text-sm px-4 py-1 border-primary/50 text-primary"
+                >
+                  Loading...
+                </Badge>
+                <h2 className="text-[28px] md:text-[36px] font-mono font-bold text-foreground mb-1 md:mb-2 tracking-wide">
+                  Hello!
+                </h2>
+                <h2 className="text-[32px] md:text-[44px] font-bold text-foreground mb-3 md:mb-4">
+                  <span className="font-mono">I'm</span>{" "}
+                  <span className="text-primary border-b-[4px] md:border-b-[6px] border-primary pb-1 inline-block uppercase">
+                    Loading...
+                  </span>
+                </h2>
+                <h1 className="text-[40px] md:text-[56px] lg:text-[64px] font-bold text-foreground leading-[1.1] tracking-tight">
+                  Loading...
+                </h1>
+              </div>
+              <p className="text-b16-reg md:text-b18-reg text-neutral-04 max-w-[540px] leading-relaxed">
+                Loading profile information...
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+    );
+  }
+
+  if (error || !profile) {
+    return (
+      <section
+        id="home"
+        className="min-h-screen flex items-center pt-24 md:pt-32 pb-16 bg-background overflow-hidden relative"
+      >
+        <div className="max-w-[1440px] w-full mx-auto px-6 md:px-12">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 md:gap-8 items-center">
+            <div className="space-y-6 md:space-y-8 z-10">
+              <div className="flex flex-col items-start">
+                <Badge
+                  variant="outline"
+                  className="mb-4 text-sm px-4 py-1 border-red-500/50 text-red-500"
+                >
+                  Error
+                </Badge>
+                <h2 className="text-[28px] md:text-[36px] font-mono font-bold text-foreground mb-1 md:mb-2 tracking-wide">
+                  Oops!
+                </h2>
+                <h2 className="text-[32px] md:text-[44px] font-bold text-foreground mb-3 md:mb-4">
+                  <span className="font-mono">Something went</span>{" "}
+                  <span className="text-red-500 border-b-[4px] md:border-b-[6px] border-red-500 pb-1 inline-block uppercase">
+                    wrong
+                  </span>
+                </h2>
+                <h1 className="text-[40px] md:text-[56px] lg:text-[64px] font-bold text-foreground leading-[1.1] tracking-tight">
+                  Failed to load profile
+                </h1>
+              </div>
+              <p className="text-b16-reg md:text-b18-reg text-neutral-04 max-w-[540px] leading-relaxed">
+                {error ||
+                  "Unable to load profile information. Please try again later."}
+              </p>
+              <button
+                onClick={() => window.location.reload()}
+                className="btn-custom btn-m md:btn-l bg-primary text-white hover:brightness-110"
+              >
+                Retry
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
+    );
   }
 
   // Tách chức danh (VD: "Developer & Photographer") thành mảng để đặt vào 2 nhãn bay lơ lửng
