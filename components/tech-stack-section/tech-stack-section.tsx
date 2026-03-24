@@ -3,14 +3,12 @@
 
 import { TechStack } from "@app-types";
 import { TechIconComponent } from "@components";
+import { useGSAP } from "@gsap/react";
 import { cn } from "@lib";
 import { techStackApi } from "@lib/api";
 import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useEffect, useRef, useState } from "react";
 import "./tech-stack-section.css";
-
-gsap.registerPlugin(ScrollTrigger);
 
 // --- HELPER FUNCTION ---
 function getPosition(
@@ -116,10 +114,10 @@ export function TechStackSection() {
       .catch(() => setStatus("error"));
   }, []);
 
-  useEffect(() => {
-    if (status !== "success" || !containerRef.current) return;
+  useGSAP(
+    () => {
+      if (status !== "success") return;
 
-    const ctx = gsap.context(() => {
       const tl = gsap.timeline({
         scrollTrigger: {
           trigger: containerRef.current,
@@ -166,10 +164,9 @@ export function TechStackSection() {
           ease: "sine.inOut",
           stagger: { each: 0.15, from: "random" },
         });
-    }, containerRef);
-
-    return () => ctx.revert();
-  }, [status, techStack]);
+    },
+    { dependencies: [status, techStack], scope: containerRef },
+  );
 
   if (status === "loading")
     return (

@@ -4,11 +4,16 @@ import { Profile } from "@app-types";
 import { Badge } from "@components/ui/badge";
 import { profileApi } from "@lib/api";
 import { Download } from "lucide-react";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { FaGithub, FaLinkedin, FaTwitter } from "react-icons/fa6";
 import { BlobAvatar } from "./blob-paths";
 import { PaperAirplane } from "./icons";
 import { DashDecorator } from "./icons/dash-decorator";
+
+// --- GSAP IMPORTS ---
+import { useGSAP } from "@gsap/react";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 function getSocialIcon(iconName: string) {
   switch (iconName) {
@@ -28,6 +33,8 @@ export function HeroSection() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
+  const containerRef = useRef<HTMLDivElement>(null);
+
   useEffect(() => {
     const fetchProfile = async () => {
       try {
@@ -35,6 +42,10 @@ export function HeroSection() {
         setError(null);
         const data = await profileApi.getProfile();
         setProfile(data);
+        // Cập nhật lại các điểm trigger sau khi DOM đã thay đổi từ loading sang profile
+        setTimeout(() => {
+          ScrollTrigger.refresh();
+        }, 100);
       } catch (err) {
         console.error("Failed to fetch profile:", err);
         setError("Failed to load profile data");
@@ -45,6 +56,54 @@ export function HeroSection() {
 
     fetchProfile();
   }, []);
+
+  useGSAP(
+    () => {
+      // CHỈ CHẠY khi loading xong và có profile
+      if (loading || error || !profile) return;
+
+      // Ép GSAP tính toán lại toàn bộ tọa độ trang sau khi Content đã thay thế Skeleton
+      ScrollTrigger.refresh();
+
+      const tl = gsap.timeline({
+        scrollTrigger: {
+          trigger: containerRef.current,
+          start: "top 90%", // Kích hoạt sớm hơn một chút để đảm bảo chạy ngay khi load
+          end: "bottom 10%",
+          // onEnterBack: restart giúp hiệu ứng chạy lại khi cuộn từ dưới lên
+          toggleActions: "play reverse restart reverse",
+          invalidateOnRefresh: true, // Quan trọng: tính lại mốc khi resize màn hình
+        },
+      });
+
+      // Sử dụng fromTo để đảm bảo trạng thái hiển thị cuối cùng là 1 (tránh bị mất hẳn)
+      tl.fromTo(
+        ".hero-anim-text",
+        { y: 30, opacity: 0 },
+        {
+          y: 0,
+          opacity: 1,
+          duration: 0.8,
+          stagger: 0.1,
+          ease: "power3.out",
+          overwrite: "auto",
+        },
+      ).fromTo(
+        ".hero-anim-img",
+        { scale: 0.7, opacity: 0 },
+        {
+          scale: 1,
+          opacity: 1,
+          duration: 0.8,
+          stagger: 0.12,
+          ease: "back.out(1.2)",
+          overwrite: "auto",
+        },
+        "-=0.5",
+      );
+    },
+    { dependencies: [profile, loading], scope: containerRef },
+  );
 
   if (loading) {
     return (
@@ -92,46 +151,23 @@ export function HeroSection() {
         className="min-h-screen flex items-center pt-24 md:pt-32 pb-16 bg-background overflow-hidden relative"
       >
         <div className="max-w-[1440px] w-full mx-auto px-6 md:px-12">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 md:gap-8 items-center">
-            <div className="space-y-6 md:space-y-8 z-10">
-              <div className="flex flex-col items-start">
-                <Badge
-                  variant="outline"
-                  className="mb-4 text-sm px-4 py-1 border-red-500/50 text-red-500"
-                >
-                  Error
-                </Badge>
-                <h2 className="text-[28px] md:text-[36px] font-mono font-bold text-foreground mb-1 md:mb-2 tracking-wide">
-                  Oops!
-                </h2>
-                <h2 className="text-[32px] md:text-[44px] font-bold text-foreground mb-3 md:mb-4">
-                  <span className="font-mono">Something went</span>{" "}
-                  <span className="text-red-500 border-b-[4px] md:border-b-[6px] border-red-500 pb-1 inline-block uppercase">
-                    wrong
-                  </span>
-                </h2>
-                <h1 className="text-[40px] md:text-[56px] lg:text-[64px] font-bold text-foreground leading-[1.1] tracking-tight">
-                  Failed to load profile
-                </h1>
-              </div>
-              <p className="text-b16-reg md:text-b18-reg text-neutral-04 max-w-[540px] leading-relaxed">
-                {error ||
-                  "Unable to load profile information. Please try again later."}
-              </p>
-              <button
-                onClick={() => window.location.reload()}
-                className="btn-custom btn-m md:btn-l bg-primary text-white hover:brightness-110"
-              >
-                Retry
-              </button>
-            </div>
+          <div className="space-y-6">
+            <Badge variant="outline" className="text-red-500 border-red-500">
+              Error
+            </Badge>
+            <h1 className="text-2xl font-bold">Failed to load profile</h1>
+            <button
+              onClick={() => window.location.reload()}
+              className="btn-custom btn-m bg-primary text-white"
+            >
+              Retry
+            </button>
           </div>
         </div>
       </section>
     );
   }
 
-  // Tách chức danh (VD: "Developer & Photographer") thành mảng để đặt vào 2 nhãn bay lơ lửng
   const titleParts = profile.title
     .split("&")
     .map((part: string) => part.trim());
@@ -139,40 +175,41 @@ export function HeroSection() {
   return (
     <section
       id="home"
+      ref={containerRef}
       className="min-h-screen flex items-center pt-24 md:pt-32 pb-16 bg-background overflow-hidden relative"
     >
       <div className="max-w-[1440px] w-full mx-auto px-6 md:px-12">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 md:gap-8 items-center">
-          {/* Left Content */}
           <div className="space-y-6 md:space-y-8 z-10">
             <div className="flex flex-col items-start">
-              <Badge
-                variant="outline"
-                className="mb-4 text-sm px-4 py-1 border-primary/50 text-primary"
-              >
-                {profile.location}
-              </Badge>
+              <div className="hero-anim-text opacity-0">
+                <Badge
+                  variant="outline"
+                  className="mb-4 text-sm px-4 py-1 border-primary/50 text-primary"
+                >
+                  {profile.location}
+                </Badge>
+              </div>
 
-              <h2 className="text-[28px] md:text-[36px] font-mono font-bold text-foreground mb-1 md:mb-2 tracking-wide">
+              <h2 className="hero-anim-text opacity-0 text-[28px] md:text-[36px] font-mono font-bold text-foreground mb-1 md:mb-2 tracking-wide">
                 Hello!
               </h2>
-              <h2 className="text-[32px] md:text-[44px] font-bold text-foreground mb-3 md:mb-4">
+              <h2 className="hero-anim-text opacity-0 text-[32px] md:text-[44px] font-bold text-foreground mb-3 md:mb-4">
                 <span className="font-mono">I'm</span>{" "}
                 <span className="text-primary border-b-[4px] md:border-b-[6px] border-primary pb-1 inline-block uppercase">
                   {profile.name},
                 </span>
               </h2>
-              <h1 className="text-[40px] md:text-[56px] lg:text-[64px] font-bold text-foreground leading-[1.1] tracking-tight">
+              <h1 className="hero-anim-text opacity-0 text-[40px] md:text-[56px] lg:text-[64px] font-bold text-foreground leading-[1.1] tracking-tight">
                 {profile.title}
               </h1>
             </div>
 
-            <p className="text-b16-reg md:text-b18-reg text-neutral-04 max-w-[540px] leading-relaxed">
+            <p className="hero-anim-text opacity-0 text-b16-reg md:text-b18-reg text-neutral-04 max-w-[540px] leading-relaxed">
               {profile.bio}
             </p>
 
-            {/* Actions */}
-            <div className="flex flex-row gap-4 pt-2">
+            <div className="hero-anim-text opacity-0 flex flex-row gap-4 pt-2">
               <button className="btn-custom btn-m md:btn-l bg-primary text-white hover:brightness-110 min-w-[130px] md:min-w-[160px]">
                 Xem dự án
               </button>
@@ -182,8 +219,7 @@ export function HeroSection() {
               </button>
             </div>
 
-            {/* Social Links */}
-            <div className="flex items-center gap-4 pt-4">
+            <div className="hero-anim-text opacity-0 flex items-center gap-4 pt-4">
               {profile.social.map((social) => {
                 const IconComponent = getSocialIcon(social.icon);
                 return (
@@ -201,31 +237,27 @@ export function HeroSection() {
             </div>
           </div>
 
-          {/* Right Graphic */}
           <div className="relative w-full max-w-[360px] md:max-w-[480px] aspect-square flex items-center justify-center mx-auto lg:ml-auto mt-12 lg:mt-0">
-            {/* Component Avatar Blob (Từ file json) */}
-            <div className="w-[85%] md:w-[90%] transition-transform duration-700 hover:scale-[1.05]">
+            <div className="hero-anim-img opacity-0 w-[85%] md:w-[90%] transition-transform duration-700 hover:scale-[1.05]">
               <BlobAvatar src={profile.avatar} alt={profile.name} />
             </div>
 
-            {/* Blue Paper Plane */}
-            <div className="absolute top-[2%] left-[8%] md:top-[0%] md:left-[5%] -rotate-12 animate-bounce duration-3000">
+            <div className="hero-anim-img opacity-0 absolute top-[2%] left-[8%] md:top-[0%] md:left-[5%] -rotate-12 animate-bounce duration-3000">
               <PaperAirplane className="w-8 h-8 md:w-10 md:h-10" />
             </div>
 
-            {/* Pill 1 */}
             {titleParts[0] && (
-              <div className="absolute top-[18%] left-[-2%] md:top-[15%] md:left-[-8%] bg-primary text-white rounded-full px-5 py-2 md:px-8 md:py-3 shadow-xl -rotate-[8deg] font-medium text-sm md:text-base z-10 transform hover:-translate-y-1 hover:scale-105 transition-all">
+              <div className="hero-anim-img opacity-0 absolute top-[18%] left-[-2%] md:top-[15%] md:left-[-8%] bg-primary text-white rounded-full px-5 py-2 md:px-8 md:py-3 shadow-xl -rotate-[8deg] font-medium text-sm md:text-base z-10 transform hover:-translate-y-1 hover:scale-105 transition-all">
                 {titleParts[0]}
               </div>
             )}
 
-            {/* Decorative Dashed Line */}
-            <DashDecorator className="absolute top-[25%] -right-2 md:-right-8 w-24 h-48 md:w-32 md:h-64 z-0 text-neutral-04" />
+            <div className="hero-anim-img opacity-0 absolute top-[25%] -right-2 md:-right-8 z-0">
+              <DashDecorator className="w-24 h-48 md:w-32 md:h-64 text-neutral-04" />
+            </div>
 
-            {/* Pill 2 */}
             {titleParts[1] && (
-              <div className="absolute bottom-[12%] right-[-2%] md:bottom-[8%] md:right-[-6%] bg-card text-primary border-[1.5px] border-primary/30 rounded-full px-5 py-2 md:px-8 md:py-3 shadow-xl rotate-[6deg] font-medium text-sm md:text-base z-10 transform hover:-translate-y-1 hover:scale-105 transition-all">
+              <div className="hero-anim-img opacity-0 absolute bottom-[12%] right-[-2%] md:bottom-[8%] md:right-[-6%] bg-card text-primary border-[1.5px] border-primary/30 rounded-full px-5 py-2 md:px-8 md:py-3 shadow-xl rotate-[6deg] font-medium text-sm md:text-base z-10 transform hover:-translate-y-1 hover:scale-105 transition-all">
                 {titleParts[1]}
               </div>
             )}
