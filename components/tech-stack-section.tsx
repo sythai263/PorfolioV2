@@ -5,8 +5,10 @@ import { TechStack } from "@app-types";
 import { TechIconComponent } from "@components";
 import { techStackApi } from "@lib/api";
 import gsap from "gsap"; // Import GSAP
+import { ScrollTrigger } from "gsap/ScrollTrigger"; // 1. Import ScrollTrigger
 import { useEffect, useRef, useState } from "react";
 import "./tech-stack-section.css";
+gsap.registerPlugin(ScrollTrigger);
 
 // Loading Skeleton Component (Giữ nguyên)
 function TechStackSkeleton() {
@@ -89,26 +91,34 @@ export function TechStackSection() {
 
   // --- GSAP ANIMATION LOGIC ---
   useEffect(() => {
-    // Chỉ chạy GSAP khi đã load xong data và có element
     if (loading || error || techStack.length === 0 || !containerRef.current)
       return;
 
     const ctx = gsap.context(() => {
-      const tl = gsap.timeline();
+      const tl = gsap.timeline({
+        scrollTrigger: {
+          trigger: containerRef.current,
+          start: "top 75%", // Bắt đầu khi cuộn MẶT TRÊN xuống mốc 75%
+          end: "bottom 25%", // Kết thúc khi cuộn MẶT DƯỚI qua mốc 25%
 
-      // 1. Ẩn tất cả lúc ban đầu để chuẩn bị xuất hiện
-      gsap.set(".gsap-icon", { scale: 0, opacity: 0 });
+          // toggleActions có 4 tham số tương ứng với 4 hành động:
+          // 1. onEnter (Cuộn xuống thấy): play (Chạy)
+          // 2. onLeave (Cuộn xuống qua luôn): reset (Reset về 0)
+          // 3. onEnterBack (Cuộn ngược lên thấy): play (Chạy lại)
+          // 4. onLeaveBack (Cuộn ngược lên qua luôn): reset (Reset về 0)
+          toggleActions: "play reset play reset",
+        },
+      });
 
-      // 2. Tâm C++ hiện ra trước với hiệu ứng nảy (back)
-      tl.to(".gsap-center", {
-        scale: 1,
-        opacity: 1,
-        duration: 0.6,
-        ease: "back.out(1.7)",
-      })
-        // 3. Vòng trong xuất hiện lần lượt (stagger)
-        .to(
+      // Dùng fromTo để mỗi khi "reset", nó tự động ép mọi thứ về scale 0, opacity 0
+      tl.fromTo(
+        ".gsap-center",
+        { scale: 0, opacity: 0 },
+        { scale: 1, opacity: 1, duration: 0.6, ease: "back.out(1.7)" },
+      )
+        .fromTo(
           ".gsap-inner",
+          { scale: 0, opacity: 0 },
           {
             scale: 1,
             opacity: 1,
@@ -118,9 +128,9 @@ export function TechStackSection() {
           },
           "-=0.2",
         )
-        // 4. Vòng ngoài xuất hiện lần lượt
-        .to(
+        .fromTo(
           ".gsap-outer",
+          { scale: 0, opacity: 0 },
           {
             scale: 1,
             opacity: 1,
@@ -130,23 +140,20 @@ export function TechStackSection() {
           },
           "-=0.3",
         )
-        // 5. HIỆU ỨNG ZOOM TO - NHỎ (Pulsing/Thở)
-        .add(() => {
-          gsap.to(".gsap-icon", {
-            scale: 1.15, // Phóng to lên 15% (Bạn có thể tăng lên 1.2 hoặc 1.3 nếu muốn to hơn)
-            duration: 1.2, // Thời gian phình to ra (1.2 giây)
-            yoyo: true, // Tự động thu nhỏ lại (chạy ngược chiều)
-            repeat: -1, // Lặp vô hạn
-            ease: "sine.inOut", // Easing sine giúp chuyển động mượt mà ở 2 đầu như nhịp thở
-            stagger: {
-              each: 0.15,
-              from: "random", // Giữ random để các node không zoom cùng lúc, nhìn như đang trôi nổi
-            },
-          });
+        // Hiệu ứng Zoom Thở vô hạn (Được gắn thẳng vào timeline để khi reset nó tự dừng)
+        .to(".gsap-icon", {
+          scale: 1.15,
+          duration: 1.2,
+          yoyo: true,
+          repeat: -1,
+          ease: "sine.inOut",
+          stagger: {
+            each: 0.15,
+            from: "random",
+          },
         });
     }, containerRef);
 
-    // Cleanup function để tránh lỗi khi component unmount
     return () => ctx.revert();
   }, [loading, error, techStack]);
 
