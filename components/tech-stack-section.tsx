@@ -88,7 +88,6 @@ export function TechStackSection() {
   }, []);
 
   // --- GSAP ANIMATION LOGIC ---
-  // --- GSAP ANIMATION LOGIC ---
   useEffect(() => {
     // Chỉ chạy GSAP khi đã load xong data và có element
     if (loading || error || techStack.length === 0 || !containerRef.current)
@@ -157,8 +156,13 @@ export function TechStackSection() {
       <TechStackError error={error} onRetry={() => window.location.reload()} />
     );
 
-  const innerOrbitItems = techStack.filter((item) => item.orbit === "inner");
-  const outerOrbitItems = techStack.filter((item) => item.orbit === "outer");
+  const innerOrbitItems = techStack.filter(
+    (item) => item.orbit === "inner" && !item.main,
+  );
+  const outerOrbitItems = techStack.filter(
+    (item) => item.orbit === "outer" && !item.main,
+  );
+  const mainTech = techStack.find((item) => item.main);
 
   return (
     // Gắn ref vào vùng bao ngoài cùng
@@ -183,8 +187,14 @@ export function TechStackSection() {
         <div className="relative w-[320px] h-[320px] sm:w-[500px] sm:h-[500px] md:w-[600px] md:h-[600px] mx-auto mt-8">
           {/* --- TRUNG TÂM --- */}
           {/* Thêm class gsap-icon và gsap-center để GSAP nhắm mục tiêu */}
-          <div className="gsap-icon gsap-center absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-24 h-24 sm:w-32 sm:h-32 z-30 bg-white/10 backdrop-blur-sm rounded-full flex items-center justify-center text-white font-bold border-2 border-white/20 shadow-[0_0_30px_rgba(255,255,255,0.2)]">
-            C++
+          <div
+            className={`gsap-icon gsap-center absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-24 h-24 sm:w-32 sm:h-32 z-30 bg-white/10 backdrop-blur-sm rounded-full flex items-center justify-center text-white font-bold border-2 border-white/20 shadow-[0_0_30px_rgba(255,255,255,0.2)]`}
+          >
+            {mainTech ? (
+              <TechIcon name={mainTech.name} icon={mainTech.icon} />
+            ) : (
+              "Tech Stack"
+            )}
           </div>
 
           {/* --- VÒNG TRONG --- */}

@@ -6,7 +6,8 @@
     "level": "expert",
     "icon": "React",
     "orbit": "inner",
-    "angle": 0
+    "angle": 0,
+    "main": false
   },
   {
     "id": "2",
@@ -15,7 +16,8 @@
     "level": "expert",
     "icon": "Nextjs",
     "orbit": "inner",
-    "angle": 45
+    "angle": 45,
+    "main": false
   },
   {
     "id": "3",
@@ -24,7 +26,8 @@
     "level": "advanced",
     "icon": "TypeScript",
     "orbit": "inner",
-    "angle": 90
+    "angle": 90,
+    "main": false
   },
   {
     "id": "4",
@@ -33,16 +36,18 @@
     "level": "expert",
     "icon": "Tailwind",
     "orbit": "inner",
-    "angle": 135
+    "angle": 135,
+    "main": false
   },
   {
     "id": "5",
-    "name": "Node.js",
+    "name": "Nest JS",
     "category": "backend",
     "level": "advanced",
-    "icon": "Nodejs",
+    "icon": "NestJS",
     "orbit": "inner",
-    "angle": 180
+    "angle": 180,
+    "main": true
   },
   {
     "id": "6",
@@ -51,16 +56,18 @@
     "level": "advanced",
     "icon": "Express",
     "orbit": "inner",
-    "angle": 225
+    "angle": 225,
+    "main": false
   },
   {
     "id": "7",
-    "name": "Shopify",
+    "name": "PostgreSQL",
     "category": "backend",
     "level": "intermediate",
-    "icon": "Shopify",
+    "icon": "Database",
     "orbit": "inner",
-    "angle": 270
+    "angle": 270,
+    "main": false
   },
   {
     "id": "8",
@@ -69,7 +76,8 @@
     "level": "intermediate",
     "icon": "Database",
     "orbit": "inner",
-    "angle": 315
+    "angle": 315,
+    "main": false
   },
   {
     "id": "9",
@@ -78,7 +86,8 @@
     "level": "expert",
     "icon": "Git",
     "orbit": "outer",
-    "angle": 30
+    "angle": 30,
+    "main": false
   },
   {
     "id": "10",
@@ -87,7 +96,8 @@
     "level": "intermediate",
     "icon": "Docker",
     "orbit": "outer",
-    "angle": 90
+    "angle": 90,
+    "main": false
   },
   {
     "id": "11",
@@ -96,7 +106,8 @@
     "level": "intermediate",
     "icon": "Cloud",
     "orbit": "outer",
-    "angle": 150
+    "angle": 150,
+    "main": false
   },
   {
     "id": "12",
@@ -105,7 +116,8 @@
     "level": "intermediate",
     "icon": "Figma",
     "orbit": "outer",
-    "angle": 210
+    "angle": 210,
+    "main": false
   },
   {
     "id": "13",
@@ -114,7 +126,8 @@
     "level": "advanced",
     "icon": "Python",
     "orbit": "inner",
-    "angle": 360
+    "angle": 360,
+    "main": false
   },
   {
     "id": "14",
@@ -123,7 +136,8 @@
     "level": "intermediate",
     "icon": "GraphQL",
     "orbit": "outer",
-    "angle": 270
+    "angle": 270,
+    "main": false
   },
   {
     "id": "15",
@@ -132,6 +146,7 @@
     "level": "intermediate",
     "icon": "Database",
     "orbit": "outer",
-    "angle": 330
+    "angle": 330,
+    "main": false
   }
 ]

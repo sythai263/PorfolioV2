@@ -64,6 +64,7 @@ export interface TechStack {
   icon: string;
   orbit: "inner" | "outer";
   angle: number;
+  main?: boolean;
 }
 
 export interface NavigationItem {
