@@ -26,7 +26,7 @@ export interface Project {
   featured: boolean;
 }
 
-export type ProjectCategory = 'web' | 'mobile' | 'design' | 'other';
+export type ProjectCategory = "web" | "mobile" | "design" | "other";
 
 export interface Experience {
   id: string;
@@ -47,8 +47,24 @@ export interface Skill {
   icon?: string;
 }
 
-export type SkillCategory = 'all' | 'frontend' | 'backend' | 'tools' | 'design' | 'other';
-export type SkillLevel = 'beginner' | 'intermediate' | 'advanced' | 'expert';
+export type SkillCategory =
+  | "all"
+  | "frontend"
+  | "backend"
+  | "tools"
+  | "design"
+  | "other";
+export type SkillLevel = "beginner" | "intermediate" | "advanced" | "expert";
+
+export interface TechStack {
+  id: string;
+  name: string;
+  category: SkillCategory;
+  level: SkillLevel;
+  icon: string;
+  orbit: "inner" | "outer";
+  angle: number;
+}
 
 export interface NavigationItem {
   label: string;

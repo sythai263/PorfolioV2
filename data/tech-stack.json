@@ -1,0 +1,137 @@
+[
+  {
+    "id": "1",
+    "name": "React",
+    "category": "frontend",
+    "level": "expert",
+    "icon": "React",
+    "orbit": "inner",
+    "angle": 0
+  },
+  {
+    "id": "2",
+    "name": "Next.js",
+    "category": "frontend",
+    "level": "expert",
+    "icon": "Nextjs",
+    "orbit": "inner",
+    "angle": 45
+  },
+  {
+    "id": "3",
+    "name": "TypeScript",
+    "category": "frontend",
+    "level": "advanced",
+    "icon": "TypeScript",
+    "orbit": "inner",
+    "angle": 90
+  },
+  {
+    "id": "4",
+    "name": "Tailwind CSS",
+    "category": "frontend",
+    "level": "expert",
+    "icon": "Tailwind",
+    "orbit": "inner",
+    "angle": 135
+  },
+  {
+    "id": "5",
+    "name": "Node.js",
+    "category": "backend",
+    "level": "advanced",
+    "icon": "Nodejs",
+    "orbit": "inner",
+    "angle": 180
+  },
+  {
+    "id": "6",
+    "name": "Express.js",
+    "category": "backend",
+    "level": "advanced",
+    "icon": "Express",
+    "orbit": "inner",
+    "angle": 225
+  },
+  {
+    "id": "7",
+    "name": "PostgreSQL",
+    "category": "backend",
+    "level": "intermediate",
+    "icon": "Database",
+    "orbit": "inner",
+    "angle": 270
+  },
+  {
+    "id": "8",
+    "name": "MongoDB",
+    "category": "backend",
+    "level": "intermediate",
+    "icon": "Database",
+    "orbit": "inner",
+    "angle": 315
+  },
+  {
+    "id": "9",
+    "name": "Git",
+    "category": "tools",
+    "level": "expert",
+    "icon": "Git",
+    "orbit": "outer",
+    "angle": 30
+  },
+  {
+    "id": "10",
+    "name": "Docker",
+    "category": "tools",
+    "level": "intermediate",
+    "icon": "Docker",
+    "orbit": "outer",
+    "angle": 90
+  },
+  {
+    "id": "11",
+    "name": "AWS",
+    "category": "tools",
+    "level": "intermediate",
+    "icon": "Cloud",
+    "orbit": "outer",
+    "angle": 150
+  },
+  {
+    "id": "12",
+    "name": "Figma",
+    "category": "design",
+    "level": "intermediate",
+    "icon": "Figma",
+    "orbit": "outer",
+    "angle": 210
+  },
+  {
+    "id": "13",
+    "name": "Python",
+    "category": "backend",
+    "level": "advanced",
+    "icon": "Python",
+    "orbit": "inner",
+    "angle": 360
+  },
+  {
+    "id": "14",
+    "name": "GraphQL",
+    "category": "backend",
+    "level": "intermediate",
+    "icon": "GraphQL",
+    "orbit": "outer",
+    "angle": 270
+  },
+  {
+    "id": "15",
+    "name": "Redis",
+    "category": "backend",
+    "level": "intermediate",
+    "icon": "Database",
+    "orbit": "outer",
+    "angle": 330
+  }
+]

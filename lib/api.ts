@@ -1,4 +1,4 @@
-import { Profile } from "@app-types";
+import { Profile, TechStack } from "@app-types";
 import { ApiResponse } from "@lib/api-response";
 
 // API base configuration
@@ -43,6 +43,13 @@ async function apiRequest<T>(
 export const profileApi = {
   getProfile: (): Promise<Profile> => {
     return apiRequest<Profile>("/profile");
+  },
+};
+
+// Tech Stack API service
+export const techStackApi = {
+  getTechStack: (): Promise<TechStack[]> => {
+    return apiRequest<TechStack[]>("/tech-stack");
   },
 };
 
