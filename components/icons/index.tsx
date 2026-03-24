@@ -2,6 +2,7 @@ export * from "./cloud-dark-desktop";
 export * from "./cloud-dark-mobile";
 export * from "./cloud-light-desktop";
 export * from "./cloud-light-mobile";
+export * from "./dash-decorator";
 export * from "./logo";
 export * from "./moon-desktop";
 export * from "./moon-mobile";

@@ -1,19 +1,19 @@
 {
-  "name": "John Doe",
-  "title": "Full Stack Developer",
+  "name": "Thái Lê Sỹ",
+  "title": "Backend Engineer & Photographer",
   "bio": "Passionate developer with expertise in modern web technologies. I love creating beautiful, functional applications that solve real-world problems.",
   "avatar": "/avatar.jpg",
-  "email": "john.doe@example.com",
+  "email": "sythai263@gmail.com",
   "location": "San Francisco, CA",
   "social": [
     {
       "platform": "GitHub",
-      "url": "https://github.com/johndoe",
+      "url": "https://github.com/sythai263",
       "icon": "Github"
     },
     {
       "platform": "LinkedIn",
-      "url": "https://linkedin.com/in/johndoe",
+      "url": "https://linkedin.com/in/johndoe`",
       "icon": "Linkedin"
     },
     {
