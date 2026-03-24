@@ -1,22 +1,45 @@
 import profileData from "@data/profile.json";
+import { withMiddleware } from "@lib/api-middleware";
+import { ResponseBuilder } from "@lib/api-response";
 import { NextResponse } from "next/server";
 
-export async function GET() {
-  try {
-    // Simulate API delay
-    // await new Promise(resolve => setTimeout(resolve, 500));
+export const GET = withMiddleware(
+  async (req, { requestId }) => {
+    try {
+      // Simulate API delay (optional)
+      // await new Promise(resolve => setTimeout(resolve, 500));
 
-    return NextResponse.json(profileData, {
-      status: 200,
-      headers: {
-        "Cache-Control": "public, s-maxage=3600, stale-while-revalidate=86400",
-      },
-    });
-  } catch (error) {
-    console.error("Error fetching profile:", error);
-    return NextResponse.json(
-      { error: "Failed to fetch profile data" },
-      { status: 500 },
-    );
-  }
-}
+      const response = ResponseBuilder.success(
+        profileData,
+        "Profile retrieved successfully",
+        200,
+        requestId,
+      );
+
+      return NextResponse.json(response, {
+        status: 200,
+        headers: {
+          "Cache-Control":
+            "public, s-maxage=3600, stale-while-revalidate=86400",
+        },
+      });
+    } catch (error) {
+      console.error("Error fetching profile:", error);
+      const response = ResponseBuilder.internalServerError(
+        "Failed to fetch profile data",
+        requestId,
+      );
+      return NextResponse.json(response, { status: 500 });
+    }
+  },
+  {
+    enableCORS: true,
+    enableLogging: true,
+    enableRateLimit: true,
+    enableValidation: false,
+    rateLimit: {
+      windowMs: 60 * 1000, // 1 minute
+      maxRequests: 100, // 100 requests per minute
+    },
+  },
+);

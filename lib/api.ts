@@ -1,9 +1,10 @@
 import { Profile } from "@app-types";
+import { ApiResponse } from "@lib/api-response";
 
 // API base configuration
 const API_BASE_URL = "/api";
 
-// Generic fetch wrapper
+// Generic fetch wrapper with standardized response handling
 async function apiRequest<T>(
   endpoint: string,
   options?: RequestInit,
@@ -25,7 +26,13 @@ async function apiRequest<T>(
       throw new Error(`API Error: ${response.status} ${response.statusText}`);
     }
 
-    return (await response.json()) as T;
+    const apiResponse: ApiResponse<T> = await response.json();
+
+    if (!apiResponse.success) {
+      throw new Error(apiResponse.error || "API request failed");
+    }
+
+    return apiResponse.data as T;
   } catch (error) {
     console.error("API request failed:", error);
     throw error;
