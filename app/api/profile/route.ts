@@ -1,10 +1,9 @@
 import profileData from "@data/profile.json";
-import { withMiddleware } from "@lib/api-middleware";
-import { ResponseBuilder } from "@lib/api-response";
+import { ResponseBuilder, withMiddleware } from "@lib";
 import { NextResponse } from "next/server";
 
 export const GET = withMiddleware(
-  async (req, { requestId }) => {
+  async (_req, { requestId }) => {
     try {
       // Simulate API delay (optional)
       // await new Promise(resolve => setTimeout(resolve, 500));

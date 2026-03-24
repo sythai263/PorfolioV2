@@ -3,6 +3,7 @@ export * from "./cta-banner-section";
 export * from "./experiences-section";
 export * from "./footer-section";
 export * from "./hero-section";
+export * from "./icon-mapping";
 export * from "./navbar";
 export * from "./projects-section";
 export * from "./providers";

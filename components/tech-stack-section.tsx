@@ -2,19 +2,10 @@
 "use client";
 
 import { TechStack } from "@app-types";
+import { TechIconComponent } from "@components";
 import { techStackApi } from "@lib/api";
-import { cn } from "@lib/utils";
 import { useEffect, useState } from "react";
 import "./tech-stack-section.css";
-
-const dots = [
-  { color: "bg-red-500", angle: 45, radius: 48, size: "w-4 h-4" },
-  { color: "bg-blue-600", angle: 135, radius: 45, size: "w-5 h-5" },
-  { color: "bg-[#B08900]", angle: 270, radius: 48, size: "w-6 h-6" },
-  { color: "bg-green-500", angle: 200, radius: 46, size: "w-4 h-4" },
-  { color: "bg-blue-800", angle: 180, radius: 40, size: "w-5 h-5" },
-  { color: "bg-pink-100", angle: 0, radius: 46, size: "w-5 h-5" },
-];
 
 // Loading Skeleton Component
 function TechStackSkeleton() {
@@ -100,11 +91,19 @@ function getPosition(
   return { left: `${x}%`, top: `${y}%` };
 }
 
-// Tech Icon Component (placeholder)
+// Tech Icon Component
 function TechIcon({ name, icon }: { name: string; icon: string }) {
   return (
-    <div className="w-full h-full bg-white/10 backdrop-blur-sm rounded-full flex items-center justify-center text-white text-xs sm:text-sm font-medium border-2 border-white/20 hover:bg-white/20 transition-colors">
-      {name}
+    <div className="relative group">
+      <div className="w-full h-full bg-white/10 backdrop-blur-sm rounded-full flex items-center justify-center border-2 border-white/20 hover:bg-white/20 transition-all duration-300 p-1">
+        <TechIconComponent iconName={icon} size="60%" />
+      </div>
+
+      {/* Tooltip on hover */}
+      <div className="absolute bottom-full left-1/2 transform -translate-x-1/2 mb-2 px-3 py-1 bg-gray-900 text-white text-xs sm:text-sm font-medium rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none whitespace-nowrap z-50">
+        {name}
+        <div className="absolute top-full left-1/2 transform -translate-x-1/2 -mt-1 w-2 h-2 bg-gray-900 rotate-45"></div>
+      </div>
     </div>
   );
 }
@@ -202,29 +201,6 @@ export function TechStackSection() {
                 >
                   <TechIcon name={item.name} icon={item.icon} />
                 </div>
-              );
-            })}
-          </div>
-
-          {/* --- CÁC DẤU CHẤM (Dots) --- */}
-          <div
-            className="absolute top-1/2 left-1/2 w-full h-full spin-slow z-0"
-            style={{ animationDuration: "100s" }}
-          >
-            {dots.map((dot, i) => {
-              const angleRad = dot.angle * (Math.PI / 180);
-              const x = 50 + dot.radius * Math.cos(angleRad);
-              const y = 50 - dot.radius * Math.sin(angleRad);
-              return (
-                <div
-                  key={i}
-                  className={cn(
-                    "absolute rounded-full shadow-sm -translate-x-1/2 -translate-y-1/2",
-                    dot.color,
-                    dot.size,
-                  )}
-                  style={{ left: `${x}%`, top: `${y}%` }}
-                />
               );
             })}
           </div>

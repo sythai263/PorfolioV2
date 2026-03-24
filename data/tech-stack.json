@@ -55,10 +55,10 @@
   },
   {
     "id": "7",
-    "name": "PostgreSQL",
+    "name": "Shopify",
     "category": "backend",
     "level": "intermediate",
-    "icon": "Database",
+    "icon": "Shopify",
     "orbit": "inner",
     "angle": 270
   },

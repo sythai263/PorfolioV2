@@ -1,5 +1,5 @@
 import { Profile, TechStack } from "@app-types";
-import { ApiResponse } from "@lib/api-response";
+import { ApiResponse } from "@lib";
 
 // API base configuration
 const API_BASE_URL = "/api";
