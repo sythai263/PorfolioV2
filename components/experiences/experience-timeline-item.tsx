@@ -13,39 +13,45 @@ export function ExperienceTimelineItem({
   const year = new Date(experience.startDate).getFullYear();
 
   return (
-    <div className="relative flex flex-col items-center w-48">
-      {/* Nút mốc thời gian (Timeline node) - Dùng màu secondary (Xanh) */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-6 h-6 bg-background border-[3px] border-secondary rounded-full z-10 flex items-center justify-center transition-colors duration-300">
+    <div className="timeline-item relative flex flex-col items-center w-full h-40 md:flex-1 md:h-full z-10">
+      {/* Nút mốc thời gian */}
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-6 h-6 bg-background border-[3px] border-secondary rounded-full flex items-center justify-center transition-colors duration-300 z-20">
         <div className="w-2 h-2 bg-secondary rounded-full" />
       </div>
 
       {isEven ? (
         <>
-          {/* Năm hiển thị ở trên - Dùng text-h1 và màu primary (Cam) */}
-          <div className="absolute bottom-[calc(50%+1.5rem)] text-h1 text-primary">
+          {/* YEAR */}
+          <div className="absolute top-1/2 -translate-y-1/2 right-[calc(50%+1.5rem)] md:top-auto md:bottom-[calc(50%+1.5rem)] md:left-1/2 md:-translate-x-1/2 md:translate-y-0 md:right-auto text-h1 text-primary">
             {year}
           </div>
-          {/* Đường kẻ dọc hướng xuống */}
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 w-px h-16 bg-border transition-colors duration-300" />
-          {/* Chấm tròn cuối đường kẻ dọc */}
-          <div className="absolute top-[calc(50%+4rem)] left-1/2 -translate-x-1/2 w-1.5 h-1.5 bg-neutral-04 rounded-full transition-colors duration-300" />
-          {/* Mô tả hiển thị ở dưới */}
-          <div className="absolute top-[calc(50%+5rem)] w-full text-center text-b14-reg text-muted-foreground">
+
+          {/* ĐƯỜNG KẺ NHÁNH */}
+          <div className="absolute top-1/2 left-1/2 -translate-y-1/2 w-12 sm:w-16 h-px md:top-1/2 md:left-1/2 md:w-px md:h-16 md:-translate-x-1/2 md:translate-y-0 bg-border transition-colors duration-300" />
+
+          {/* DẤU CHẤM NHỎ */}
+          <div className="absolute top-1/2 -translate-y-1/2 left-[calc(50%+3rem)] sm:left-[calc(50%+4rem)] w-1.5 h-1.5 md:top-[calc(50%+4rem)] md:left-1/2 md:-translate-x-1/2 md:translate-y-0 bg-neutral-04 rounded-full transition-colors duration-300" />
+
+          {/* DESC: Bổ sung md:px-4 để text không sát lề, bị chạm vào nhau */}
+          <div className="absolute top-1/2 -translate-y-1/2 left-[calc(50%+4rem)] sm:left-[calc(50%+5rem)] w-[calc(50%-4.5rem)] sm:w-[calc(50%-5.5rem)] text-left md:top-[calc(50%+5rem)] md:left-0 md:w-full md:px-4 md:text-center md:translate-x-0 md:translate-y-0 text-b14-reg text-muted-foreground line-clamp-4 md:line-clamp-none">
             {experience.description}
           </div>
         </>
       ) : (
         <>
-          {/* Năm hiển thị ở dưới */}
-          <div className="absolute top-[calc(50%+1.5rem)] text-h1 text-primary">
+          {/* YEAR */}
+          <div className="absolute top-1/2 -translate-y-1/2 left-[calc(50%+1.5rem)] md:bottom-auto md:top-[calc(50%+1.5rem)] md:left-1/2 md:-translate-x-1/2 md:translate-y-0 text-h1 text-primary">
             {year}
           </div>
-          {/* Đường kẻ dọc hướng lên */}
-          <div className="absolute bottom-1/2 left-1/2 -translate-x-1/2 w-px h-16 bg-border transition-colors duration-300" />
-          {/* Chấm tròn đầu đường kẻ dọc */}
-          <div className="absolute bottom-[calc(50%+4rem)] left-1/2 -translate-x-1/2 w-1.5 h-1.5 bg-neutral-04 rounded-full transition-colors duration-300" />
-          {/* Mô tả hiển thị ở trên */}
-          <div className="absolute bottom-[calc(50%+5rem)] w-full text-center text-b14-reg text-muted-foreground">
+
+          {/* ĐƯỜNG KẺ NHÁNH */}
+          <div className="absolute top-1/2 right-1/2 -translate-y-1/2 w-12 sm:w-16 h-px md:bottom-1/2 md:top-auto md:left-1/2 md:w-px md:h-16 md:-translate-x-1/2 md:translate-y-0 bg-border transition-colors duration-300" />
+
+          {/* DẤU CHẤM NHỎ */}
+          <div className="absolute top-1/2 -translate-y-1/2 right-[calc(50%+3rem)] sm:right-[calc(50%+4rem)] w-1.5 h-1.5 md:bottom-[calc(50%+4rem)] md:top-auto md:left-1/2 md:-translate-x-1/2 md:translate-y-0 bg-neutral-04 rounded-full transition-colors duration-300" />
+
+          {/* DESC: Bổ sung md:px-4 */}
+          <div className="absolute top-1/2 -translate-y-1/2 right-[calc(50%+4rem)] sm:right-[calc(50%+5rem)] w-[calc(50%-4.5rem)] sm:w-[calc(50%-5.5rem)] text-right md:bottom-[calc(50%+5rem)] md:top-auto md:left-0 md:w-full md:px-4 md:text-center md:translate-x-0 md:translate-y-0 text-b14-reg text-muted-foreground line-clamp-4 md:line-clamp-none">
             {experience.description}
           </div>
         </>
