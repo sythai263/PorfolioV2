@@ -1,51 +1,34 @@
-interface Experience {
-  id: number;
-  position: string;
-  company: string;
-  period: string;
-  description: string;
-}
+import type { Experience } from "@app-types";
+import { getExperience } from "@infrastructure";
+import { ExperienceTimelineItem } from "./experiences/experience-timeline-item";
 
-export function ExperiencesSection() {
-  const experiences: Experience[] = [
-    {
-      id: 1,
-      position: 'Senior Frontend Developer',
-      company: 'Tech Company',
-      period: '2022 - Present',
-      description: 'Experience placeholder - Add your job description, achievements, and technologies used here.'
-    },
-    {
-      id: 2,
-      position: 'Full Stack Developer',
-      company: 'Startup Inc',
-      period: '2020 - 2022',
-      description: 'Experience placeholder - Add your job description, achievements, and technologies used here.'
-    }
-  ];
+export async function ExperiencesSection() {
+  const experiences: Experience[] = await getExperience();
 
   return (
-    <section id="experiences" className="py-20">
+    <section
+      id="experiences"
+      className="py-20 bg-background transition-colors duration-300"
+    >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <h2 className="text-t2 text-foreground mb-12">Experiences</h2>
-        
-        <div className="space-y-8">
-          {experiences.map((experience) => (
-            <div key={experience.id} className="bg-card border border-border rounded-2xl p-6">
-              <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-4">
-                <div>
-                  <h3 className="text-h1 text-card-foreground">{experience.position}</h3>
-                  <p className="text-b18-semi text-primary">{experience.company}</p>
-                </div>
-                <div className="text-b14-reg text-neutral-04 mt-2 md:mt-0">
-                  {experience.period}
-                </div>
-              </div>
-              <p className="text-b16-reg text-neutral-04">
-                {experience.description}
-              </p>
-            </div>
-          ))}
+        <h2 className="text-t2 text-foreground mb-12 transition-colors duration-300">
+          Experiences
+        </h2>
+
+        {/* Thêm wrapper cuộn ngang để tương thích tốt với Mobile */}
+        <div className="w-full overflow-x-auto pb-10 custom-scrollbar">
+          <div className="relative mt-32 min-w-[800px] h-64 flex items-center justify-between z-10">
+            {/* Đường kẻ ngang (Timeline line) - Đổi từ bg-blue-500 sang bg-secondary */}
+            <div className="absolute left-0 right-0 top-1/2 -translate-y-1/2 h-[2px] bg-secondary transition-colors duration-300" />
+
+            {experiences.map((experience, index) => (
+              <ExperienceTimelineItem
+                key={experience.id}
+                experience={experience}
+                isEven={index % 2 === 0}
+              />
+            ))}
+          </div>
         </div>
       </div>
     </section>

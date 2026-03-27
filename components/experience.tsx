@@ -1,78 +1,67 @@
-import { MapPin, Calendar, Briefcase } from 'lucide-react';
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@components/ui/card';
-import { Badge } from '@components/ui/badge';
-import { getExperience } from '@infrastructure';
 import type { Experience } from '@app-types';
+import { getExperience } from '@infrastructure';
 
 export async function Experience() {
-  const experiences = await getExperience();
+  // Lấy dữ liệu từ API thông qua layer infrastructure
+  const experiences: Experience[] = await getExperience();
 
   return (
-    <section id="experience" className="py-20 bg-gray-50">
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-            Experience
-          </h2>
-          <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-            My professional journey and career milestones
-          </p>
-        </div>
+    <section id="experience" className="relative w-full max-w-6xl mx-auto py-32 px-4 sm:px-6 lg:px-8 bg-white overflow-hidden">
+      {/* Tiêu đề nền mờ */}
+      <h2 className="absolute top-10 left-4 text-6xl md:text-8xl font-extrabold text-gray-50 z-0">
+        Experiences
+      </h2>
 
-        <div className="space-y-8">
-          {experiences.map((experience) => (
-            <Card key={experience.id} className="overflow-hidden">
-              <CardHeader>
-                <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
-                  <div>
-                    <CardTitle className="text-xl">{experience.position}</CardTitle>
-                    <CardDescription className="text-lg font-medium text-gray-700">
-                      {experience.company}
-                    </CardDescription>
+      <div className="relative mt-32 w-full h-64 flex items-center justify-between z-10">
+        {/* Đường kẻ ngang (Timeline line) */}
+        <div className="absolute left-0 right-0 top-1/2 -translate-y-1/2 h-[2px] bg-blue-500" />
+
+        {experiences.map((experience, index) => {
+          const isEven = index % 2 === 0;
+          const year = new Date(experience.startDate).getFullYear();
+
+          return (
+            <div key={experience.id} className="relative flex flex-col items-center w-48">
+              {/* Nút mốc thời gian (Timeline node) */}
+              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-6 h-6 bg-white border-[3px] border-blue-500 rounded-full z-10 flex items-center justify-center">
+                <div className="w-2 h-2 bg-blue-500 rounded-full" />
+              </div>
+
+              {isEven ? (
+                <>
+                  {/* Năm hiển thị ở trên */}
+                  <div className="absolute bottom-[calc(50%+1.5rem)] text-2xl font-bold text-orange-400">
+                    {year}
                   </div>
-                  <div className="flex flex-col sm:items-end gap-2">
-                    <div className="flex items-center gap-2 text-sm text-gray-600">
-                      <Calendar className="w-4 h-4" />
-                      {formatDate(experience.startDate)} - {experience.endDate ? formatDate(experience.endDate) : 'Present'}
-                    </div>
-                    <div className="flex items-center gap-2 text-sm text-gray-600">
-                      <MapPin className="w-4 h-4" />
-                      {experience.location}
-                    </div>
+                  {/* Đường kẻ dọc hướng xuống */}
+                  <div className="absolute top-1/2 left-1/2 -translate-x-1/2 w-px h-16 bg-gray-300" />
+                  {/* Chấm tròn cuối đường kẻ dọc */}
+                  <div className="absolute top-[calc(50%+4rem)] left-1/2 -translate-x-1/2 w-1.5 h-1.5 bg-gray-400 rounded-full" />
+                  {/* Mô tả hiển thị ở dưới */}
+                  <div className="absolute top-[calc(50%+5rem)] w-full text-center text-sm font-medium text-gray-200">
+                    {experience.description}
                   </div>
-                </div>
-              </CardHeader>
-
-              <CardContent>
-                <p className="text-gray-600 mb-4">{experience.description}</p>
-
-                <div className="space-y-2">
-                  <h4 className="font-medium text-gray-900 flex items-center gap-2">
-                    <Briefcase className="w-4 h-4" />
-                    Key Achievements
-                  </h4>
-                  <ul className="space-y-2">
-                    {experience.achievements.map((achievement, index) => (
-                      <li key={index} className="flex items-start gap-2 text-gray-600">
-                        <div className="w-2 h-2 bg-blue-500 rounded-full mt-2 flex-shrink-0" />
-                        {achievement}
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              </CardContent>
-            </Card>
-          ))}
-        </div>
+                </>
+              ) : (
+                <>
+                  {/* Năm hiển thị ở dưới */}
+                  <div className="absolute top-[calc(50%+1.5rem)] text-2xl font-bold text-orange-400">
+                    {year}
+                  </div>
+                  {/* Đường kẻ dọc hướng lên */}
+                  <div className="absolute bottom-1/2 left-1/2 -translate-x-1/2 w-px h-16 bg-gray-300" />
+                  {/* Chấm tròn đầu đường kẻ dọc */}
+                  <div className="absolute bottom-[calc(50%+4rem)] left-1/2 -translate-x-1/2 w-1.5 h-1.5 bg-gray-400 rounded-full" />
+                  {/* Mô tả hiển thị ở trên */}
+                  <div className="absolute bottom-[calc(50%+5rem)] w-full text-center text-sm font-medium text-gray-200">
+                    {experience.description}
+                  </div>
+                </>
+              )}
+            </div>
+          );
+        })}
       </div>
     </section>
   );
-}
-
-function formatDate(dateString: string): string {
-  const date = new Date(dateString);
-  return date.toLocaleDateString('en-US', {
-    year: 'numeric',
-    month: 'short'
-  });
 }
