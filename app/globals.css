@@ -28,6 +28,10 @@
   --color-input: var(--input);
   --color-ring: var(--primary);
 
+  /* POPOVER/TOOLTIP */
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+
   /* --- Định nghĩa bảng màu Neutral để dùng trực tiếp --- */
   --color-neutral-01: #181c32;
   --color-neutral-02: #3f4254;

@@ -1,44 +1,47 @@
 [
   {
     "id": "1",
-    "company": "Tech Solutions Inc.",
-    "position": "Senior Full Stack Developer",
-    "location": "San Francisco, CA",
-    "startDate": "2022-01",
-    "endDate": null,
-    "description": "Leading development of enterprise web applications and mentoring junior developers.",
+    "company": "GEEK UP JSC",
+    "position": "Backend Engineer",
+    "location": "Ho Chi Minh City, Vietnam",
+    "startDate": "2022-02",
+    "endDate": "2024-05",
+    "description": "Spearheaded the backend development for diverse digital products, including large-scale e-commerce data engines and high-traffic EdTech platforms, with a strong focus on system scalability and business-driven solutions.",
     "achievements": [
-      "Architected and deployed microservices infrastructure reducing deployment time by 60%",
-      "Led a team of 5 developers in building a customer portal serving 10,000+ users",
-      "Implemented automated testing increasing code coverage from 40% to 85%"
+      "Architected a high-throughput data synchronization pipeline integrating with Shopify and Amazon APIs, successfully processing over 2 million daily orders with 99.9% consistency.",
+      "Designed and optimized scalable RESTful APIs for digital education platforms, supporting heavy concurrent user traffic while reducing overall system latency by 30%.",
+      "Built resilient backend services for internal Agile management tools, implementing real-time features and secure access control to streamline engineering workflows.",
+      "Collaborated closely with cross-functional product teams to translate complex business requirements into robust, high-performance technical architectures."
     ]
   },
   {
     "id": "2",
-    "company": "Digital Agency Co.",
-    "position": "Full Stack Developer",
-    "location": "New York, NY",
-    "startDate": "2020-06",
-    "endDate": "2021-12",
-    "description": "Developed custom web solutions for various clients using modern technologies.",
+    "company": "Shuei Trading Co., Ltd.",
+    "position": "Backend Engineer",
+    "location": "Ho Chi Minh City, Vietnam",
+    "startDate": "2024-06",
+    "endDate": "2024-12",
+    "description": "Maintained and enhanced e-commerce platforms for the Japanese market, focusing on delivering tailored backend features and data solutions to empower the marketing team's sales campaigns.",
     "achievements": [
-      "Built 15+ responsive websites for clients across different industries",
-      "Improved website performance by 40% through optimization techniques",
-      "Integrated third-party APIs and payment systems"
+      "Maintained and optimized existing e-commerce applications, ensuring high system availability and seamless shopping experiences for the Japanese market.",
+      "Developed and rapidly deployed custom features for promotional campaigns, enabling the marketing team to quickly launch and manage seasonal sales events.",
+      "Engineered custom data extraction and reporting tools, providing the marketing team with accurate, real-time data for campaign analysis and targeted strategies.",
+      "Collaborated efficiently with cross-border teams to translate marketing requirements into technical solutions, significantly reducing time-to-market for new business initiatives."
     ]
   },
   {
     "id": "3",
-    "company": "StartUp Hub",
-    "position": "Junior Developer",
-    "location": "Austin, TX",
-    "startDate": "2019-01",
-    "endDate": "2020-05",
-    "description": "Assisted in developing and maintaining web applications for startup clients.",
+    "company": "Shuei Trading Vietnam",
+    "position": "Full Stack Developer",
+    "location": "Ho Chi Minh City, Vietnam",
+    "startDate": "2025-01",
+    "endDate": null,
+    "description": "Spearheaded e-commerce development for the new Vietnam branch, specializing in custom Shopify app engineering, complex legacy system modernization, and large-scale data migrations.",
     "achievements": [
-      "Contributed to 8+ client projects using React and Node.js",
-      "Participated in agile development process and code reviews",
-      "Developed RESTful APIs and database schemas"
+      "Orchestrated the seamless migration of over 1 million historical order records from legacy e-commerce platforms to Shopify, ensuring zero data loss and strict data integrity.",
+      "Engineered and deployed custom Shopify applications tailored to individual store needs, extending core functionalities and enhancing the merchant experience.",
+      "Refactored and optimized complex legacy codebases, significantly improving data processing performance and reducing technical debt.",
+      "Analyzed and translated outdated, custom business logic to align flawlessly with Shopify's ecosystem, strictly adhering to its API rate limits and architectural constraints."
     ]
   }
 ]
