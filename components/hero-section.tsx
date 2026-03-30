@@ -92,7 +92,6 @@ export function HeroSection({ data }: HeroSectionProps) {
                 {t("greeting")}
               </h2>
               <h2 className="hero-anim-text opacity-0 text-[32px] md:text-[44px] font-bold text-foreground mb-3 md:mb-4">
-                <span className="font-mono">I'm</span>{" "}
                 <span className="text-primary border-b-[4px] md:border-b-[6px] border-primary pb-1 inline-block uppercase">
                   {data.name},
                 </span>
