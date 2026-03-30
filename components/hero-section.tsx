@@ -2,10 +2,9 @@
 
 import { Profile } from "@app-types";
 import { Badge } from "@components/ui/badge";
-import { profileApi } from "@lib/api";
+import { getSocialIcon } from "@lib/helper";
 import { Download } from "lucide-react";
-import { useEffect, useRef, useState } from "react";
-import { FaGithub, FaLinkedin, FaTwitter } from "react-icons/fa6";
+import { useRef } from "react";
 import { BlobAvatar } from "./blob-paths";
 import { PaperAirplane } from "./icons";
 import { DashDecorator } from "./icons/dash-decorator";
@@ -15,54 +14,15 @@ import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
-function getSocialIcon(iconName: string) {
-  switch (iconName) {
-    case "Github":
-      return FaGithub;
-    case "Linkedin":
-      return FaLinkedin;
-    case "Twitter":
-      return FaTwitter;
-    default:
-      return FaGithub;
-  }
+interface HeroSectionProps {
+  data: Profile;
 }
 
-export function HeroSection() {
-  const [profile, setProfile] = useState<Profile | null>(null);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState<string | null>(null);
-
+export function HeroSection({ data }: HeroSectionProps) {
   const containerRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    const fetchProfile = async () => {
-      try {
-        setLoading(true);
-        setError(null);
-        const data = await profileApi.getProfile();
-        setProfile(data);
-        // Cập nhật lại các điểm trigger sau khi DOM đã thay đổi từ loading sang profile
-        setTimeout(() => {
-          ScrollTrigger.refresh();
-        }, 100);
-      } catch (err) {
-        console.error("Failed to fetch profile:", err);
-        setError("Failed to load profile data");
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    fetchProfile();
-  }, []);
 
   useGSAP(
     () => {
-      // CHỈ CHẠY khi loading xong và có profile
-      if (loading || error || !profile) return;
-
-      // Ép GSAP tính toán lại toàn bộ tọa độ trang sau khi Content đã thay thế Skeleton
       ScrollTrigger.refresh();
 
       const tl = gsap.timeline({
@@ -102,75 +62,10 @@ export function HeroSection() {
         "-=0.5",
       );
     },
-    { dependencies: [profile, loading], scope: containerRef },
+    { dependencies: [data], scope: containerRef },
   );
 
-  if (loading) {
-    return (
-      <section
-        id="home"
-        className="min-h-screen flex items-center pt-24 md:pt-32 pb-16 bg-background overflow-hidden relative"
-      >
-        <div className="max-w-[1440px] w-full mx-auto px-6 md:px-12">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 md:gap-8 items-center">
-            <div className="space-y-6 md:space-y-8 z-10">
-              <div className="flex flex-col items-start">
-                <Badge
-                  variant="outline"
-                  className="mb-4 text-sm px-4 py-1 border-primary/50 text-primary"
-                >
-                  Loading...
-                </Badge>
-                <h2 className="text-[28px] md:text-[36px] font-mono font-bold text-foreground mb-1 md:mb-2 tracking-wide">
-                  Hello!
-                </h2>
-                <h2 className="text-[32px] md:text-[44px] font-bold text-foreground mb-3 md:mb-4">
-                  <span className="font-mono">I'm</span>{" "}
-                  <span className="text-primary border-b-[4px] md:border-b-[6px] border-primary pb-1 inline-block uppercase">
-                    Loading...
-                  </span>
-                </h2>
-                <h1 className="text-[40px] md:text-[56px] lg:text-[64px] font-bold text-foreground leading-[1.1] tracking-tight">
-                  Loading...
-                </h1>
-              </div>
-              <p className="text-b16-reg md:text-b18-reg text-neutral-04 max-w-[540px] leading-relaxed">
-                Loading profile information...
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-    );
-  }
-
-  if (error || !profile) {
-    return (
-      <section
-        id="home"
-        className="min-h-screen flex items-center pt-24 md:pt-32 pb-16 bg-background overflow-hidden relative"
-      >
-        <div className="max-w-[1440px] w-full mx-auto px-6 md:px-12">
-          <div className="space-y-6">
-            <Badge variant="outline" className="text-red-500 border-red-500">
-              Error
-            </Badge>
-            <h1 className="text-2xl font-bold">Failed to load profile</h1>
-            <button
-              onClick={() => window.location.reload()}
-              className="btn-custom btn-m bg-primary text-white"
-            >
-              Retry
-            </button>
-          </div>
-        </div>
-      </section>
-    );
-  }
-
-  const titleParts = profile.title
-    .split("&")
-    .map((part: string) => part.trim());
+  const titleParts = data.title.split("&").map((part: string) => part.trim());
 
   return (
     <section
@@ -187,7 +82,7 @@ export function HeroSection() {
                   variant="outline"
                   className="mb-4 text-sm px-4 py-1 border-primary/50 text-primary"
                 >
-                  {profile.location}
+                  {data.location}
                 </Badge>
               </div>
 
@@ -197,16 +92,16 @@ export function HeroSection() {
               <h2 className="hero-anim-text opacity-0 text-[32px] md:text-[44px] font-bold text-foreground mb-3 md:mb-4">
                 <span className="font-mono">I'm</span>{" "}
                 <span className="text-primary border-b-[4px] md:border-b-[6px] border-primary pb-1 inline-block uppercase">
-                  {profile.name},
+                  {data.name},
                 </span>
               </h2>
               <h1 className="hero-anim-text opacity-0 text-[40px] md:text-[56px] lg:text-[64px] font-bold text-foreground leading-[1.1] tracking-tight">
-                {profile.title}
+                {data.title}
               </h1>
             </div>
 
             <p className="hero-anim-text opacity-0 text-b16-reg md:text-b18-reg text-neutral-04 max-w-[540px] leading-relaxed">
-              {profile.bio}
+              {data.bio}
             </p>
 
             <div className="hero-anim-text opacity-0 flex flex-row gap-4 pt-2">
@@ -220,7 +115,7 @@ export function HeroSection() {
             </div>
 
             <div className="hero-anim-text opacity-0 flex items-center gap-4 pt-4">
-              {profile.social.map((social) => {
+              {data.social.map((social) => {
                 const IconComponent = getSocialIcon(social.icon);
                 return (
                   <a
@@ -239,7 +134,7 @@ export function HeroSection() {
 
           <div className="relative w-full max-w-[360px] md:max-w-[480px] aspect-square flex items-center justify-center mx-auto lg:ml-auto mt-12 lg:mt-0">
             <div className="hero-anim-img opacity-0 w-[85%] md:w-[90%] transition-transform duration-700 hover:scale-[1.05]">
-              <BlobAvatar src={profile.avatar} alt={profile.name} />
+              <BlobAvatar src={data.avatar} alt={data.name} />
             </div>
 
             <div className="hero-anim-img opacity-0 absolute top-[2%] left-[8%] md:top-[0%] md:left-[5%] -rotate-12 animate-bounce duration-3000">

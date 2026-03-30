@@ -53,13 +53,6 @@ export const techStackApi = {
   },
 };
 
-// Experiences API service
-export const experiencesApi = {
-  getExperiences: (): Promise<Experience[]> => {
-    return apiRequest<Experience[]>("/experiences");
-  },
-};
-
 // Generic API client
 export const apiClient = {
   get: <T>(endpoint: string): Promise<T> => apiRequest<T>(endpoint),

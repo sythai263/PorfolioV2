@@ -1,123 +1,22 @@
-// components/tech-stack-section.tsx
 "use client";
 
 import { TechStack } from "@app-types";
-import { TechIconComponent } from "@components";
 import { useGSAP } from "@gsap/react";
-import { cn } from "@lib";
-import { techStackApi } from "@lib/api";
 import gsap from "gsap";
-import { useEffect, useRef, useState } from "react";
+import { useRef } from "react";
 import "./tech-stack-section.css";
 
-// --- HELPER FUNCTION ---
-function getPosition(
-  index: number,
-  total: number,
-  radiusPercent: number,
-  offsetAngle = 0,
-) {
-  const angle = ((index / total) * 360 + offsetAngle) * (Math.PI / 180);
-  const x = 50 + radiusPercent * Math.cos(angle);
-  const y = 50 - radiusPercent * Math.sin(angle);
-  return { left: `${x}%`, top: `${y}%` };
+import { getPosition } from "@lib";
+import { OrbitNode } from "./orbit-node";
+
+interface TechStackSectionProps {
+  data: TechStack[];
 }
 
-// --- SUB-COMPONENTS TÁCH RỜI ---
-
-// 1. Component hiển thị từng Icon trên quỹ đạo
-interface OrbitNodeProps {
-  name: string;
-  icon?: string;
-  positionStyle?: React.CSSProperties; // Tọa độ (nếu là tâm thì không cần)
-  gsapClass: string; // Class để GSAP bắt animation
-  sizeClass: string; // Kích thước responsive
-  isCenter?: boolean; // Có phải là icon trung tâm không?
-}
-
-function OrbitNode({
-  name,
-  icon,
-  positionStyle,
-  gsapClass,
-  sizeClass,
-  isCenter,
-}: OrbitNodeProps) {
-  return (
-    <div
-      className={cn(
-        gsapClass,
-        "absolute -translate-x-1/2 -translate-y-1/2",
-        sizeClass,
-      )}
-      style={positionStyle ? { ...positionStyle } : { top: "50%", left: "50%" }}
-    >
-      <div
-        className={cn(
-          "relative group w-full h-full",
-          isCenter ? "z-30" : "z-10",
-        )}
-      >
-        <div
-          className={cn(
-            "w-full h-full bg-white/10 backdrop-blur-sm rounded-full flex items-center justify-center border-2 border-white/20 hover:bg-white/30 transition-colors duration-300 p-1",
-            isCenter && "shadow-[0_0_30px_rgba(255,255,255,0.2)]",
-          )}
-        >
-          {icon ? (
-            <TechIconComponent iconName={icon} size="60%" />
-          ) : (
-            <span className="text-white font-bold text-[10px] sm:text-sm text-center leading-tight">
-              {name}
-            </span>
-          )}
-        </div>
-
-        {/* Tooltip */}
-        {icon && (
-          <div
-            className={cn(
-              "absolute bottom-full left-1/2 transform -translate-x-1/2 mb-2 px-3 py-1 bg-gray-900 text-white text-xs sm:text-sm font-medium rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none whitespace-nowrap z-50",
-              "before:absolute before:top-full before:left-1/2 before:transform before:-translate-x-1/2 before:-mt-1 before:w-2 before:h-2 before:bg-gray-900 before:rotate-45",
-            )}
-          >
-            {name}
-          </div>
-        )}
-      </div>
-    </div>
-  );
-}
-
-// 2. Fallback Components (Skeleton & Error) gọn nhẹ hơn
-const FallbackUI = ({ content }: { content: React.ReactNode }) => (
-  <div className="min-h-screen bg-primary flex flex-col items-center justify-center text-white space-y-4">
-    {content}
-  </div>
-);
-
-// --- MAIN COMPONENT ---
-export function TechStackSection() {
-  const [techStack, setTechStack] = useState<TechStack[]>([]);
-  const [status, setStatus] = useState<"loading" | "error" | "success">(
-    "loading",
-  );
+export function TechStackSection({ data }: TechStackSectionProps) {
   const containerRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    techStackApi
-      .getTechStack()
-      .then((data) => {
-        setTechStack(data);
-        setStatus("success");
-      })
-      .catch(() => setStatus("error"));
-  }, []);
-
   useGSAP(
     () => {
-      if (status !== "success") return;
-
       const tl = gsap.timeline({
         scrollTrigger: {
           trigger: containerRef.current,
@@ -165,40 +64,17 @@ export function TechStackSection() {
           stagger: { each: 0.15, from: "random" },
         });
     },
-    { dependencies: [status, techStack], scope: containerRef },
+    { dependencies: [data], scope: containerRef },
   );
-
-  if (status === "loading")
-    return (
-      <FallbackUI
-        content={<div className="animate-pulse">Loading Map...</div>}
-      />
-    );
-  if (status === "error")
-    return (
-      <FallbackUI
-        content={
-          <>
-            <p>Failed to load data.</p>
-            <button
-              onClick={() => window.location.reload()}
-              className="px-4 py-2 bg-white text-primary rounded"
-            >
-              Try Again
-            </button>
-          </>
-        }
-      />
-    );
 
   // Phân loại data
-  const innerItems = techStack.filter(
+  const innerItems = data.filter(
     (item) => item.orbit === "inner" && !item.main,
   );
-  const outerItems = techStack.filter(
+  const outerItems = data.filter(
     (item) => item.orbit === "outer" && !item.main,
   );
-  const mainTech = techStack.find((item) => item.main);
+  const mainTech = data.find((item) => item.main);
 
   return (
     <section
