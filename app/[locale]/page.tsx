@@ -10,11 +10,13 @@ import {
 } from "@components";
 import { getExperience, getProfile, getTechStacks } from "@infrastructure";
 
-type Props = {
-  params: { locale: string };
-};
+interface HomePageProps {
+  params: Promise<{ locale: string }>;
+}
 
-export default async function HomePage({ params: { locale } }: Props) {
+export default async function HomePage({ params }: HomePageProps) {
+  const { locale } = await params;
+
   const experiences = await getExperience(locale);
   const profile = await getProfile(locale);
   const techStacks = await getTechStacks();

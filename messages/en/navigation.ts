@@ -1,0 +1,7 @@
+export const navigation = {
+  home: "Home",
+  about: "About",
+  projects: "Projects",
+  experience: "Experience",
+  contact: "Contact",
+};

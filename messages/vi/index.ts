@@ -7,7 +7,7 @@ import { navigation } from "./navigation";
 import { projects } from "./projects";
 import { techStack } from "./tech-stack";
 
-export const en = {
+export const vi = {
   navigation,
   hero,
   techStack,

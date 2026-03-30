@@ -56,6 +56,12 @@
       "@hooks/*": [
         "./hooks/*"
       ],
+      "@messages": [
+        "./messages/index"
+      ],
+      "@messages/*": [
+        "./messages/*"
+      ],
       "@infrastructure": [
         "./infrastructure/index"
       ],

@@ -1,3 +1,4 @@
+import { en, vi } from "@messages";
 import { hasLocale } from "next-intl";
 import { getRequestConfig } from "next-intl/server";
 import { routing } from "./routing";
@@ -9,17 +10,17 @@ export default getRequestConfig(async ({ requestLocale }) => {
     : routing.defaultLocale;
 
   let messages;
-  // switch (locale) {
-  //   case 'en':
-  //     messages = en;
-  //     break;
-  //   case 'vi':
-  //     messages = vi;
-  //     break;
-  //   default:
-  //     messages = vi;
-  //     break;
-  // }
+  switch (locale) {
+    case "en":
+      messages = en;
+      break;
+    case "vi":
+      messages = vi;
+      break;
+    default:
+      messages = en;
+      break;
+  }
 
   return {
     locale,
