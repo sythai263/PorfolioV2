@@ -3,17 +3,26 @@
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { Mail, Menu, X } from "lucide-react";
+import { useTranslations } from "next-intl";
 import { useEffect, useRef, useState } from "react";
 import { IndividualLogo } from "./icons";
+import { LanguageSwitcher } from "./language-switcher";
 import { ThemeToggle } from "./theme-toggle";
 
 gsap.registerPlugin(useGSAP);
 
-const navLinks = ["Home", "Projects", "Gallery"];
-
 export function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [activeTab, setActiveTab] = useState("Home");
+  const [activeTab, setActiveTab] = useState("home");
+  const t = useTranslations("navigation");
+
+  const navLinks = [
+    { key: "home", label: t("home") },
+    { key: "about", label: t("about") },
+    { key: "projects", label: t("projects") },
+    { key: "experience", label: t("experience") },
+    { key: "contact", label: t("contact") },
+  ];
 
   // UX Chuẩn: Khóa cuộn trang (scroll) khi Menu đang mở (chỉ trên mobile)
   useEffect(() => {
@@ -33,7 +42,7 @@ export function Navbar() {
 
   useGSAP(
     () => {
-      const activeIndex = navLinks.indexOf(activeTab);
+      const activeIndex = navLinks.findIndex((link) => link.key === activeTab);
       const activeBtn = desktopBtnRefs.current[activeIndex];
 
       // Chỉ chạy nếu nút active và cục pill tồn tại (trong màn Desktop)
@@ -70,26 +79,29 @@ export function Navbar() {
                 className="absolute top-1.5 bottom-1.5 rounded-pill bg-[#FFF4E0] dark:bg-primary/20 shadow-sm opacity-0"
               />
               {/* Các nút bấm */}
-              {navLinks.map((link, index) => (
+              {navLinks.slice(0, 3).map((link, index) => (
                 <button
-                  key={link}
+                  key={link.key}
                   ref={(el) => {
                     desktopBtnRefs.current[index] = el;
                   }}
-                  onClick={() => setActiveTab(link)}
+                  onClick={() => setActiveTab(link.key)}
                   className={`relative z-10 px-8 py-2.5 rounded-pill text-b16-semi transition-colors duration-300 ${
-                    activeTab === link
+                    activeTab === link.key
                       ? "text-primary"
                       : "text-neutral-03 hover:text-foreground"
                   }`}
                 >
-                  {link}
+                  {link.label}
                 </button>
               ))}
             </div>
 
-            {/* --- PHẢI: ACTIONS (ThemeToggle + Mail <ẩn trên mob> + Hamburger <hiện trên mob>) --- */}
+            {/* --- PHẢI: ACTIONS (LanguageSwitcher + ThemeToggle + Mail <ẩn trên mob> + Hamburger <hiện trên mob>) --- */}
             <div className="flex items-center justify-end gap-4 md:gap-6">
+              {/* Nút LanguageSwitcher */}
+              <LanguageSwitcher />
+
               {/* Nút ThemeToggle (Responsive trong lõi) */}
               <ThemeToggle />
 
@@ -129,19 +141,19 @@ export function Navbar() {
           <nav className="flex flex-col gap-6">
             {navLinks.map((link) => (
               <button
-                key={link}
+                key={link.key}
                 onClick={() => {
-                  setActiveTab(link);
+                  setActiveTab(link.key);
                   setIsMenuOpen(false); // Bấm xong thì đóng Menu
                 }}
                 // Sử dụng text-t1 (size 32px-48px) và font-bold, màu cam đậm
                 className={`text-left text-t1 font-bold transition-all duration-300 uppercase tracking-tight ${
-                  activeTab === link
+                  activeTab === link.key
                     ? "text-primary translate-x-2"
                     : "text-primary/70 hover:text-primary hover:translate-x-2"
                 }`}
               >
-                {link}
+                {link.label}
               </button>
             ))}
           </nav>

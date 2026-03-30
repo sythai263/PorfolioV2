@@ -10,9 +10,13 @@ import {
 } from "@components";
 import { getExperience, getProfile, getTechStacks } from "@infrastructure";
 
-export default async function HomePage() {
-  const experiences = await getExperience();
-  const profile = await getProfile();
+type Props = {
+  params: { locale: string };
+};
+
+export default async function HomePage({ params: { locale } }: Props) {
+  const experiences = await getExperience(locale);
+  const profile = await getProfile(locale);
   const techStacks = await getTechStacks();
   return (
     <div className="min-h-screen bg-background text-foreground transition-colors duration-500">

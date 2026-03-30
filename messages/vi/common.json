@@ -1,0 +1,52 @@
+{
+  "navigation": {
+    "home": "Trang chủ",
+    "about": "Giới thiệu",
+    "projects": "Dự án",
+    "experience": "Kinh nghiệm",
+    "contact": "Liên hệ"
+  },
+  "hero": {
+    "greeting": "Xin chào, tôi là",
+    "role": "Backend Engineer & Photographer",
+    "bio": "Lập trình viên đam mê với chuyên môn về các công nghệ web hiện đại. Tôi thích tạo ra những ứng dụng đẹp mắt, chức năng giải quyết các vấn đề thực tế.",
+    "cta": "Liên hệ",
+    "scrollDown": "Cuộn xuống"
+  },
+  "techStack": {
+    "title": "Công nghệ",
+    "description": "Các công nghệ tôi làm việc"
+  },
+  "experience": {
+    "title": "Kinh nghiệm làm việc",
+    "current": "Hiện tại",
+    "duration": "{start} - {end}",
+    "present": "Hiện tại"
+  },
+  "projects": {
+    "title": "Dự án nổi bật",
+    "viewAll": "Xem tất cả dự án",
+    "liveDemo": "Xem demo",
+    "sourceCode": "Mã nguồn",
+    "technologies": "Công nghệ"
+  },
+  "contact": {
+    "title": "Liên hệ",
+    "description": "Tôi luôn sẵn lòng lắng nghe về các cơ hội và dự án thú vị mới.",
+    "form": {
+      "name": "Tên",
+      "email": "Email",
+      "message": "Tin nhắn",
+      "send": "Gửi tin nhắn"
+    }
+  },
+  "ctaBanner": {
+    "title": "Hãy cùng làm việc",
+    "description": "Bạn có dự án trong tâm trí? Tôi rất muốn nghe về nó.",
+    "button": "Bắt đầu"
+  },
+  "footer": {
+    "copyright": "© {year} {name}. Đã đăng ký bản quyền.",
+    "builtWith": "Xây dựng với"
+  }
+}

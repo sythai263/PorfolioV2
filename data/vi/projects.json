@@ -1,0 +1,46 @@
+[
+  {
+    "id": "1",
+    "title": "Nền tảng Thương mại điện tử",
+    "description": "Nền tảng thương mại điện tử hiện đại được xây dựng với Next.js và Stripe, có tính năng quản lý tồn kho theo thời gian thực và trải nghiệm thanh toán liền mạch.",
+    "image": "/projects/ecommerce.jpg",
+    "technologies": ["Next.js", "TypeScript", "Stripe", "Tailwind CSS", "PostgreSQL"],
+    "liveUrl": "https://ecommerce-demo.vercel.app",
+    "githubUrl": "https://github.com/johndoe/ecommerce-platform",
+    "category": "web",
+    "featured": true
+  },
+  {
+    "id": "2",
+    "title": "Ứng dụng Quản lý Công việc",
+    "description": "Ứng dụng quản lý công việc hợp tác với cập nhật theo thời gian thực, tính năng kéo và thả, và các tính năng hợp tác nhóm.",
+    "image": "/projects/task-app.jpg",
+    "technologies": ["React", "Node.js", "Socket.io", "MongoDB", "Express"],
+    "liveUrl": "https://task-app-demo.vercel.app",
+    "githubUrl": "https://github.com/johndoe/task-management",
+    "category": "web",
+    "featured": true
+  },
+  {
+    "id": "3",
+    "title": "Bảng điều khiển Thời tiết",
+    "description": "Bảng điều khiển thời tiết đẹp mắt với dự báo chi tiết, bản đồ tương tác, và thông tin thời tiết dựa trên vị trí.",
+    "image": "/projects/weather.jpg",
+    "technologies": ["Vue.js", "OpenWeather API", "Chart.js", "CSS3"],
+    "liveUrl": "https://weather-demo.vercel.app",
+    "githubUrl": "https://github.com/johndoe/weather-dashboard",
+    "category": "web",
+    "featured": false
+  },
+  {
+    "id": "4",
+    "title": "Website Portfolio",
+    "description": "Website portfolio responsive giới thiệu dự án và kỹ năng với hoạt ảnh mượt mà và thiết kế hiện đại.",
+    "image": "/projects/portfolio.jpg",
+    "technologies": ["Next.js", "TypeScript", "Tailwind CSS", "Framer Motion"],
+    "liveUrl": "https://johndoe.dev",
+    "githubUrl": "https://github.com/johndoe/portfolio",
+    "category": "design",
+    "featured": false
+  }
+]

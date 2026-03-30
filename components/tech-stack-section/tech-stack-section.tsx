@@ -7,6 +7,7 @@ import { useRef } from "react";
 import "./tech-stack-section.css";
 
 import { getPosition } from "@lib";
+import { useTranslations } from "next-intl";
 import { OrbitNode } from "./orbit-node";
 
 interface TechStackSectionProps {
@@ -15,6 +16,7 @@ interface TechStackSectionProps {
 
 export function TechStackSection({ data }: TechStackSectionProps) {
   const containerRef = useRef<HTMLDivElement>(null);
+  const t = useTranslations("techStack");
   useGSAP(
     () => {
       const tl = gsap.timeline({
@@ -93,7 +95,7 @@ export function TechStackSection({ data }: TechStackSectionProps) {
         <div className="text-center space-y-4 mb-16 md:mb-20">
           <div className="w-24 md:w-32 h-[1px] bg-white/40 mx-auto mb-6" />
           <h2 className="text-2xl md:text-t2 text-white font-bold tracking-wide">
-            Tech Stack & Skills
+            {t("title")}
           </h2>
         </div>
 

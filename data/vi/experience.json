@@ -1,0 +1,47 @@
+[
+  {
+    "id": "1",
+    "company": "GEEK UP JSC",
+    "position": "Backend Engineer",
+    "location": "Thành phố Hồ Chí Minh, Việt Nam",
+    "startDate": "2022-02",
+    "endDate": "2024-05",
+    "description": "Phát triển backend cho các sản phẩm kỹ thuật số đa dạng, bao gồm các công cụ dữ liệu thương mại điện tử quy mô lớn và nền tảng EdTech có lưu lượng truy cập cao, tập trung mạnh vào khả năng mở rộng hệ thống và các giải pháp hướng đến kinh doanh.",
+    "achievements": [
+      "Xây dựng đường ống đồng bộ hóa dữ liệu có thông lượng cao tích hợp với Shopify và Amazon APIs, xử lý thành công hơn 2 triệu đơn hàng hàng ngày với độ nhất quán 99.9%.",
+      "Thiết kế và tối ưu hóa các RESTful API có khả năng mở rộng cho các nền tảng giáo dục kỹ thuật số, hỗ trợ lưu lượng truy cập người dùng đồng thời lớn đồng thời giảm độ trễ hệ thống tổng thể 30%.",
+      "Xây dựng các dịch vụ backend linh hoạt cho các công cụ quản lý Agile nội bộ, triển khai các tính năng theo thời gian thực và kiểm soát truy cập an toàn để hợp lý hóa quy trình kỹ thuật.",
+      "Hợp tác chặt chẽ với các nhóm sản phẩm đa chức năng để chuyển đổi các yêu cầu kinh doanh phức tạp thành các kiến trúc kỹ thuật mạnh mẽ, hiệu suất cao."
+    ]
+  },
+  {
+    "id": "2",
+    "company": "Shuei Trading Co., Ltd.",
+    "position": "Backend Engineer",
+    "location": "Thành phố Hồ Chí Minh, Việt Nam",
+    "startDate": "2024-06",
+    "endDate": "2024-12",
+    "description": "Duy trì và nâng cấp các nền tảng thương mại điện tử cho thị trường Nhật Bản, tập trung vào việc cung cấp các tính năng backend tùy chỉnh và giải pháp dữ liệu để hỗ trợ các chiến dịch bán hàng của nhóm marketing.",
+    "achievements": [
+      "Duy trì và tối ưu hóa các ứng dụng thương mại điện tử hiện có, đảm bảo tính sẵn sàng hệ thống cao và trải nghiệm mua sắm liền mạch cho thị trường Nhật Bản.",
+      "Phát triển và triển khai nhanh chóng các tính năng tùy chỉnh cho các chiến dịch khuyến mãi, cho phép nhóm marketing nhanh chóng khởi chạy và quản lý các sự kiện bán hàng theo mùa.",
+      "Xây dựng các công cụ trích xuất và báo cáo dữ liệu tùy chỉnh, cung cấp cho nhóm marketing dữ liệu chính xác, theo thời gian thực để phân tích chiến dịch và các chiến lược nhắm mục tiêu.",
+      "Hợp tác hiệu quả với các nhóm xuyên biên giới để chuyển đổi các yêu cầu marketing thành giải pháp kỹ thuật, giảm đáng kể thời gian đưa ra thị trường cho các sáng kiến kinh doanh mới."
+    ]
+  },
+  {
+    "id": "3",
+    "company": "Shuei Trading Vietnam",
+    "position": "Full Stack Developer",
+    "location": "Thành phố Hồ Chí Minh, Việt Nam",
+    "startDate": "2025-01",
+    "endDate": null,
+    "description": "Phát triển thương mại điện tử cho chi nhánh mới tại Việt Nam, chuyên về kỹ thuật ứng dụng Shopify tùy chỉnh, hiện đại hóa hệ thống kế thừa phức tạp, và di chuyển dữ liệu quy mô lớn.",
+    "achievements": [
+      "Điều phối việc di chuyển liền mạch hơn 1 triệu bản ghi đơn hàng lịch sử từ các nền tảng thương mại điện tử kế thừa sang Shopify, đảm bảo không mất dữ liệu và tính toàn vẹn dữ liệu nghiêm ngặt.",
+      "Xây dựng và triển khai các ứng dụng Shopify tùy chỉnh điều chỉnh theo nhu cầu của từng cửa hàng, mở rộng các chức năng cốt lõi và nâng cao trải nghiệm người bán hàng.",
+      "Tái cấu trúc và tối ưu hóa các cơ sở mã kế thừa phức tạp, cải thiện đáng kể hiệu suất xử lý dữ liệu và giảm nợ kỹ thuật.",
+      "Phân tích và chuyển đổi logic kinh doanh tùy chỉnh đã lỗi thời để phù hợp hoàn hảo với hệ sinh thái của Shopify, tuân thủ nghiêm ngặt các giới hạn tỷ lệ API và ràng buộc kiến trúc của nó."
+    ]
+  }
+]

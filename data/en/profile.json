@@ -1,0 +1,25 @@
+{
+  "name": "Thái Lê Sỹ",
+  "title": "Backend Engineer & Photographer",
+  "bio": "Passionate developer with expertise in modern web technologies. I love creating beautiful, functional applications that solve real-world problems.",
+  "avatar": "/avatar.jpg",
+  "email": "sythai263@gmail.com",
+  "location": "Ha Noi, Vietnam",
+  "social": [
+    {
+      "platform": "GitHub",
+      "url": "https://github.com/sythai263",
+      "icon": "Github"
+    },
+    {
+      "platform": "LinkedIn",
+      "url": "https://linkedin.com/in/sythai263",
+      "icon": "Linkedin"
+    },
+    {
+      "platform": "Twitter",
+      "url": "https://twitter.com/sythai263",
+      "icon": "Twitter"
+    }
+  ]
+}

@@ -3,6 +3,7 @@
 import type { Experience } from "@app-types";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { useTranslations } from "next-intl";
 import { useEffect, useRef } from "react";
 import { ExperienceTimelineItem } from "./experiences/experience-timeline-item";
 
@@ -12,6 +13,7 @@ interface ExperiencesSectionProps {
 
 export function ExperiencesSection({ data }: ExperiencesSectionProps) {
   const containerRef = useRef<HTMLDivElement>(null);
+  const t = useTranslations("experience");
 
   // GSAP Animation Logic
   useEffect(() => {
@@ -50,7 +52,7 @@ export function ExperiencesSection({ data }: ExperiencesSectionProps) {
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <h2 className="text-t2 text-foreground mb-8 md:mb-12 transition-colors duration-300">
-          Experiences
+          {t("title")}
         </h2>
 
         {/* SỬA LỖI: Thêm md:h-[400px] để tạo đủ không gian chiều dọc cho chữ */}

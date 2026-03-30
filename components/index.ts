@@ -4,6 +4,7 @@ export * from "./experiences-section";
 export * from "./footer-section";
 export * from "./hero-section";
 export * from "./icon-mapping";
+export * from "./language-switcher";
 export * from "./navbar";
 export * from "./projects-section";
 export * from "./providers";

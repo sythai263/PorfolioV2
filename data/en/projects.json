@@ -1,0 +1,46 @@
+[
+  {
+    "id": "1",
+    "title": "E-Commerce Platform",
+    "description": "A modern e-commerce platform built with Next.js and Stripe, featuring real-time inventory management and seamless checkout experience.",
+    "image": "/projects/ecommerce.jpg",
+    "technologies": ["Next.js", "TypeScript", "Stripe", "Tailwind CSS", "PostgreSQL"],
+    "liveUrl": "https://ecommerce-demo.vercel.app",
+    "githubUrl": "https://github.com/johndoe/ecommerce-platform",
+    "category": "web",
+    "featured": true
+  },
+  {
+    "id": "2",
+    "title": "Task Management App",
+    "description": "A collaborative task management application with real-time updates, drag-and-drop functionality, and team collaboration features.",
+    "image": "/projects/task-app.jpg",
+    "technologies": ["React", "Node.js", "Socket.io", "MongoDB", "Express"],
+    "liveUrl": "https://task-app-demo.vercel.app",
+    "githubUrl": "https://github.com/johndoe/task-management",
+    "category": "web",
+    "featured": true
+  },
+  {
+    "id": "3",
+    "title": "Weather Dashboard",
+    "description": "A beautiful weather dashboard with detailed forecasts, interactive maps, and location-based weather information.",
+    "image": "/projects/weather.jpg",
+    "technologies": ["Vue.js", "OpenWeather API", "Chart.js", "CSS3"],
+    "liveUrl": "https://weather-demo.vercel.app",
+    "githubUrl": "https://github.com/johndoe/weather-dashboard",
+    "category": "web",
+    "featured": false
+  },
+  {
+    "id": "4",
+    "title": "Portfolio Website",
+    "description": "A responsive portfolio website showcasing projects and skills with smooth animations and modern design.",
+    "image": "/projects/portfolio.jpg",
+    "technologies": ["Next.js", "TypeScript", "Tailwind CSS", "Framer Motion"],
+    "liveUrl": "https://johndoe.dev",
+    "githubUrl": "https://github.com/johndoe/portfolio",
+    "category": "design",
+    "featured": false
+  }
+]

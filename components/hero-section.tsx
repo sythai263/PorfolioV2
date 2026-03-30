@@ -13,6 +13,7 @@ import { DashDecorator } from "./icons/dash-decorator";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { useTranslations } from "next-intl";
 
 interface HeroSectionProps {
   data: Profile;
@@ -20,6 +21,7 @@ interface HeroSectionProps {
 
 export function HeroSection({ data }: HeroSectionProps) {
   const containerRef = useRef<HTMLDivElement>(null);
+  const t = useTranslations("hero");
 
   useGSAP(
     () => {
@@ -87,7 +89,7 @@ export function HeroSection({ data }: HeroSectionProps) {
               </div>
 
               <h2 className="hero-anim-text opacity-0 text-[28px] md:text-[36px] font-mono font-bold text-foreground mb-1 md:mb-2 tracking-wide">
-                Hello!
+                {t("greeting")}
               </h2>
               <h2 className="hero-anim-text opacity-0 text-[32px] md:text-[44px] font-bold text-foreground mb-3 md:mb-4">
                 <span className="font-mono">I'm</span>{" "}
@@ -106,7 +108,7 @@ export function HeroSection({ data }: HeroSectionProps) {
 
             <div className="hero-anim-text opacity-0 flex flex-row gap-4 pt-2">
               <button className="btn-custom btn-m md:btn-l bg-primary text-white hover:brightness-110 min-w-[130px] md:min-w-[160px]">
-                Xem dự án
+                {t("cta")}
               </button>
               <button className="btn-custom btn-m md:btn-l bg-transparent border-2 border-primary text-primary hover:bg-primary/5 min-w-[130px] md:min-w-[160px] flex items-center justify-center gap-2">
                 <Download className="w-4 h-4" />
