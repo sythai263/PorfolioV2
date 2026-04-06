@@ -1,0 +1,49 @@
+[
+  {
+    "id": "1",
+    "schools": [
+      "Đại học FPT",
+      "Coursera"
+    ],
+    "duration": "2018 - 2022",
+    "degree": "KỸ THUẬT PHẦN MỀM",
+    "descriptions": [
+      "Tốt nghiệp loại Giỏi (Điểm trung bình: 3.8/4.0).",
+      "Chuyên ngành Phát triển Web và Điện toán Đám mây.",
+      "Làm trưởng nhóm 5 thành viên trong dự án tốt nghiệp cuối khóa."
+    ],
+    "image": "/images/education/cap-blue.png",
+    "theme": "blue"
+  },
+  {
+    "id": "2",
+    "schools": [
+      "Udacity",
+      "Google IT"
+    ],
+    "duration": "2022 - 2023",
+    "degree": "LẬP TRÌNH FULL-STACK",
+    "descriptions": [
+      "Hoàn thành khóa học bootcamp lập trình chuyên sâu kéo dài 6 tháng.",
+      "Xây dựng nhiều ứng dụng thực tế với React, Node.js và cơ sở dữ liệu.",
+      "Có kinh nghiệm làm việc thực tế với quy trình CI/CD và triển khai dự án."
+    ],
+    "image": "/images/education/cap-orange.png",
+    "theme": "orange"
+  },
+  {
+    "id": "3",
+    "schools": [
+      "Học viện AWS"
+    ],
+    "duration": "2023 - Hiện tại",
+    "degree": "KIẾN TRÚC SƯ CLOUD",
+    "descriptions": [
+      "Đạt chứng chỉ AWS Certified Solutions Architect – Associate.",
+      "Nghiên cứu chuyên sâu về kiến trúc serverless và microservices.",
+      "Tập trung vào khả năng mở rộng hệ thống, bảo mật và tối ưu hiệu suất."
+    ],
+    "image": "/images/education/cap-green.png",
+    "theme": "green"
+  }
+]

@@ -1,5 +1,6 @@
 import { contact } from "./contact";
 import { ctaBanner } from "./cta-banner";
+import { education } from "./education";
 import { experience } from "./experience";
 import { footer } from "./footer";
 import { hero } from "./hero";
@@ -13,6 +14,7 @@ export const en = {
   techStack,
   experience,
   projects,
+  education,
   contact,
   ctaBanner,
   footer,

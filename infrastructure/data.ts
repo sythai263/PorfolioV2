@@ -1,4 +1,11 @@
-import { Experience, Profile, Project, Skill, TechStack } from "@app-types";
+import {
+  EducationType,
+  Experience,
+  Profile,
+  Project,
+  Skill,
+  TechStack,
+} from "@app-types";
 
 export async function getProfile(locale: string = "en"): Promise<Profile> {
   const profileData = await import(`@data/${locale}/profile.json`);
@@ -7,6 +14,12 @@ export async function getProfile(locale: string = "en"): Promise<Profile> {
 
 export async function getProjects(locale: string = "en"): Promise<Project[]> {
   const projectsData = await import(`@data/${locale}/projects.json`);
+  return projectsData.default;
+}
+export async function getEducations(
+  locale: string = "en",
+): Promise<EducationType[]> {
+  const projectsData = await import(`@data/${locale}/educations.json`);
   return projectsData.default;
 }
 

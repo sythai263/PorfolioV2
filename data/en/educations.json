@@ -1,0 +1,49 @@
+[
+  {
+    "id": "1",
+    "schools": [
+      "FPT University",
+      "Coursera"
+    ],
+    "duration": "2018 - 2022",
+    "degree": "SOFTWARE ENGINEERING",
+    "descriptions": [
+      "Graduated with Honors (GPA: 3.8/4.0).",
+      "Specialized in Web Development and Cloud Computing.",
+      "Led a team of 5 members in the final year capstone project."
+    ],
+    "image": "/images/education/cap-blue.png",
+    "theme": "blue"
+  },
+  {
+    "id": "2",
+    "schools": [
+      "Udacity",
+      "Google IT"
+    ],
+    "duration": "2022 - 2023",
+    "degree": "FULL-STACK DEVELOPER",
+    "descriptions": [
+      "Completed an intensive 6-month coding bootcamp.",
+      "Built multiple production-ready web applications using React and Node.js.",
+      "Gained hands-on experience with CI/CD pipelines and deployment."
+    ],
+    "image": "/images/education/cap-orange.png",
+    "theme": "orange"
+  },
+  {
+    "id": "3",
+    "schools": [
+      "AWS Academy"
+    ],
+    "duration": "2023 - Present",
+    "degree": "CLOUD ARCHITECT",
+    "descriptions": [
+      "Achieved AWS Certified Solutions Architect – Associate certification.",
+      "Learning advanced serverless architectures and microservices.",
+      "Focusing on system scalability, security, and high performance."
+    ],
+    "image": "/images/education/cap-green.png",
+    "theme": "green"
+  }
+]
