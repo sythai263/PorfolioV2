@@ -8,4 +8,5 @@ export interface Project {
   githubUrl?: string;
   category: string;
   featured: boolean;
+  isStaggered: boolean;
 }

@@ -8,7 +8,12 @@ import {
   ProjectsSection,
   TechStackSection,
 } from "@components";
-import { getExperience, getProfile, getTechStacks } from "@infrastructure";
+import {
+  getExperience,
+  getProfile,
+  getProjects,
+  getTechStacks,
+} from "@infrastructure";
 
 interface HomePageProps {
   params: Promise<{ locale: string }>;
@@ -20,6 +25,7 @@ export default async function HomePage({ params }: HomePageProps) {
   const experiences = await getExperience(locale);
   const profile = await getProfile(locale);
   const techStacks = await getTechStacks();
+  const projects = await getProjects();
   return (
     <div className="min-h-screen bg-background text-foreground transition-colors duration-500">
       <Navbar />
@@ -28,7 +34,7 @@ export default async function HomePage({ params }: HomePageProps) {
         <HeroSection data={profile} />
         <TechStackSection data={techStacks} />
         <ExperiencesSection data={experiences} />
-        <ProjectsSection />
+        <ProjectsSection data={projects} />
         <ContactSection />
         <CtaBannerSection />
       </main>
