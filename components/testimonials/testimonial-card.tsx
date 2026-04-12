@@ -81,13 +81,13 @@ export function TestimonialCard({ item }: TestimonialCardProps) {
 
         {/* Quote Content */}
         <div className="relative w-full flex-1 flex items-center justify-center">
-          <QuoteIcon className="absolute -top-4 -left-2 rotate-180" />
+          <QuoteIcon className="absolute -top-4 -left-2 opacity-90 " />
 
           <p className="text-center text-sm md:text-base text-muted-foreground px-6 leading-relaxed relative z-10">
             {item.content}
           </p>
 
-          <QuoteIcon className="absolute -bottom-4 -right-2" />
+          <QuoteIcon className="absolute -bottom-4 -right-2 rotate-180 opacity-90" />
         </div>
       </div>
     </div>
