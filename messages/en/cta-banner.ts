@@ -1,5 +1,6 @@
 export const ctaBanner = {
-  title: "Let's Work Together",
-  description: "Have a project in mind? I'd love to hear about it.",
-  button: "Get Started",
+  title: "View details of my journey and skills",
+  description:
+    "Download my comprehensive CV to learn more about my experience, skills, and projects I've worked on.",
+  downloadCV: "Download CV",
 };

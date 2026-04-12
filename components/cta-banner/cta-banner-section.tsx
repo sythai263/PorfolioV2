@@ -1,6 +1,11 @@
-import { Download } from 'lucide-react';
+"use client";
+
+import { Download } from "lucide-react";
+import { useTranslations } from "next-intl";
 
 export function CtaBannerSection() {
+  const t = useTranslations("ctaBanner");
+
   return (
     <section className="py-20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -12,15 +17,13 @@ export function CtaBannerSection() {
 
           {/* Content */}
           <div className="relative z-10 text-center space-y-6">
-            <h2 className="text-t2 text-white">
-              Xem chi tiết hành trình và kỹ năng của tôi
-            </h2>
+            <h2 className="text-t2 text-white">{t("title")}</h2>
             <p className="text-b16-reg text-white/90 max-w-2xl mx-auto">
-              Download my comprehensive CV to learn more about my experience, skills, and the projects I've worked on.
+              {t("description")}
             </p>
             <button className="btn-custom btn-l bg-white text-primary hover:bg-neutral-09 transition-colors">
               <Download className="w-4 h-4 mr-2" />
-              Tải CV
+              {t("downloadCV")}
             </button>
           </div>
         </div>
