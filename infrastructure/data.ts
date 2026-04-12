@@ -5,6 +5,7 @@ import {
   Project,
   Skill,
   TechStack,
+  TestimonialType,
 } from "@app-types";
 
 export async function getProfile(locale: string = "en"): Promise<Profile> {
@@ -66,4 +67,11 @@ export async function getSkillsByCategory(category: string): Promise<Skill[]> {
 export async function getTechStacks(): Promise<TechStack[]> {
   const techStacksData = await import("@data/tech-stack.json");
   return techStacksData.default;
+}
+
+export async function getTestimonials(
+  locale: string = "en",
+): Promise<TestimonialType[]> {
+  const testimonialsData = await import(`@data/${locale}/testimonials.json`);
+  return testimonialsData.default;
 }

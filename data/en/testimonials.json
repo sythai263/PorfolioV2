@@ -1,0 +1,26 @@
+[
+  {
+    "id": "1",
+    "name": "Sarah K.",
+    "role": "CEO công ty BC",
+    "avatar": "/images/avatar/company-1.png",
+    "rating": 5,
+    "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+  },
+  {
+    "id": "2",
+    "name": "Michael D.",
+    "role": "CTO TechGlobal",
+    "avatar": "/images/avatar/company-2.png",
+    "rating": 5,
+    "content": "Dự án đã được hoàn thiện đúng tiến độ với chất lượng vượt mong đợi. Đội ngũ có chuyên môn rất cao và nhiệt tình."
+  },
+  {
+    "id": "3",
+    "name": "David W.",
+    "role": "Founder StartupX",
+    "avatar": "/images/avatar/company-3.png",
+    "rating": 5,
+    "content": "Một trải nghiệm tuyệt vời! Sản phẩm cuối cùng không chỉ đẹp về mặt UI/UX mà còn hoạt động vô cùng mượt mà."
+  }
+]

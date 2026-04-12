@@ -7,5 +7,7 @@ export * from "./logo";
 export * from "./moon-desktop";
 export * from "./moon-mobile";
 export * from "./paper-airplane";
+export * from "./quote";
+export * from "./star";
 export * from "./sun-desktop";
 export * from "./sun-mobile";
