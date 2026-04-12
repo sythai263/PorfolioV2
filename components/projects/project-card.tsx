@@ -55,7 +55,7 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
         className={cn(
           "relative aspect-[4/5] overflow-hidden rounded-[32px] md:rounded-[40px]",
           "border border-border cursor-pointer group",
-          "bg-neutral-100 dark:bg-neutral-800 transition-all duration-500 ease-out",
+          "bg-card transition-all duration-500 ease-out",
           // Xử lý Active state (phóng to/làm mờ)
           isActive
             ? "scale-100 opacity-100 shadow-xl"
@@ -66,7 +66,7 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
         <div
           className={cn(
             "absolute inset-0 bg-cover bg-center transition-transform duration-700",
-            "bg-neutral-200 dark:bg-neutral-700 group-hover:scale-105",
+            "bg-muted group-hover:scale-105",
           )}
           style={{ backgroundImage: `url(${project.image})` }}
         />
@@ -84,7 +84,7 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
           <h3
             className={cn(
               "text-[24px] md:text-[36px] font-bold drop-shadow-sm transition-colors",
-              "text-neutral-900 dark:text-white",
+              "text-foreground",
             )}
           >
             {project.title}

@@ -46,8 +46,8 @@ export function TestimonialCard({ item }: TestimonialCardProps) {
         className={cn(
           "relative flex flex-col items-center h-full min-h-[400px] p-8",
           "rounded-[32px] transition-all duration-500 ease-out",
-          // Màu nền sáng/tối (mô phỏng màu xanh đen trong hình)
-          "bg-white dark:bg-[#2B2D3A] border border-border dark:border-transparent",
+          // Màu nền sáng/tối (sử dụng màu design system)
+          "bg-card dark:bg-card border-border dark:border-transparent",
           // Trạng thái thu/phóng trên Mobile
           isActive
             ? "scale-100 opacity-100 shadow-xl"
@@ -55,7 +55,7 @@ export function TestimonialCard({ item }: TestimonialCardProps) {
         )}
       >
         {/* Avatar */}
-        <div className="w-16 h-16 md:w-20 md:h-20 rounded-full bg-neutral-100 mb-4 overflow-hidden shrink-0">
+        <div className="w-16 h-16 md:w-20 md:h-20 rounded-full bg-muted mb-4 overflow-hidden shrink-0">
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
             src={item.avatar}
@@ -65,17 +65,17 @@ export function TestimonialCard({ item }: TestimonialCardProps) {
         </div>
 
         {/* Name & Role */}
-        <h3 className="text-xl md:text-2xl font-bold text-neutral-900 dark:text-white text-center">
+        <h3 className="text-xl md:text-2xl font-bold text-foreground text-center">
           {item.name}
         </h3>
-        <p className="text-sm text-neutral-500 dark:text-neutral-400 mt-1 mb-4 text-center">
+        <p className="text-sm text-muted-foreground mt-1 mb-4 text-center">
           {item.role}
         </p>
 
         {/* Rating Stars */}
         <div className="flex items-center justify-center gap-1 mb-8">
           {Array.from({ length: item.rating }).map((_, i) => (
-            <StarIcon key={i} className="w-5 h-5 text-[#FFB000]" />
+            <StarIcon key={i} className="w-5 h-5 text-primary" />
           ))}
         </div>
 
@@ -83,7 +83,7 @@ export function TestimonialCard({ item }: TestimonialCardProps) {
         <div className="relative w-full flex-1 flex items-center justify-center">
           <QuoteIcon className="absolute -top-4 -left-2 rotate-180" />
 
-          <p className="text-center text-sm md:text-base text-neutral-700 dark:text-neutral-300 px-6 leading-relaxed relative z-10">
+          <p className="text-center text-sm md:text-base text-muted-foreground px-6 leading-relaxed relative z-10">
             {item.content}
           </p>
 

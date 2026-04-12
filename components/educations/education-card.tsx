@@ -93,7 +93,7 @@ export function EducationCard({ item }: EducationCardProps) {
         </div>
 
         {/* Degree Title */}
-        <h3 className="text-2xl md:text-[28px] leading-tight font-bold text-neutral-900 dark:text-white mb-6 z-10 uppercase w-[80%]">
+        <h3 className="text-2xl md:text-[28px] leading-tight font-bold text-foreground mb-6 z-10 uppercase w-[80%]">
           {item.degree}
         </h3>
 
@@ -102,9 +102,9 @@ export function EducationCard({ item }: EducationCardProps) {
           {item.descriptions.map((desc, i) => (
             <li
               key={i}
-              className="text-sm md:text-base text-neutral-500 dark:text-neutral-400 flex items-start"
+              className="text-sm md:text-base text-muted-foreground flex items-start"
             >
-              <span className="mr-2 mt-[6px] h-1.5 w-1.5 rounded-full bg-neutral-300 dark:bg-neutral-600 shrink-0" />
+              <span className="mr-2 mt-[6px] h-1.5 w-1.5 rounded-full bg-muted-foreground shrink-0" />
               {desc}
             </li>
           ))}

@@ -50,7 +50,7 @@ export function TestimonialSection({ data = [] }: TestimonialSectionProps) {
       ref={containerRef}
       className={cn(
         "py-20 md:py-24 overflow-hidden transition-colors duration-500",
-        "bg-neutral-50 dark:bg-[#09090b]", // Tùy chỉnh nền tổng thể của section
+        "bg-background",
       )}
     >
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
@@ -59,7 +59,7 @@ export function TestimonialSection({ data = [] }: TestimonialSectionProps) {
           <h2
             className={cn(
               "text-[40px] md:text-[56px] font-bold drop-shadow-sm transition-colors",
-              "text-neutral-900 dark:text-white",
+              "text-foreground",
             )}
           >
             {t("title") || "Testimonials"}
@@ -67,7 +67,7 @@ export function TestimonialSection({ data = [] }: TestimonialSectionProps) {
           <p
             className={cn(
               "text-base md:text-lg transition-colors",
-              "text-neutral-500 dark:text-neutral-400",
+              "text-muted-foreground",
             )}
           >
             {t("description") ||

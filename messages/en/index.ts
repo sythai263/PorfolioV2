@@ -7,6 +7,7 @@ import { hero } from "./hero";
 import { navigation } from "./navigation";
 import { projects } from "./projects";
 import { techStack } from "./tech-stack";
+import { testimonials } from "./testimonials";
 
 export const en = {
   navigation,
@@ -14,8 +15,9 @@ export const en = {
   techStack,
   experience,
   projects,
-  education,
   contact,
   ctaBanner,
   footer,
+  testimonials,
+  education,
 };

@@ -6,7 +6,7 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useTranslations } from "next-intl";
 import { useRef, useState } from "react";
-import { EducationCard, type EducationType } from "./education-card";
+import { EducationCard } from "./education-card";
 
 if (typeof window !== "undefined") {
   gsap.registerPlugin(ScrollTrigger);
@@ -78,7 +78,7 @@ export function EducationSection({ data = [] }: EducationSectionProps) {
       ref={containerRef}
       className={cn(
         "py-20 md:py-24 overflow-hidden transition-colors duration-500",
-        "bg-white dark:bg-[#09090b]", // Tùy chỉnh màu nền section tại đây
+        "bg-background",
       )}
     >
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
@@ -87,7 +87,7 @@ export function EducationSection({ data = [] }: EducationSectionProps) {
           <h2
             className={cn(
               "text-[40px] md:text-[56px] font-bold drop-shadow-sm transition-colors",
-              "text-neutral-900 dark:text-white",
+              "text-foreground",
             )}
           >
             {t("title") || "Education"}
@@ -95,7 +95,7 @@ export function EducationSection({ data = [] }: EducationSectionProps) {
           <p
             className={cn(
               "text-base md:text-lg transition-colors",
-              "text-neutral-500 dark:text-neutral-400",
+              "text-muted-foreground",
             )}
           >
             {t("description") || "Lorem ipsum dolor sit amet..."}

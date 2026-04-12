@@ -49,7 +49,7 @@ export function ProjectsSection({ data = [] }: ProjectsSectionProps) {
       ref={containerRef}
       className={cn(
         "py-20 md:py-24 overflow-hidden transition-colors duration-500",
-        "bg-white dark:bg-[#09090b]",
+        "bg-background",
       )}
     >
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
@@ -58,7 +58,7 @@ export function ProjectsSection({ data = [] }: ProjectsSectionProps) {
           <h2
             className={cn(
               "text-[40px] md:text-[56px] font-bold drop-shadow-sm transition-colors",
-              "text-neutral-900 dark:text-white",
+              "text-foreground",
             )}
           >
             {t("title")}
@@ -66,7 +66,7 @@ export function ProjectsSection({ data = [] }: ProjectsSectionProps) {
           <p
             className={cn(
               "text-base md:text-lg transition-colors",
-              "text-neutral-500 dark:text-neutral-400",
+              "text-muted-foreground",
             )}
           >
             {t("description")}
@@ -100,9 +100,9 @@ export function ProjectsSection({ data = [] }: ProjectsSectionProps) {
         <div className="mt-12 flex justify-center text-center md:mt-20">
           <button
             className={cn(
-              "min-w-[200px] rounded-full px-8 py-3 text-white font-semibold transition-all",
-              "bg-[#FFB000] hover:bg-[#E59E00]",
-              "shadow-lg shadow-[#FFB000]/20 hover:shadow-xl hover:shadow-[#FFB000]/30",
+              "min-w-[200px] rounded-full px-8 py-3 text-primary-foreground font-semibold transition-all",
+              "bg-primary hover:brightness-110",
+              "shadow-lg shadow-primary/20 hover:shadow-xl hover:shadow-primary/30",
               "hover:-translate-y-1",
             )}
           >
