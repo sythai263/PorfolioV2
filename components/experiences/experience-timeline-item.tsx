@@ -1,5 +1,4 @@
-// components/experiences/experience-timeline-item.tsx
-"use client"; // Cần thiết vì chúng ta sẽ dùng useState
+"use client";
 
 import type { Experience } from "@app-types";
 import {

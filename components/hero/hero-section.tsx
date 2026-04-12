@@ -5,11 +5,10 @@ import { Badge } from "@components/ui/badge";
 import { getSocialIcon } from "@lib/helper";
 import { Download } from "lucide-react";
 import { useRef } from "react";
-import { BlobAvatar } from "./blob-paths";
-import { PaperAirplane } from "./icons";
-import { DashDecorator } from "./icons/dash-decorator";
 
 // --- GSAP IMPORTS ---
+import { BlobAvatar } from "@components/blob-paths";
+import { DashDecorator, PaperAirplane } from "@components/icons";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";

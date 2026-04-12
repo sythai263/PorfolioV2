@@ -5,7 +5,7 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useTranslations } from "next-intl";
 import { useEffect, useRef } from "react";
-import { ExperienceTimelineItem } from "./experiences/experience-timeline-item";
+import { ExperienceTimelineItem } from "./experience-timeline-item";
 
 interface ExperiencesSectionProps {
   data: Experience[];
