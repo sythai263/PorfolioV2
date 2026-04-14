@@ -12,4 +12,4 @@ export const StarIcon = ({ className }: { className?: string }) => (
       fill="currentColor"
     />
   </svg>
-);
+)

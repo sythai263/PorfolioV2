@@ -12,7 +12,7 @@ export const MoonMobile = ({ className }: { className?: string }) => (
       <circle cx="14" cy="11" r="6.62857" fill="url(#paint1_linear_139_2053)" />
       <mask
         id="mask0_139_2053"
-        style={{ maskType: "alpha" }}
+        style={{ maskType: 'alpha' }}
         maskUnits="userSpaceOnUse"
         x="6"
         y="3"
@@ -22,36 +22,11 @@ export const MoonMobile = ({ className }: { className?: string }) => (
         <circle cx="14" cy="11" r="8" fill="url(#paint2_linear_139_2053)" />
       </mask>
       <g mask="url(#mask0_139_2053)">
-        <circle
-          cx="18.5715"
-          cy="14.2001"
-          r="3.42857"
-          fill="url(#paint3_linear_139_2053)"
-        />
-        <circle
-          cx="12.1714"
-          cy="17.8572"
-          r="2.05714"
-          fill="url(#paint4_linear_139_2053)"
-        />
-        <circle
-          cx="14.6857"
-          cy="10.0857"
-          r="0.457143"
-          fill="url(#paint5_linear_139_2053)"
-        />
-        <circle
-          cx="12.1714"
-          cy="12.6"
-          r="0.914286"
-          fill="url(#paint6_linear_139_2053)"
-        />
-        <circle
-          cx="7.48572"
-          cy="12.2571"
-          r="1.25714"
-          fill="url(#paint7_linear_139_2053)"
-        />
+        <circle cx="18.5715" cy="14.2001" r="3.42857" fill="url(#paint3_linear_139_2053)" />
+        <circle cx="12.1714" cy="17.8572" r="2.05714" fill="url(#paint4_linear_139_2053)" />
+        <circle cx="14.6857" cy="10.0857" r="0.457143" fill="url(#paint5_linear_139_2053)" />
+        <circle cx="12.1714" cy="12.6" r="0.914286" fill="url(#paint6_linear_139_2053)" />
+        <circle cx="7.48572" cy="12.2571" r="1.25714" fill="url(#paint7_linear_139_2053)" />
       </g>
     </g>
     <defs>
@@ -77,11 +52,7 @@ export const MoonMobile = ({ className }: { className?: string }) => (
           type="matrix"
           values="0 0 0 0 0.411765 0 0 0 0 0.411765 0 0 0 0 0.411765 0 0 0 0.25 0"
         />
-        <feBlend
-          mode="normal"
-          in2="BackgroundImageFix"
-          result="effect1_dropShadow_139_2053"
-        />
+        <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_139_2053" />
         <feBlend
           mode="normal"
           in="SourceGraphic"
@@ -180,4 +151,4 @@ export const MoonMobile = ({ className }: { className?: string }) => (
       </linearGradient>
     </defs>
   </svg>
-);
+)

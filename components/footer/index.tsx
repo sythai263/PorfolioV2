@@ -1,1 +1,1 @@
-export * from "./footer-section";
+export * from './footer-section'

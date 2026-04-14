@@ -8,12 +8,7 @@ export const CloudDarkMobile = ({ className }: { className?: string }) => (
     xmlns="http://www.w3.org/2000/svg"
   >
     <g filter="url(#filter0_i_139_2080)">
-      <rect
-        width="45"
-        height="20"
-        rx="10"
-        fill="url(#paint0_linear_139_2080)"
-      />
+      <rect width="45" height="20" rx="10" fill="url(#paint0_linear_139_2080)" />
     </g>
     <path
       d="M25.5694 5.7525C25.679 5.59743 25.9221 5.63976 25.9714 5.82247L26.1456 6.46834C26.1656 6.54262 26.2231 6.60141 26.2975 6.62376L26.945 6.81814C27.1282 6.87313 27.1626 7.11456 27.0019 7.21731L26.4337 7.58049C26.3684 7.62227 26.3296 7.69443 26.331 7.77129L26.344 8.43955C26.3476 8.6286 26.1257 8.73549 25.9771 8.61627L25.4519 8.19487C25.3914 8.1464 25.3099 8.13222 25.2364 8.15736L24.5969 8.37599C24.416 8.43784 24.2445 8.26247 24.3134 8.08605L24.5568 7.46242C24.5848 7.39069 24.5733 7.30977 24.5264 7.24845L24.1182 6.71531C24.0027 6.56448 24.1186 6.3492 24.3098 6.35938L24.9856 6.39537C25.0633 6.3995 25.1376 6.36367 25.1822 6.30063L25.5694 5.7525Z"
@@ -46,12 +41,7 @@ export const CloudDarkMobile = ({ className }: { className?: string }) => (
         colorInterpolationFilters="sRGB"
       >
         <feFlood floodOpacity="0" result="BackgroundImageFix" />
-        <feBlend
-          mode="normal"
-          in="SourceGraphic"
-          in2="BackgroundImageFix"
-          result="shape"
-        />
+        <feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape" />
         <feColorMatrix
           in="SourceAlpha"
           type="matrix"
@@ -67,15 +57,8 @@ export const CloudDarkMobile = ({ className }: { className?: string }) => (
         <feOffset dy="6" />
         <feGaussianBlur stdDeviation="4" />
         <feComposite in2="hardAlpha" operator="arithmetic" k2="-1" k3="1" />
-        <feColorMatrix
-          type="matrix"
-          values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0"
-        />
-        <feBlend
-          mode="normal"
-          in2="shape"
-          result="effect1_innerShadow_139_2080"
-        />
+        <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0" />
+        <feBlend mode="normal" in2="shape" result="effect1_innerShadow_139_2080" />
       </filter>
       <linearGradient
         id="paint0_linear_139_2080"
@@ -145,4 +128,4 @@ export const CloudDarkMobile = ({ className }: { className?: string }) => (
       </linearGradient>
     </defs>
   </svg>
-);
+)

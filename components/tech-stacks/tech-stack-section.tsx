@@ -1,82 +1,78 @@
-"use client";
+'use client'
 
-import { TechStack } from "@app-types";
-import { useGSAP } from "@gsap/react";
-import gsap from "gsap";
-import { useRef } from "react";
-import "./tech-stack-section.css";
+import { TechStack } from '@app-types'
+import { useGSAP } from '@gsap/react'
+import gsap from 'gsap'
+import { useRef } from 'react'
+import './tech-stack-section.css'
 
-import { getPosition } from "@lib";
-import { useTranslations } from "next-intl";
-import { OrbitNode } from "./orbit-node";
+import { getPosition } from '@lib'
+import { useTranslations } from 'next-intl'
+import { OrbitNode } from './orbit-node'
 
 interface TechStackSectionProps {
-  data: TechStack[];
+  data: TechStack[]
 }
 
 export function TechStackSection({ data }: TechStackSectionProps) {
-  const containerRef = useRef<HTMLDivElement>(null);
-  const t = useTranslations("techStack");
+  const containerRef = useRef<HTMLDivElement>(null)
+  const t = useTranslations('techStack')
   useGSAP(
     () => {
       const tl = gsap.timeline({
         scrollTrigger: {
           trigger: containerRef.current,
-          start: "top 75%",
-          end: "bottom 25%",
-          toggleActions: "play reset play reset",
+          start: 'top 75%',
+          end: 'bottom 25%',
+          toggleActions: 'play reset play reset',
         },
-      });
+      })
 
       tl.fromTo(
-        ".gsap-center",
+        '.gsap-center',
         { scale: 0, opacity: 0 },
-        { scale: 1, opacity: 1, duration: 0.6, ease: "back.out(1.7)" },
+        { scale: 1, opacity: 1, duration: 0.6, ease: 'back.out(1.7)' },
       )
         .fromTo(
-          ".gsap-inner",
+          '.gsap-inner',
           { scale: 0, opacity: 0 },
           {
             scale: 1,
             opacity: 1,
             duration: 0.5,
             stagger: 0.1,
-            ease: "back.out(1.5)",
+            ease: 'back.out(1.5)',
           },
-          "-=0.2",
+          '-=0.2',
         )
         .fromTo(
-          ".gsap-outer",
+          '.gsap-outer',
           { scale: 0, opacity: 0 },
           {
             scale: 1,
             opacity: 1,
             duration: 0.5,
             stagger: 0.1,
-            ease: "back.out(1.5)",
+            ease: 'back.out(1.5)',
           },
-          "-=0.3",
+          '-=0.3',
         )
-        .to(".gsap-icon", {
+        .to('.gsap-icon', {
           scale: 1.15,
           duration: 1.2,
           yoyo: true,
           repeat: -1,
-          ease: "sine.inOut",
-          stagger: { each: 0.15, from: "random" },
-        });
+          ease: 'sine.inOut',
+          stagger: { each: 0.15, from: 'random' },
+        })
     },
     { dependencies: [data], scope: containerRef },
-  );
+  )
 
   // Phân loại data
-  const innerItems = data.filter(
-    (item) => item.orbit === "inner" && !item.main,
-  );
-  const outerItems = data.filter(
-    (item) => item.orbit === "outer" && !item.main,
-  );
-  const mainTech = data.find((item) => item.main);
+  const innerItems = data.filter((item) => item.orbit === 'inner' && !item.main)
+  const outerItems = data.filter((item) => item.orbit === 'outer' && !item.main)
+  const mainTech = data.find((item) => item.main)
 
   return (
     <section
@@ -94,9 +90,7 @@ export function TechStackSection({ data }: TechStackSectionProps) {
         {/* Title */}
         <div className="text-center space-y-4 mb-16 md:mb-20">
           <div className="w-24 md:w-32 h-[1px] bg-white/40 mx-auto mb-6" />
-          <h2 className="text-2xl md:text-t2 text-white font-bold tracking-wide">
-            {t("title")}
-          </h2>
+          <h2 className="text-2xl md:text-t2 text-white font-bold tracking-wide">{t('title')}</h2>
         </div>
 
         {/* Khối Vũ trụ (Responsive Container) */}
@@ -129,7 +123,7 @@ export function TechStackSection({ data }: TechStackSectionProps) {
 
             {/* 3. TRUNG TÂM (Bản thân component đã có z-30 nên luôn trên cùng) */}
             <OrbitNode
-              name={mainTech ? mainTech.name : "Tech Stack"}
+              name={mainTech ? mainTech.name : 'Tech Stack'}
               icon={mainTech?.icon}
               gsapClass="gsap-icon gsap-center"
               sizeClass="w-20 h-20 sm:w-28 sm:h-28 lg:w-32 lg:h-32"
@@ -139,5 +133,5 @@ export function TechStackSection({ data }: TechStackSectionProps) {
         </div>
       </div>
     </section>
-  );
+  )
 }

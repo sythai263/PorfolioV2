@@ -1,5 +1,5 @@
 export interface SocialLink {
-  platform: string;
-  url: string;
-  icon: string;
+  platform: string
+  url: string
+  icon: string
 }

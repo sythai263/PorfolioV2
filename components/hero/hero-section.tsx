@@ -1,72 +1,72 @@
-"use client";
+'use client'
 
-import { Profile } from "@app-types";
-import { Badge } from "@components/ui/badge";
-import { getSocialIcon } from "@lib/helper";
-import { Download } from "lucide-react";
-import { useRef } from "react";
+import { Profile } from '@app-types'
+import { Badge } from '@components/ui/badge'
+import { getSocialIcon } from '@lib/helper'
+import { Download } from 'lucide-react'
+import { useRef } from 'react'
 
 // --- GSAP IMPORTS ---
-import { BlobAvatar } from "@components/blob-paths";
-import { DashDecorator, PaperAirplane } from "@components/icons";
-import { useGSAP } from "@gsap/react";
-import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { useTranslations } from "next-intl";
+import { BlobAvatar } from '@components/blob-paths'
+import { DashDecorator, PaperAirplane } from '@components/icons'
+import { useGSAP } from '@gsap/react'
+import gsap from 'gsap'
+import { ScrollTrigger } from 'gsap/ScrollTrigger'
+import { useTranslations } from 'next-intl'
 
 interface HeroSectionProps {
-  data: Profile;
+  data: Profile
 }
 
 export function HeroSection({ data }: HeroSectionProps) {
-  const containerRef = useRef<HTMLDivElement>(null);
-  const t = useTranslations("hero");
+  const containerRef = useRef<HTMLDivElement>(null)
+  const t = useTranslations('hero')
 
   useGSAP(
     () => {
-      ScrollTrigger.refresh();
+      ScrollTrigger.refresh()
 
       const tl = gsap.timeline({
         scrollTrigger: {
           trigger: containerRef.current,
-          start: "top 90%", // Kích hoạt sớm hơn một chút để đảm bảo chạy ngay khi load
-          end: "bottom 10%",
+          start: 'top 90%', // Kích hoạt sớm hơn một chút để đảm bảo chạy ngay khi load
+          end: 'bottom 10%',
           // onEnterBack: restart giúp hiệu ứng chạy lại khi cuộn từ dưới lên
-          toggleActions: "play reverse restart reverse",
+          toggleActions: 'play reverse restart reverse',
           invalidateOnRefresh: true, // Quan trọng: tính lại mốc khi resize màn hình
         },
-      });
+      })
 
       // Sử dụng fromTo để đảm bảo trạng thái hiển thị cuối cùng là 1 (tránh bị mất hẳn)
       tl.fromTo(
-        ".hero-anim-text",
+        '.hero-anim-text',
         { y: 30, opacity: 0 },
         {
           y: 0,
           opacity: 1,
           duration: 0.8,
           stagger: 0.1,
-          ease: "power3.out",
-          overwrite: "auto",
+          ease: 'power3.out',
+          overwrite: 'auto',
         },
       ).fromTo(
-        ".hero-anim-img",
+        '.hero-anim-img',
         { scale: 0.7, opacity: 0 },
         {
           scale: 1,
           opacity: 1,
           duration: 0.8,
           stagger: 0.12,
-          ease: "back.out(1.2)",
-          overwrite: "auto",
+          ease: 'back.out(1.2)',
+          overwrite: 'auto',
         },
-        "-=0.5",
-      );
+        '-=0.5',
+      )
     },
     { dependencies: [data], scope: containerRef },
-  );
+  )
 
-  const titleParts = data.title.split("&").map((part: string) => part.trim());
+  const titleParts = data.title.split('&').map((part: string) => part.trim())
 
   return (
     <section
@@ -88,7 +88,7 @@ export function HeroSection({ data }: HeroSectionProps) {
               </div>
 
               <h2 className="hero-anim-text opacity-0 text-[28px] md:text-[36px] font-mono font-bold text-foreground mb-1 md:mb-2 tracking-wide">
-                {t("greeting")}
+                {t('greeting')}
               </h2>
               <h2 className="hero-anim-text opacity-0 text-[32px] md:text-[44px] font-bold text-foreground mb-3 md:mb-4">
                 <span className="text-primary border-b-[4px] md:border-b-[6px] border-primary pb-1 inline-block uppercase">
@@ -106,7 +106,7 @@ export function HeroSection({ data }: HeroSectionProps) {
 
             <div className="hero-anim-text opacity-0 flex flex-row gap-4 pt-2">
               <button className="btn-custom btn-m md:btn-l bg-primary text-white hover:brightness-110 min-w-[130px] md:min-w-[160px]">
-                {t("cta")}
+                {t('cta')}
               </button>
               <button className="btn-custom btn-m md:btn-l bg-transparent border-2 border-primary text-primary hover:bg-primary/5 min-w-[130px] md:min-w-[160px] flex items-center justify-center gap-2">
                 <Download className="w-4 h-4" />
@@ -116,7 +116,7 @@ export function HeroSection({ data }: HeroSectionProps) {
 
             <div className="hero-anim-text opacity-0 flex items-center gap-4 pt-4">
               {data.social.map((social) => {
-                const IconComponent = getSocialIcon(social.icon);
+                const IconComponent = getSocialIcon(social.icon)
                 return (
                   <a
                     key={social.platform}
@@ -127,7 +127,7 @@ export function HeroSection({ data }: HeroSectionProps) {
                   >
                     <IconComponent className="w-5 h-5" />
                   </a>
-                );
+                )
               })}
             </div>
           </div>
@@ -160,5 +160,5 @@ export function HeroSection({ data }: HeroSectionProps) {
         </div>
       </div>
     </section>
-  );
+  )
 }

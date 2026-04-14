@@ -1,1 +1,1 @@
-export * from './tech-stack-repository';
+export * from './tech-stack-repository'

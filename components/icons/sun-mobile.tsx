@@ -9,22 +9,12 @@ export const SunMobile = ({ className }: { className?: string }) => (
   >
     <g filter="url(#filter0_d_139_2044)">
       <circle cx="9" cy="10" r="8" fill="url(#paint0_linear_139_2044)" />
-      <circle
-        cx="8.99997"
-        cy="10"
-        r="6.62857"
-        fill="url(#paint1_linear_139_2044)"
-      />
+      <circle cx="8.99997" cy="10" r="6.62857" fill="url(#paint1_linear_139_2044)" />
       <circle cx="9" cy="10" r="8" fill="#FF9255" />
-      <circle
-        cx="8.99997"
-        cy="10"
-        r="6.62857"
-        fill="url(#paint2_linear_139_2044)"
-      />
+      <circle cx="8.99997" cy="10" r="6.62857" fill="url(#paint2_linear_139_2044)" />
       <mask
         id="mask0_139_2044"
-        style={{ maskType: "alpha" }}
+        style={{ maskType: 'alpha' }}
         maskUnits="userSpaceOnUse"
         x="1"
         y="2"
@@ -67,11 +57,7 @@ export const SunMobile = ({ className }: { className?: string }) => (
           type="matrix"
           values="0 0 0 0 0.412917 0 0 0 0 0.412917 0 0 0 0 0.412917 0 0 0 0.25 0"
         />
-        <feBlend
-          mode="normal"
-          in2="BackgroundImageFix"
-          result="effect1_dropShadow_139_2044"
-        />
+        <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_139_2044" />
         <feBlend
           mode="normal"
           in="SourceGraphic"
@@ -147,4 +133,4 @@ export const SunMobile = ({ className }: { className?: string }) => (
       </linearGradient>
     </defs>
   </svg>
-);
+)

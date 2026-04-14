@@ -1,4 +1,4 @@
-import { FC } from "react";
+import { FC } from 'react'
 
 // 1. Import từ simple-icons gốc để LẤY ĐƯỢC MÀU MẶC ĐỊNH
 import {
@@ -20,7 +20,7 @@ import {
   siTailwindcss,
   siTypescript,
   type SimpleIcon,
-} from "simple-icons";
+} from 'simple-icons'
 
 // 2. Lucide cho các icon công cụ chung (không có màu thương hiệu)
 import {
@@ -35,7 +35,7 @@ import {
   Terminal,
   Wrench,
   type LucideIcon,
-} from "lucide-react";
+} from 'lucide-react'
 
 // 3. Gom nhóm Brand (Tự động chứa sẵn màu .hex và .path)
 const brandIcons: Record<string, SimpleIcon> = {
@@ -56,7 +56,7 @@ const brandIcons: Record<string, SimpleIcon> = {
   mysql: siMysql,
   nestjs: siNestjs,
   shopify: siShopify,
-};
+}
 
 // 4. Gom nhóm Generic (Màu tùy chỉnh hoặc mặc định)
 const genericIcons: Record<string, LucideIcon> = {
@@ -70,26 +70,26 @@ const genericIcons: Record<string, LucideIcon> = {
   layers: Layers,
   terminal: Terminal,
   wrench: Wrench,
-};
+}
 
 interface TechIconProps {
-  iconName: string;
-  size?: number | string;
-  className?: string;
-  defaultColor?: string; // Màu dự phòng cho Lucide icon
+  iconName: string
+  size?: number | string
+  className?: string
+  defaultColor?: string // Màu dự phòng cho Lucide icon
 }
 
 export const TechIconComponent: FC<TechIconProps> = ({
   iconName,
   size = 24,
-  className = "",
-  defaultColor = "#6B7280", // Xám nhạt cho icon generic
+  className = '',
+  defaultColor = '#6B7280', // Xám nhạt cho icon generic
 }) => {
   // Chuẩn hóa tên đầu vào (chỉ cần so sánh lowercase nguyên khối)
-  const normalizedName = iconName.trim().toLowerCase();
+  const normalizedName = iconName.trim().toLowerCase()
 
   // TH1: Nếu là Brand Icon -> Render SVG và tự động lấy màu hex của hãng
-  const brandIcon = brandIcons[normalizedName];
+  const brandIcon = brandIcons[normalizedName]
   if (brandIcon) {
     return (
       <svg
@@ -104,46 +104,35 @@ export const TechIconComponent: FC<TechIconProps> = ({
         <title>{brandIcon.title}</title>
         <path d={brandIcon.path} />
       </svg>
-    );
+    )
   }
 
   // TH2: Nếu là Generic Icon (Lucide) -> Render component với màu default
-  const GenericIcon = genericIcons[normalizedName];
+  const GenericIcon = genericIcons[normalizedName]
   if (GenericIcon) {
-    return (
-      <GenericIcon size={size} className={className} color={defaultColor} />
-    );
+    return <GenericIcon size={size} className={className} color={defaultColor} />
   }
 
   // TH3: Fallback nếu truyền sai tên
-  return <Code size={size} className={className} color={defaultColor} />;
-};
+  return <Code size={size} className={className} color={defaultColor} />
+}
 
 // Phục vụ cho việc map/render list
 export const iconCategories = {
-  frontend: ["react", "nextjs", "typescript", "tailwind"],
-  backend: [
-    "nodejs",
-    "express",
-    "postgresql",
-    "mongodb",
-    "python",
-    "graphql",
-    "redis",
-    "shopify",
-  ],
-  tools: ["git", "docker", "aws", "figma"],
+  frontend: ['react', 'nextjs', 'typescript', 'tailwind'],
+  backend: ['nodejs', 'express', 'postgresql', 'mongodb', 'python', 'graphql', 'redis', 'shopify'],
+  tools: ['git', 'docker', 'aws', 'figma'],
   generic: [
-    "database",
-    "cloud",
-    "code",
-    "cpu",
-    "server",
-    "globe",
-    "package",
-    "layers",
-    "terminal",
-    "wrench",
-    "shopify",
+    'database',
+    'cloud',
+    'code',
+    'cpu',
+    'server',
+    'globe',
+    'package',
+    'layers',
+    'terminal',
+    'wrench',
+    'shopify',
   ],
-};
+}

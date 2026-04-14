@@ -1,12 +1,12 @@
 export interface Project {
-  id: string;
-  title: string;
-  description: string;
-  image: string;
-  technologies: string[];
-  liveUrl?: string;
-  githubUrl?: string;
-  category: string;
-  featured: boolean;
-  isStaggered: boolean;
+  id: string
+  title: string
+  description: string
+  image: string
+  technologies: string[]
+  liveUrl?: string
+  githubUrl?: string
+  category: string
+  featured: boolean
+  isStaggered: boolean
 }

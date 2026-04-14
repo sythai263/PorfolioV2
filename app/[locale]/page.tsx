@@ -7,9 +7,9 @@ import {
   Navbar,
   ProjectsSection,
   TechStackSection,
-} from "@components";
-import { EducationSection } from "@components/educations";
-import { TestimonialSection } from "@components/testimonials";
+} from '@components'
+import { EducationSection } from '@components/educations'
+import { TestimonialSection } from '@components/testimonials'
 import {
   getEducations,
   getExperience,
@@ -17,21 +17,21 @@ import {
   getProjects,
   getTechStacks,
   getTestimonials,
-} from "@infrastructure";
+} from '@infrastructure'
 
 interface HomePageProps {
-  params: Promise<{ locale: string }>;
+  params: Promise<{ locale: string }>
 }
 
 export default async function HomePage({ params }: HomePageProps) {
-  const { locale } = await params;
+  const { locale } = await params
 
-  const experiences = await getExperience(locale);
-  const profile = await getProfile(locale);
-  const techStacks = await getTechStacks();
-  const projects = await getProjects(locale);
-  const educations = await getEducations(locale);
-  const testimonials = await getTestimonials(locale);
+  const experiences = await getExperience(locale)
+  const profile = await getProfile(locale)
+  const techStacks = await getTechStacks()
+  const projects = await getProjects(locale)
+  const educations = await getEducations(locale)
+  const testimonials = await getTestimonials(locale)
   return (
     <div className="min-h-screen bg-background text-foreground transition-colors duration-500">
       <Navbar />
@@ -49,5 +49,5 @@ export default async function HomePage({ params }: HomePageProps) {
 
       <FooterSection />
     </div>
-  );
+  )
 }

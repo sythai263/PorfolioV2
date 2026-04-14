@@ -39,12 +39,7 @@ export const CloudLightDesktop = ({ className }: { className?: string }) => (
         colorInterpolationFilters="sRGB"
       >
         <feFlood floodOpacity="0" result="BackgroundImageFix" />
-        <feBlend
-          mode="normal"
-          in="SourceGraphic"
-          in2="BackgroundImageFix"
-          result="shape"
-        />
+        <feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape" />
         <feColorMatrix
           in="SourceAlpha"
           type="matrix"
@@ -60,15 +55,8 @@ export const CloudLightDesktop = ({ className }: { className?: string }) => (
         <feOffset dy="6" />
         <feGaussianBlur stdDeviation="4" />
         <feComposite in2="hardAlpha" operator="arithmetic" k2="-1" k3="1" />
-        <feColorMatrix
-          type="matrix"
-          values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0"
-        />
-        <feBlend
-          mode="normal"
-          in2="shape"
-          result="effect1_innerShadow_39_644"
-        />
+        <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0" />
+        <feBlend mode="normal" in2="shape" result="effect1_innerShadow_39_644" />
       </filter>
       <linearGradient
         id="paint0_linear_39_644"
@@ -116,4 +104,4 @@ export const CloudLightDesktop = ({ className }: { className?: string }) => (
       </linearGradient>
     </defs>
   </svg>
-);
+)

@@ -1,6 +1,6 @@
 export const experience = {
-  title: "Work Experience",
-  current: "Current",
-  duration: "{start} - {end}",
-  present: "Present",
-};
+  title: 'Work Experience',
+  current: 'Current',
+  duration: '{start} - {end}',
+  present: 'Present',
+}

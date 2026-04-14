@@ -1,26 +1,26 @@
-"use client";
+'use client'
 
-import type { Experience } from "@app-types";
-import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { useTranslations } from "next-intl";
-import { useEffect, useRef } from "react";
-import { ExperienceTimelineItem } from "./experience-timeline-item";
+import type { Experience } from '@app-types'
+import gsap from 'gsap'
+import { ScrollTrigger } from 'gsap/ScrollTrigger'
+import { useTranslations } from 'next-intl'
+import { useEffect, useRef } from 'react'
+import { ExperienceTimelineItem } from './experience-timeline-item'
 
 interface ExperiencesSectionProps {
-  data: Experience[];
+  data: Experience[]
 }
 
 export function ExperiencesSection({ data }: ExperiencesSectionProps) {
-  const containerRef = useRef<HTMLDivElement>(null);
-  const t = useTranslations("experience");
+  const containerRef = useRef<HTMLDivElement>(null)
+  const t = useTranslations('experience')
 
   // GSAP Animation Logic
   useEffect(() => {
-    gsap.registerPlugin(ScrollTrigger);
+    gsap.registerPlugin(ScrollTrigger)
 
     const ctx = gsap.context(() => {
-      const items = gsap.utils.toArray<HTMLElement>(".timeline-item");
+      const items = gsap.utils.toArray<HTMLElement>('.timeline-item')
 
       gsap.fromTo(
         items,
@@ -30,18 +30,18 @@ export function ExperiencesSection({ data }: ExperiencesSectionProps) {
           x: 0,
           duration: 0.6,
           stagger: 0.25,
-          ease: "power2.out",
+          ease: 'power2.out',
           scrollTrigger: {
             trigger: containerRef.current,
-            start: "top 80%",
-            toggleActions: "play reverse play reverse",
+            start: 'top 80%',
+            toggleActions: 'play reverse play reverse',
           },
         },
-      );
-    }, containerRef);
+      )
+    }, containerRef)
 
-    return () => ctx.revert();
-  }, [data]);
+    return () => ctx.revert()
+  }, [data])
 
   return (
     <section
@@ -52,7 +52,7 @@ export function ExperiencesSection({ data }: ExperiencesSectionProps) {
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <h2 className="text-t2 text-foreground mb-8 md:mb-12 transition-colors duration-300">
-          {t("title")}
+          {t('title')}
         </h2>
 
         {/* SỬA LỖI: Thêm md:h-[400px] để tạo đủ không gian chiều dọc cho chữ */}
@@ -70,5 +70,5 @@ export function ExperiencesSection({ data }: ExperiencesSectionProps) {
         </div>
       </div>
     </section>
-  );
+  )
 }

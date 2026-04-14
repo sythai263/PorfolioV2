@@ -12,4 +12,4 @@ export const QuoteIcon = ({ className }: { className?: string }) => (
       fill="currentColor"
     />
   </svg>
-);
+)

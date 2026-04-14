@@ -9,15 +9,10 @@ export const MoonDesktop = ({ className }: { className?: string }) => (
   >
     <g filter="url(#filter0_d_39_631)">
       <circle cx="16" cy="13" r="10" fill="url(#paint0_linear_39_631)" />
-      <circle
-        cx="16"
-        cy="12.9999"
-        r="8.28571"
-        fill="url(#paint1_linear_39_631)"
-      />
+      <circle cx="16" cy="12.9999" r="8.28571" fill="url(#paint1_linear_39_631)" />
       <mask
         id="mask0_39_631"
-        style={{ maskType: "alpha" }}
+        style={{ maskType: 'alpha' }}
         maskUnits="userSpaceOnUse"
         x="6"
         y="3"
@@ -27,36 +22,11 @@ export const MoonDesktop = ({ className }: { className?: string }) => (
         <circle cx="16" cy="13" r="10" fill="url(#paint2_linear_39_631)" />
       </mask>
       <g mask="url(#mask0_39_631)">
-        <circle
-          cx="21.7143"
-          cy="16.9999"
-          r="4.28571"
-          fill="url(#paint3_linear_39_631)"
-        />
-        <circle
-          cx="13.7143"
-          cy="21.5714"
-          r="2.57143"
-          fill="url(#paint4_linear_39_631)"
-        />
-        <circle
-          cx="16.8571"
-          cy="11.8572"
-          r="0.571429"
-          fill="url(#paint5_linear_39_631)"
-        />
-        <circle
-          cx="13.7143"
-          cy="15"
-          r="1.14286"
-          fill="url(#paint6_linear_39_631)"
-        />
-        <circle
-          cx="7.85713"
-          cy="14.5714"
-          r="1.57143"
-          fill="url(#paint7_linear_39_631)"
-        />
+        <circle cx="21.7143" cy="16.9999" r="4.28571" fill="url(#paint3_linear_39_631)" />
+        <circle cx="13.7143" cy="21.5714" r="2.57143" fill="url(#paint4_linear_39_631)" />
+        <circle cx="16.8571" cy="11.8572" r="0.571429" fill="url(#paint5_linear_39_631)" />
+        <circle cx="13.7143" cy="15" r="1.14286" fill="url(#paint6_linear_39_631)" />
+        <circle cx="7.85713" cy="14.5714" r="1.57143" fill="url(#paint7_linear_39_631)" />
       </g>
     </g>
     <defs>
@@ -82,17 +52,8 @@ export const MoonDesktop = ({ className }: { className?: string }) => (
           type="matrix"
           values="0 0 0 0 0.411765 0 0 0 0 0.411765 0 0 0 0 0.411765 0 0 0 0.25 0"
         />
-        <feBlend
-          mode="normal"
-          in2="BackgroundImageFix"
-          result="effect1_dropShadow_39_631"
-        />
-        <feBlend
-          mode="normal"
-          in="SourceGraphic"
-          in2="effect1_dropShadow_39_631"
-          result="shape"
-        />
+        <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_39_631" />
+        <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_39_631" result="shape" />
       </filter>
       <linearGradient
         id="paint0_linear_39_631"
@@ -185,4 +146,4 @@ export const MoonDesktop = ({ className }: { className?: string }) => (
       </linearGradient>
     </defs>
   </svg>
-);
+)

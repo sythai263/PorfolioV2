@@ -7,4 +7,4 @@ export const IndividualLogo = ({ className }: { className?: string }) => (
       Company
     </span>
   </div>
-);
+)

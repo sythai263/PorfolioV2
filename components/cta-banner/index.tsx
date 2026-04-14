@@ -1,1 +1,1 @@
-export * from "./cta-banner-section";
+export * from './cta-banner-section'

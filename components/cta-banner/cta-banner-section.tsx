@@ -1,10 +1,10 @@
-"use client";
+'use client'
 
-import { Download } from "lucide-react";
-import { useTranslations } from "next-intl";
+import { Download } from 'lucide-react'
+import { useTranslations } from 'next-intl'
 
 export function CtaBannerSection() {
-  const t = useTranslations("ctaBanner");
+  const t = useTranslations('ctaBanner')
 
   return (
     <section className="py-20">
@@ -17,17 +17,15 @@ export function CtaBannerSection() {
 
           {/* Content */}
           <div className="relative z-10 text-center space-y-6">
-            <h2 className="text-t2 text-white">{t("title")}</h2>
-            <p className="text-b16-reg text-white/90 max-w-2xl mx-auto">
-              {t("description")}
-            </p>
+            <h2 className="text-t2 text-white">{t('title')}</h2>
+            <p className="text-b16-reg text-white/90 max-w-2xl mx-auto">{t('description')}</p>
             <button className="btn-custom btn-l bg-white text-primary hover:bg-neutral-09 transition-colors">
               <Download className="w-4 h-4 mr-2" />
-              {t("downloadCV")}
+              {t('downloadCV')}
             </button>
           </div>
         </div>
       </div>
     </section>
-  );
+  )
 }

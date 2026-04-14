@@ -14,4 +14,4 @@ export const PaperAirplane = ({ className }: { className?: string }) => (
       fill="#1A85FF"
     />
   </svg>
-);
+)

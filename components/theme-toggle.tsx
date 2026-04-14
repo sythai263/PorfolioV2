@@ -1,9 +1,9 @@
-"use client";
+'use client'
 
-import { useGSAP } from "@gsap/react";
-import gsap from "gsap";
-import { useTheme } from "next-themes";
-import { useEffect, useRef, useState } from "react";
+import { useGSAP } from '@gsap/react'
+import gsap from 'gsap'
+import { useTheme } from 'next-themes'
+import { useEffect, useRef, useState } from 'react'
 
 // Đảm bảo đường dẫn import đúng với project của bạn
 import {
@@ -15,46 +15,46 @@ import {
   MoonMobile,
   SunDesktop,
   SunMobile,
-} from "./icons"; // <-- Cập nhật đường dẫn này
+} from './icons' // <-- Cập nhật đường dẫn này
 
-gsap.registerPlugin(useGSAP);
+gsap.registerPlugin(useGSAP)
 
 export function ThemeToggle() {
-  const { theme, setTheme } = useTheme();
-  const [mounted, setMounted] = useState(false);
+  const { theme, setTheme } = useTheme()
+  const [mounted, setMounted] = useState(false)
 
   // Ref để GSAP điều khiển cục Thumb
-  const thumbRef = useRef<HTMLDivElement>(null);
+  const thumbRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
-    setMounted(true);
-  }, []);
+    setMounted(true)
+  }, [])
 
-  const isDarkMode = theme === "dark";
+  const isDarkMode = theme === 'dark'
 
   // GSAP Animation cho cục Thumb: Chậm rãi và nhẹ nhàng (Chuẩn power3.inOut)
   useGSAP(
     () => {
-      if (!mounted) return;
+      if (!mounted) return
 
       gsap.to(thumbRef.current, {
         xPercent: isDarkMode ? 0 : 125, // Responsive 125% cho cả 2 size
         duration: 0.6, // Chậm lại
-        ease: "power3.inOut", // Trượt nhẹ nhàng, êm ru
-      });
+        ease: 'power3.inOut', // Trượt nhẹ nhàng, êm ru
+      })
     },
     { dependencies: [isDarkMode, mounted] },
-  );
+  )
 
   const toggleTheme = () => {
-    setTheme(isDarkMode ? "light" : "dark");
-  };
+    setTheme(isDarkMode ? 'light' : 'dark')
+  }
 
   if (!mounted) {
     // Skeleton mờ responsive
     return (
       <div className="w-[45px] h-[20px] md:w-[54px] md:h-[24px] rounded-pill bg-neutral-06 dark:bg-neutral-02 animate-pulse shrink-0" />
-    );
+    )
   }
 
   return (
@@ -69,7 +69,7 @@ export function ThemeToggle() {
       {/* Nền Ban Ngày - Phân chia Mobile/Desktop bằng class block/hidden md: */}
       <div
         className={`absolute inset-0 transition-opacity duration-500 ease-in-out ${
-          isDarkMode ? "opacity-0" : "opacity-100"
+          isDarkMode ? 'opacity-0' : 'opacity-100'
         }`}
       >
         <CloudLightMobile className="block md:hidden w-full h-full" />
@@ -79,7 +79,7 @@ export function ThemeToggle() {
       {/* Nền Ban Đêm */}
       <div
         className={`absolute inset-0 transition-opacity duration-500 ease-in-out ${
-          isDarkMode ? "opacity-100" : "opacity-0"
+          isDarkMode ? 'opacity-100' : 'opacity-0'
         }`}
       >
         <CloudDarkMobile className="block md:hidden w-full h-full" />
@@ -95,7 +95,7 @@ export function ThemeToggle() {
         {/* Icon Mặt Trời */}
         <div
           className={`absolute inset-0 flex items-center justify-center transition-opacity duration-500 ${
-            isDarkMode ? "opacity-0" : "opacity-100"
+            isDarkMode ? 'opacity-0' : 'opacity-100'
           }`}
         >
           <SunMobile className="block md:hidden w-full h-full" />
@@ -105,7 +105,7 @@ export function ThemeToggle() {
         {/* Icon Mặt Trăng */}
         <div
           className={`absolute inset-0 flex items-center justify-center transition-opacity duration-500 ${
-            isDarkMode ? "opacity-100" : "opacity-0"
+            isDarkMode ? 'opacity-100' : 'opacity-0'
           }`}
         >
           <MoonMobile className="block md:hidden w-full h-full" />
@@ -113,5 +113,5 @@ export function ThemeToggle() {
         </div>
       </div>
     </button>
-  );
+  )
 }

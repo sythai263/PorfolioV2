@@ -1,31 +1,23 @@
-"use client";
+'use client'
 
-import type { Experience } from "@app-types";
-import {
-  Tooltip,
-  TooltipContent,
-  TooltipProvider,
-  TooltipTrigger,
-} from "@components/ui/tooltip";
-import { Info } from "lucide-react";
-import { useState } from "react";
+import type { Experience } from '@app-types'
+import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@components/ui/tooltip'
+import { Info } from 'lucide-react'
+import { useState } from 'react'
 
 interface ExperienceTimelineItemProps {
-  experience: Experience;
-  isEven: boolean;
+  experience: Experience
+  isEven: boolean
 }
 
-export function ExperienceTimelineItem({
-  experience,
-  isEven,
-}: ExperienceTimelineItemProps) {
-  const year = new Date(experience.startDate).getFullYear();
+export function ExperienceTimelineItem({ experience, isEven }: ExperienceTimelineItemProps) {
+  const year = new Date(experience.startDate).getFullYear()
   // State để theo dõi tooltip đang mở hay đóng
-  const [isOpen, setIsOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState(false)
 
   return (
     <div
-      className={`timeline-item relative flex flex-col items-center w-full h-40 md:flex-1 md:h-full transition-colors duration-300 ${isOpen ? "z-[60]" : "z-10"}`}
+      className={`timeline-item relative flex flex-col items-center w-full h-40 md:flex-1 md:h-full transition-colors duration-300 ${isOpen ? 'z-[60]' : 'z-10'}`}
     >
       {/* Nút mốc thời gian */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-6 h-6 bg-background border-[3px] border-secondary rounded-full flex items-center justify-center transition-colors duration-300 z-20">
@@ -134,5 +126,5 @@ export function ExperienceTimelineItem({
         )}
       </TooltipProvider>
     </div>
-  );
+  )
 }

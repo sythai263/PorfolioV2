@@ -1,49 +1,49 @@
-"use client";
+'use client'
 
-import { useGSAP } from "@gsap/react";
-import gsap from "gsap";
-import { Mail, Menu, X } from "lucide-react";
-import { useTranslations } from "next-intl";
-import { useEffect, useRef, useState } from "react";
-import { IndividualLogo } from "./icons";
-import { LanguageSwitcher } from "./language-switcher";
-import { ThemeToggle } from "./theme-toggle";
+import { useGSAP } from '@gsap/react'
+import gsap from 'gsap'
+import { Mail, Menu, X } from 'lucide-react'
+import { useTranslations } from 'next-intl'
+import { useEffect, useRef, useState } from 'react'
+import { IndividualLogo } from './icons'
+import { LanguageSwitcher } from './language-switcher'
+import { ThemeToggle } from './theme-toggle'
 
-gsap.registerPlugin(useGSAP);
+gsap.registerPlugin(useGSAP)
 
 export function Navbar() {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [activeTab, setActiveTab] = useState("home");
-  const t = useTranslations("navigation");
+  const [isMenuOpen, setIsMenuOpen] = useState(false)
+  const [activeTab, setActiveTab] = useState('home')
+  const t = useTranslations('navigation')
 
   const navLinks = [
-    { key: "home", label: t("home") },
-    { key: "about", label: t("about") },
-    { key: "projects", label: t("projects") },
-    { key: "experience", label: t("experience") },
-    { key: "contact", label: t("contact") },
-  ];
+    { key: 'home', label: t('home') },
+    { key: 'about', label: t('about') },
+    { key: 'projects', label: t('projects') },
+    { key: 'experience', label: t('experience') },
+    { key: 'contact', label: t('contact') },
+  ]
 
   // UX Chuẩn: Khóa cuộn trang (scroll) khi Menu đang mở (chỉ trên mobile)
   useEffect(() => {
     if (isMenuOpen && window.innerWidth < 768) {
-      document.body.style.overflow = "hidden";
+      document.body.style.overflow = 'hidden'
     } else {
-      document.body.style.overflow = "unset";
+      document.body.style.overflow = 'unset'
     }
     return () => {
-      document.body.style.overflow = "unset";
-    };
-  }, [isMenuOpen]);
+      document.body.style.overflow = 'unset'
+    }
+  }, [isMenuOpen])
 
   // Logic GSAP cho Desktop Sliding Pill (Menu ở giữa)
-  const desktopBtnRefs = useRef<(HTMLButtonElement | null)[]>([]);
-  const desktopPillRef = useRef<HTMLDivElement>(null);
+  const desktopBtnRefs = useRef<(HTMLButtonElement | null)[]>([])
+  const desktopPillRef = useRef<HTMLDivElement>(null)
 
   useGSAP(
     () => {
-      const activeIndex = navLinks.findIndex((link) => link.key === activeTab);
-      const activeBtn = desktopBtnRefs.current[activeIndex];
+      const activeIndex = navLinks.findIndex((link) => link.key === activeTab)
+      const activeBtn = desktopBtnRefs.current[activeIndex]
 
       // Chỉ chạy nếu nút active và cục pill tồn tại (trong màn Desktop)
       if (activeBtn && desktopPillRef.current && window.innerWidth >= 768) {
@@ -52,12 +52,12 @@ export function Navbar() {
           width: activeBtn.offsetWidth,
           opacity: 1,
           duration: 0.6,
-          ease: "power3.inOut", // Trượt nhẹ như "lụa"
-        });
+          ease: 'power3.inOut', // Trượt nhẹ như "lụa"
+        })
       }
     },
     { dependencies: [activeTab], scope: desktopPillRef },
-  );
+  )
 
   return (
     <>
@@ -83,13 +83,13 @@ export function Navbar() {
                 <button
                   key={link.key}
                   ref={(el) => {
-                    desktopBtnRefs.current[index] = el;
+                    desktopBtnRefs.current[index] = el
                   }}
                   onClick={() => setActiveTab(link.key)}
                   className={`relative z-10 px-8 py-2.5 rounded-pill text-b16-semi transition-colors duration-300 ${
                     activeTab === link.key
-                      ? "text-primary"
-                      : "text-neutral-03 hover:text-foreground"
+                      ? 'text-primary'
+                      : 'text-neutral-03 hover:text-foreground'
                   }`}
                 >
                   {link.label}
@@ -131,9 +131,7 @@ export function Navbar() {
       {/* ================= FULL-SCREEN MOBILE MENU OVERLAY (CHỈ CHO MOBILE, md:hidden) ================= */}
       <div
         className={`fixed inset-0 z-40 bg-background transition-all duration-300 ease-in-out md:hidden flex flex-col ${
-          isMenuOpen
-            ? "opacity-100 pointer-events-auto"
-            : "opacity-0 pointer-events-none"
+          isMenuOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'
         }`}
       >
         {/* Lùi xuống một khoảng bằng chiều cao của Header Mobile */}
@@ -143,14 +141,14 @@ export function Navbar() {
               <button
                 key={link.key}
                 onClick={() => {
-                  setActiveTab(link.key);
-                  setIsMenuOpen(false); // Bấm xong thì đóng Menu
+                  setActiveTab(link.key)
+                  setIsMenuOpen(false) // Bấm xong thì đóng Menu
                 }}
                 // Sử dụng text-t1 (size 32px-48px) và font-bold, màu cam đậm
                 className={`text-left text-t1 font-bold transition-all duration-300 uppercase tracking-tight ${
                   activeTab === link.key
-                    ? "text-primary translate-x-2"
-                    : "text-primary/70 hover:text-primary hover:translate-x-2"
+                    ? 'text-primary translate-x-2'
+                    : 'text-primary/70 hover:text-primary hover:translate-x-2'
                 }`}
               >
                 {link.label}
@@ -160,5 +158,5 @@ export function Navbar() {
         </div>
       </div>
     </>
-  );
+  )
 }

@@ -1,24 +1,24 @@
-"use client";
+'use client'
 
-import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-import ReactLenis from "lenis/react";
-import { ThemeProvider } from "next-themes";
-import { ReactNode, useEffect, useState } from "react";
+import gsap from 'gsap'
+import { ScrollTrigger } from 'gsap/ScrollTrigger'
+import ReactLenis from 'lenis/react'
+import { ThemeProvider } from 'next-themes'
+import { ReactNode, useEffect, useState } from 'react'
 
-if (typeof window !== "undefined") {
-  gsap.registerPlugin(ScrollTrigger);
+if (typeof window !== 'undefined') {
+  gsap.registerPlugin(ScrollTrigger)
 }
 
 export function Providers({ children }: { children: ReactNode }) {
-  const [mounted, setMounted] = useState(false);
+  const [mounted, setMounted] = useState(false)
 
   useEffect(() => {
-    setMounted(true);
-  }, []);
+    setMounted(true)
+  }, [])
 
   if (!mounted) {
-    return <>{children}</>;
+    return <>{children}</>
   }
 
   return (
@@ -34,5 +34,5 @@ export function Providers({ children }: { children: ReactNode }) {
         {children}
       </ReactLenis>
     </ThemeProvider>
-  );
+  )
 }

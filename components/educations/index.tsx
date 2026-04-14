@@ -1,2 +1,2 @@
-export * from "./education-card";
-export * from "./education-section";
+export * from './education-card'
+export * from './education-section'

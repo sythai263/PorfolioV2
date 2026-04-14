@@ -1,6 +1,6 @@
-@import "tailwindcss";
-@import "tw-animate-css";
-@import "shadcn/tailwind.css";
+@import 'tailwindcss';
+@import 'tw-animate-css';
+@import 'shadcn/tailwind.css';
 
 @custom-variant dark (&:is(.dark *));
 
@@ -46,7 +46,7 @@
   --color-neutral-11: #fafafa;
 
   /* --- Radius & Fonts --- */
-  --font-sans: "Inter", sans-serif;
+  --font-sans: 'Inter', sans-serif;
   --radius-pill: 9999px;
   --radius-input: 8px;
 }

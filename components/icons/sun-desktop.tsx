@@ -9,22 +9,12 @@ export const SunDesktop = ({ className }: { className?: string }) => (
   >
     <g filter="url(#filter0_d_39_622)">
       <circle cx="11" cy="12" r="10" fill="url(#paint0_linear_39_622)" />
-      <circle
-        cx="11"
-        cy="11.9999"
-        r="8.28571"
-        fill="url(#paint1_linear_39_622)"
-      />
+      <circle cx="11" cy="11.9999" r="8.28571" fill="url(#paint1_linear_39_622)" />
       <circle cx="11" cy="12" r="10" fill="#FF9255" />
-      <circle
-        cx="11"
-        cy="11.9999"
-        r="8.28571"
-        fill="url(#paint2_linear_39_622)"
-      />
+      <circle cx="11" cy="11.9999" r="8.28571" fill="url(#paint2_linear_39_622)" />
       <mask
         id="mask0_39_622"
-        style={{ maskType: "alpha" }}
+        style={{ maskType: 'alpha' }}
         maskUnits="userSpaceOnUse"
         x="1"
         y="2"
@@ -67,17 +57,8 @@ export const SunDesktop = ({ className }: { className?: string }) => (
           type="matrix"
           values="0 0 0 0 0.412917 0 0 0 0 0.412917 0 0 0 0 0.412917 0 0 0 0.25 0"
         />
-        <feBlend
-          mode="normal"
-          in2="BackgroundImageFix"
-          result="effect1_dropShadow_39_622"
-        />
-        <feBlend
-          mode="normal"
-          in="SourceGraphic"
-          in2="effect1_dropShadow_39_622"
-          result="shape"
-        />
+        <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_39_622" />
+        <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_39_622" result="shape" />
       </filter>
       <linearGradient
         id="paint0_linear_39_622"
@@ -147,4 +128,4 @@ export const SunDesktop = ({ className }: { className?: string }) => (
       </linearGradient>
     </defs>
   </svg>
-);
+)

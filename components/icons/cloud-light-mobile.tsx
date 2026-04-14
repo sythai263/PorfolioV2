@@ -8,12 +8,7 @@ export const CloudLightMobile = ({ className }: { className?: string }) => (
     xmlns="http://www.w3.org/2000/svg"
   >
     <g filter="url(#filter0_i_139_2065)">
-      <rect
-        width="45"
-        height="20"
-        rx="10"
-        fill="url(#paint0_linear_139_2065)"
-      />
+      <rect width="45" height="20" rx="10" fill="url(#paint0_linear_139_2065)" />
     </g>
     <path
       fillRule="evenodd"
@@ -44,12 +39,7 @@ export const CloudLightMobile = ({ className }: { className?: string }) => (
         colorInterpolationFilters="sRGB"
       >
         <feFlood floodOpacity="0" result="BackgroundImageFix" />
-        <feBlend
-          mode="normal"
-          in="SourceGraphic"
-          in2="BackgroundImageFix"
-          result="shape"
-        />
+        <feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape" />
         <feColorMatrix
           in="SourceAlpha"
           type="matrix"
@@ -65,15 +55,8 @@ export const CloudLightMobile = ({ className }: { className?: string }) => (
         <feOffset dy="6" />
         <feGaussianBlur stdDeviation="4" />
         <feComposite in2="hardAlpha" operator="arithmetic" k2="-1" k3="1" />
-        <feColorMatrix
-          type="matrix"
-          values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0"
-        />
-        <feBlend
-          mode="normal"
-          in2="shape"
-          result="effect1_innerShadow_139_2065"
-        />
+        <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0" />
+        <feBlend mode="normal" in2="shape" result="effect1_innerShadow_139_2065" />
       </filter>
       <linearGradient
         id="paint0_linear_139_2065"
@@ -121,4 +104,4 @@ export const CloudLightMobile = ({ className }: { className?: string }) => (
       </linearGradient>
     </defs>
   </svg>
-);
+)

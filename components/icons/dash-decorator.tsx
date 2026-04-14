@@ -15,4 +15,4 @@ export const DashDecorator = ({ className }: { className?: string }) => (
       strokeDasharray="2 2"
     />
   </svg>
-);
+)

@@ -1,27 +1,32 @@
-'use client';
+'use client'
 
-import { useLocale } from 'next-intl';
-import { useRouter, usePathname } from 'next/navigation';
-import { Button } from '@components/ui/button';
-import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from '@components/ui/dropdown-menu';
-import { Globe } from 'lucide-react';
+import { useLocale } from 'next-intl'
+import { useRouter, usePathname } from 'next/navigation'
+import { Button } from '@components/ui/button'
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from '@components/ui/dropdown-menu'
+import { Globe } from 'lucide-react'
 
 const languages = [
   { code: 'en', name: 'English', flag: '🇺🇸' },
   { code: 'vi', name: 'Tiếng Việt', flag: '🇻🇳' },
-];
+]
 
 export function LanguageSwitcher() {
-  const locale = useLocale();
-  const router = useRouter();
-  const pathname = usePathname();
+  const locale = useLocale()
+  const router = useRouter()
+  const pathname = usePathname()
 
   const handleLanguageChange = (newLocale: string) => {
-    const newPath = pathname.replace(`/${locale}`, `/${newLocale}`);
-    router.push(newPath);
-  };
+    const newPath = pathname.replace(`/${locale}`, `/${newLocale}`)
+    router.push(newPath)
+  }
 
-  const currentLanguage = languages.find(lang => lang.code === locale);
+  const currentLanguage = languages.find((lang) => lang.code === locale)
 
   return (
     <DropdownMenu>
@@ -31,9 +36,7 @@ export function LanguageSwitcher() {
           <span className="hidden sm:inline">
             {currentLanguage?.flag} {currentLanguage?.name}
           </span>
-          <span className="sm:hidden">
-            {currentLanguage?.flag}
-          </span>
+          <span className="sm:hidden">{currentLanguage?.flag}</span>
         </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent align="end">
@@ -49,5 +52,5 @@ export function LanguageSwitcher() {
         ))}
       </DropdownMenuContent>
     </DropdownMenu>
-  );
+  )
 }
