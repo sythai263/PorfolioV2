@@ -1,57 +1,64 @@
-# Project Context
-You are an expert frontend developer specializing in Next.js (App Router), React, TypeScript, and Tailwind CSS. This is a STRICTLY FRONTEND-ONLY PERSONAL PORTFOLIO project. Data (such as user profile, projects, work experience, skills) is stored locally in JSON files, and Next.js will read this data to showcase the portfolio.
+# Coding Standards
 
-# Tech Stack
-- Framework: Next.js 16.1.6 (App Router)
-- Language: TypeScript 5 (Strict mode)
-- Styling: Tailwind CSS v4
-- UI Components: shadcn/ui (Strictly use this for base components)
-- Icons: lucide-react (Strictly use this for all icons)
-- Animation: GSAP 3.14.2 with @gsap/react 2.1.2
-- i18n: next-intl
-- Architecture: Frontend-focused Clean Architecture
-- Linting: ESLint 9
-- Smooth Scroll: Lenis 1.3.20
+This document provides detailed coding standards for the PortfolioV2 project. All developers and AI assistants must follow these conventions to maintain code consistency and quality.
 
-# Coding Convention - Based on Sample Files Analysis
+## Table of Contents
 
-## 1. Naming Convention
+- [Naming Convention](#naming-convention)
+- [Component Organization](#component-organization)
+- [Tailwind CSS v4 Usage](#tailwind-css-v4-usage)
+- [GSAP Integration](#gsap-integration)
+- [TypeScript Rules](#typescript-rules)
+- [Import Patterns](#import-patterns)
+- [Folder Structure](#folder-structure)
+- [i18n Guidelines](#i18n-guidelines)
+- [Common Mistakes](#common-mistakes)
+
+## Naming Convention
 
 ### Files
+
 - **Component files**: kebab-case (e.g., `education-section.tsx`, `education-card.tsx`)
 - **Type files**: kebab-case (e.g., `education.ts`, `profile.ts`)
 - **Constant files**: kebab-case (e.g., `site.ts`)
 - **Data files**: kebab-case JSON (e.g., `profile.json`, `educations.json`)
 
 ### Components
-- **Component name**: PascalCase matching filename (e.g., `education-section.tsx` → `EducationSection`)
+
+- **Component name**: PascalCase matching filename
 - **Function declaration**: Use function declaration syntax, NOT arrow functions
-  ```tsx
-  // ✅ CORRECT
-  export function EducationSection() { }
-  
-  // ❌ WRONG
-  export const EducationSection = () => { }
-  ```
+
+```tsx
+// ✅ CORRECT
+export function EducationSection() { }
+
+// ❌ WRONG
+export const EducationSection = () => { }
+```
 
 ### Types & Interfaces
-- **Interface name**: PascalCase, can use descriptive suffix or not (e.g., `EducationType`, `Experience`, `Profile` - both patterns acceptable)
+
+- **Interface name**: PascalCase, can use descriptive suffix or not (both acceptable)
+  - `EducationType`, `Experience`, `Profile` - all valid
 - **Type name**: PascalCase (e.g., `NavigationItem`, `SocialLink`)
 - **Union types**: Use pipe operator with literal types (e.g., `theme?: "blue" | "orange" | "green"`)
 - **Optional fields**: Use `?` modifier with `| null` if needed (e.g., `endDate?: string | null`)
 
 ### Variables & Functions
+
 - **Variables**: camelCase (e.g., `activeIndex`, `containerRef`)
 - **Functions**: camelCase (e.g., `getProfile`, `handleScroll`)
 - **Constants**: UPPER_SNAKE_CASE for global constants (e.g., `SITE_METADATA`, `NAVIGATION_ITEMS`)
 - **Local constants**: camelCase (e.g., `themeConfig`, `currentTheme`)
 
 ### Props Interfaces
+
 - **Props interface**: ComponentName + Props suffix (e.g., `EducationSectionProps`, `EducationCardProps`)
 
-## 2. Component Organization
+## Component Organization
 
 ### Component Structure Template
+
 ```tsx
 "use client"; // Add at top if component uses hooks/GSAP/state
 
@@ -62,7 +69,7 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useTranslations } from "next-intl";
 import { useRef, useState } from "react";
-import { EducationType } from "@app-types";
+import type { EducationType } from "@app-types";
 import { EducationCard } from "./education-card";
 
 // 2. GSAP Plugin Registration (if needed)
@@ -109,9 +116,11 @@ export function EducationSection({ data = [] }: EducationSectionProps) {
 ```
 
 ### Props Type Definition
+
 - **ALWAYS** define props interface before component
 - Use optional modifier (`?`) for optional props
 - Provide default values in destructuring
+
 ```tsx
 interface EducationSectionProps {
   data?: EducationType[];
@@ -121,9 +130,11 @@ export function EducationSection({ data = [] }: EducationSectionProps) { }
 ```
 
 ### Import Order
+
 1. Third-party libraries (GSAP, React, next-intl)
 2. Internal aliases (@app-types, @lib, @constants, @infrastructure)
 3. Relative imports (./component-name)
+
 ```tsx
 import { useGSAP } from "@gsap/react";
 import { cn } from "@lib";
@@ -135,16 +146,20 @@ import { EducationCard } from "./education-card";
 ```
 
 ### Type Imports
+
 - Use `import type` for type-only imports when possible
 - This helps with tree-shaking and makes it clear what's a type
+
 ```tsx
 import type { Experience } from "@app-types";
 ```
 
 ### Comments Guidelines
+
 - Comments can be in Vietnamese or English, keep them brief and relevant
 - Use comments for bug fixes with "SỬA LỖI:" prefix
 - Use comments to explain complex logic or layout decisions
+
 ```tsx
 // SỬA LỖI: Đổi overflow-hidden thành overflow-x-clip để không cắt mất chiều cao
 className="... overflow-x-clip"
@@ -156,13 +171,15 @@ className="... overflow-x-clip"
 "md:grid md:grid-cols-2 lg:grid-cols-3"
 ```
 
-## 3. Tailwind CSS v4 Usage
+## Tailwind CSS v4 Usage
 
 ### Class Organization with `cn()` Utility
+
 - **RECOMMENDED**: Use `cn()` from `@lib/utils` for className merging when conditional classes are needed
 - For simple static classes, plain className is acceptable
 - Group classes logically with comments
 - Use multiline format for complex class lists
+
 ```tsx
 className={cn(
   "py-20 md:py-24 overflow-hidden transition-colors duration-500",
@@ -179,8 +196,10 @@ className={cn(
 ```
 
 ### Dark Mode
+
 - Use `dark:` prefix for dark mode styles
 - Use semantic color tokens (background, foreground, muted-foreground)
+
 ```tsx
 className={cn(
   "bg-[#F4F8FF] dark:bg-[#1A233A]",
@@ -189,13 +208,16 @@ className={cn(
 ```
 
 ### Responsive Design
+
 - Mobile-first approach
 - Use `md:`, `lg:` prefixes for breakpoints
+
 ```tsx
 className="text-base md:text-lg"
 ```
 
 ### Custom Color Schemes (LIMITED USE)
+
 - **PREFERRED**: Define custom colors in `tailwind.config.ts` for project-wide consistency
 - **LIMIT**: Avoid inline bracket notation colors (e.g., `bg-[#F4F8FF]`) - only use when absolutely necessary
 - Use semantic color tokens from Tailwind config (primary, secondary, neutral, background, foreground)
@@ -207,11 +229,15 @@ className="bg-primary text-foreground"
 className="bg-secondary text-white"
 className="bg-neutral-01 dark:bg-neutral-08"
 
-// ⚠️ ACCEPTABLE: Define theme in global CSS (Tailwind v4 pattern)
-// app/globals.css
-@theme {
-  --color-theme-blue: #F4F8FF;
-  --color-theme-orange: #FFF8E7;
+// ⚠️ ACCEPTABLE: Define theme in tailwind.config.ts first
+// tailwind.config.ts
+theme: {
+  extend: {
+    colors: {
+      'theme-blue': '#F4F8FF',
+      'theme-orange': '#FFF8E7',
+    }
+  }
 }
 // Then use
 className="bg-theme-blue dark:bg-theme-blue-dark"
@@ -220,16 +246,20 @@ className="bg-theme-blue dark:bg-theme-blue-dark"
 className="bg-[#F4F8FF] dark:bg-[#1A233A]" // Hard to maintain, inconsistent
 ```
 
-## 4. GSAP Integration
+## GSAP Integration
 
 ### GSAP Plugin Registration
+
 - **PREFERRED**: Register plugins inside window check at top of file (for useGSAP pattern)
+
 ```tsx
 if (typeof window !== "undefined") {
   gsap.registerPlugin(ScrollTrigger);
 }
 ```
+
 - **ALTERNATIVE**: Register inside useEffect (for gsap.context pattern)
+
 ```tsx
 useEffect(() => {
   gsap.registerPlugin(ScrollTrigger);
@@ -238,9 +268,11 @@ useEffect(() => {
 ```
 
 ### useGSAP Hook Pattern (PREFERRED)
+
 - Use `useGSAP` from `@gsap/react` for simpler animations
 - Always provide dependencies array
 - Use scope for targeting elements
+
 ```tsx
 useGSAP(
   () => {
@@ -266,8 +298,10 @@ useGSAP(
 ```
 
 ### gsap.context Pattern (ALTERNATIVE)
+
 - Use `gsap.context()` for complex animations needing manual cleanup
 - Always revert context in cleanup function
+
 ```tsx
 useEffect(() => {
   gsap.registerPlugin(ScrollTrigger);
@@ -298,34 +332,57 @@ useEffect(() => {
 ```
 
 ### GSAP Target Classes
+
 - Use descriptive class names for GSAP targets
 - Prefix with component name if needed
+
 ```tsx
 className="education-card"
 gsap.fromTo(".education-card", ...)
 ```
 
-## 4.5. Lenis Smooth Scroll Integration
-- **Initialization**: Lenis MUST be initialized at the top-level layout or via a dedicated `<SmoothScrollProvider>` wrapper component.
-- **NEVER** initialize Lenis inside individual UI components or sections.
-- Ensure Lenis is properly synced with GSAP ScrollTrigger if both are used:
-  ```tsx
-  lenis.on('scroll', ScrollTrigger.update)
-  gsap.ticker.add((time) => { lenis.raf(time * 1000) })
-  ```
-### 3. Quy tắc ranh giới Server / Client Component (Next.js App Router)
-Dự án dùng App Router, việc phân biệt `use client` và Server Component là sống còn để tối ưu SEO và tốc độ cho Portfolio. AI có nhắc đến `"use client"` nhưng chưa có luật cấm lạm dụng nó.
-👉 **Cách bổ sung:** Thêm vào đầu phần `10. Common Mistakes to Avoid`:
-```markdown
-### ❌ WRONG: Defaulting to Client Components
-- **RULE**: Everything is a Server Component by default. ONLY add `"use client"` when the component specifically uses:
-  1. React Hooks (`useState`, `useRef`, `useEffect`)
-  2. Browser APIs (`window`, `document`)
-  3. Animations (GSAP, Lenis)
-  4. Event Listeners (`onClick`, etc.)
-- Data fetching from JSON files MUST happen in Server Components.
+## TypeScript Rules
+
+### Strict Type Safety
+
+- **STRICTLY FORBIDDEN**: `any` or `unknown` types
+- **ALWAYS** define explicit types for props
+- **ALWAYS** define interfaces in `types/` folder
+- **ALWAYS** use TypeScript for function parameters and return types
+
+```tsx
+// ✅ CORRECT
+interface EducationCardProps {
+  item: EducationType;
+}
+export function EducationCard({ item }: EducationCardProps) { }
+
+// ❌ WRONG
+export function EducationCard({ item }: any) { }
 ```
-## 5. Mandatory Folder Structure
+
+## Import Patterns
+
+### Absolute Imports (MANDATORY)
+
+Use absolute path aliases WITHOUT trailing slash:
+- `@components` instead of `@/components`
+- `@app-types` instead of `@/types`
+- `@lib` instead of `@/lib`
+- `@constants` instead of `@/constants`
+- `@infrastructure` instead of `@/infrastructure`
+- `@data` instead of `@/data`
+
+```tsx
+import { EducationType } from "@app-types";
+import { cn } from "@lib";
+import { getEducations } from "@infrastructure";
+import { SITE_METADATA } from "@constants";
+```
+
+## Folder Structure
+
+### Mandatory Structure
 
 ```
 PorfolioV2/
@@ -372,7 +429,7 @@ PorfolioV2/
 └── public/               # Static assets
 ```
 
-## 6. Barrel Pattern (Mandatory)
+### Barrel Pattern (MANDATORY)
 
 Every folder MUST have an `index.ts` or `index.tsx` file that exports all contents:
 
@@ -394,43 +451,10 @@ export * from "./utils";
 export * from './data';
 ```
 
-## 7. Absolute Imports (Mandatory)
-
-Use absolute path aliases WITHOUT trailing slash:
-- `@components` instead of `@/components`
-- `@app-types` instead of `@/types`
-- `@lib` instead of `@/lib`
-- `@constants` instead of `@/constants`
-- `@infrastructure` instead of `@/infrastructure`
-- `@data` instead of `@/data`
-
-```tsx
-import { EducationType } from "@app-types";
-import { cn } from "@lib";
-import { getEducations } from "@infrastructure";
-import { SITE_METADATA } from "@constants";
-```
-
-## 8. TypeScript Strict Rules
-
-- **STRICTLY FORBIDDEN**: `any` or `unknown` types
-- **ALWAYS** define explicit types for props
-- **ALWAYS** define interfaces in `types/` folder
-- **ALWAYS** use TypeScript for function parameters and return types
-```tsx
-// ✅ CORRECT
-interface EducationCardProps {
-  item: EducationType;
-}
-export function EducationCard({ item }: EducationCardProps) { }
-
-// ❌ WRONG
-export function EducationCard({ item }: any) { }
-```
-
-## 9. i18n with next-intl
+## i18n Guidelines
 
 ### Translation Files Structure
+
 ```tsx
 // messages/vi/education.ts
 export const education = {
@@ -443,36 +467,42 @@ export const education = {
 ```
 
 ### Using Translations in Components
+
 ```tsx
 const t = useTranslations("education");
 <h2>{t("title") || "Education"}</h2>
 <p>{t("description") || "Lorem ipsum..."}</p>
 ```
 
-## 10. Common Mistakes to Avoid
+## Common Mistakes
 
 ### ❌ WRONG: Using arrow functions for components
+
 ```tsx
 export const EducationSection = () => { }
 ```
 
 ### ❌ WRONG: Missing "use client" directive
+
 ```tsx
 import { useState } from "react";
 export function Component() { } // Missing "use client"
 ```
 
 ### ❌ WRONG: Not using cn() utility
+
 ```tsx
 className="base-classes " + (isActive ? "active" : "") // Don't do this
 ```
 
 ### ❌ WRONG: Not using cn() for complex class lists
+
 ```tsx
 className="py-20 bg-background overflow-hidden transition-colors duration-300" // Should use cn()
 ```
 
 ### ❌ WRONG: Using any type
+
 ```tsx
 interface Props {
   data: any; // NEVER use any
@@ -480,6 +510,7 @@ interface Props {
 ```
 
 ### ❌ WRONG: Missing barrel exports
+
 ```tsx
 // components/educations/education-section.tsx
 export function EducationSection() { }
@@ -487,51 +518,52 @@ export function EducationSection() { }
 ```
 
 ### ❌ WRONG: Using relative imports for types
+
 ```tsx
 import { EducationType } from "../../../types/education"; // Use @app-types
 ```
 
 ### ❌ WRONG: GSAP registration without window check
+
 ```tsx
 gsap.registerPlugin(ScrollTrigger); // Will fail on server
 ```
 
 ### ❌ WRONG: Not providing default values for optional props
+
 ```tsx
 export function Component({ data }: Props) { } // data could be undefined
 ```
 
 ### ❌ WRONG: Using PascalCase for filenames
+
 ```tsx
 // EducationSection.tsx ❌
 // education-section.tsx ✅
 ```
 
 ### ❌ WRONG: Not grouping Tailwind classes
+
 ```tsx
 className="py-20 md:py-24 overflow-hidden transition-colors duration-500 bg-background md:grid md:grid-cols-2 lg:grid-cols-3"
 ```
 
 ### ❌ WRONG: Not using semantic color tokens
+
 ```tsx
 className="text-gray-600 dark:text-gray-400" // Use text-muted-foreground
 ```
 
 ### ❌ WRONG: Using inline custom colors instead of Tailwind config
+
 ```tsx
 className="bg-[#F4F8FF] dark:bg-[#1A233A]" // Define in tailwind.config.ts instead
 ```
 
-## 11. Code Style & Formatting
+## Code Style & Formatting
 
 - **Tab size**: 2 spaces
 - **ESLint**: Must pass all rules (no errors or warnings)
 - **Comments**: Can use Vietnamese or English, keep them brief and relevant
 - **Empty lines**: Use single empty line between logical sections
 - **Trailing commas**: Use in arrays and objects for better diffs
-
-# AI Behavior & Workflow (Vibe Rules)
-- **Explore First**: Always read and analyze the existing folder structure and JSON files before creating new components.
-- **Ask Don't Guess**: If my request is vague, ask for clarification before writing code.
-- **No Yapping**: Output code directly. Keep explanations extremely brief.
-- **Preserve Context**: NEVER delete existing comments or working logic unless explicitly asked.
